@@ -1,0 +1,193 @@
+﻿Program.Sub.Preflight.Start
+	v.Global.sPart.Declare(String)
+	v.Global.sRev.Declare(String)
+	v.Global.sLoc.Declare(String)
+	v.Global.sFolderPath.Declare(String)
+	v.Global.sErrorFolderPath.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+	Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+
+	'	Author: Daniel Duncan
+	'	Customer: TE Connectivity
+	'	Program Name: Workflow Controller
+	'	Date Started: 8/30/2020
+	'	Description: This project monitors various workflows and controls what happens when they are completed. 
+	'	Quote: 12407-0
+	'	GAP: 6074
+
+				
+	v.Local.iWFID.Declare(Long)
+	v.Local.sWFTitle.Declare(String)
+	v.Local.sLocalFile.Declare(String)
+	
+	f.Intrinsic.Control.Try
+		f.ODBC.Connection!con.opencompanyconnection
+		
+		f.Intrinsic.Control.CallSub(Initialize)
+		
+		f.Intrinsic.Control.If(v.Caller.Hook,=,34700)	'Workflow Task Completed
+			f.Intrinsic.Control.CallSub(CheckWF)
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.CallSub(Unload)
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Initialize.Start
+f.Intrinsic.Control.Try
+	v.Local.bExists.Declare	
+	
+	f.Intrinsic.String.Build("{0}\CUSTOM\GCG_6074_Workflows\Errors\",v.Caller.GlobalDir,v.Global.sErrorFolderPath)
+	
+	f.Intrinsic.File.DirExists(v.Global.sErrorFolderPath,v.Local.bExists)
+	
+	f.Intrinsic.Control.If(v.Local.bExists,=,False)
+		f.Intrinsic.File.CreateDir(v.Global.sErrorFolderPath)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Initialize.End
+
+Program.Sub.CheckWF.Start
+	v.Local.sSQL.Declare(String)
+	v.Local.sRet.Declare(String)
+	v.Local.sPart.Declare(String)
+	v.local.sLoc.Declare(String)
+	
+	f.Intrinsic.Control.Try
+		'Check if workflow has any open steps.  If not, do logic to determine what workflow was just finished, then do logic based on that to complete the workflow.
+		'Passed vars:
+		'	F_LINEEXTRA-TXTREF1
+		'	F_LINEEXTRA-TXTREF2
+		'	DATA-WFID
+		'	DATA-WFLINE
+		
+		'Use the WF ID to determine what this workflow is for.
+		f.Intrinsic.String.Build("select h.title, avg(isnull(l.perc_completion,0)) as Avg_Comp, h.ref_0, h.ref_1, H.REF_2 from atg_wf_header h inner join atg_wf_lines l on h.wf_id=l.wf_id where h.wf_id={0} group by h.title, h.ref_0, h.ref_1, H.REF_2",v.Passed.DATA-WFID,v.Local.sSQL)
+		f.Data.DataTable.CreateFromSQL("dtWF","con",v.Local.sSQL,true)
+		
+		f.Intrinsic.Control.If(v.DataTable.dtWF.RowCount,>,0)
+			'See if the workflow is complete
+			f.Intrinsic.Control.If(v.DataTable.dtWF(0).Avg_Comp!FieldVal,>=,100)
+				'If it is complete, determine what to do with it from there.
+				f.Intrinsic.Control.CallSub(WFCompleteAction)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.CheckWF.End
+
+Program.Sub.WFCompleteAction.Start
+	v.Local.sWFType.Declare(String)
+	v.Local.bInStr.Declare(Boolean)
+	v.Local.sSQL.Declare(String)
+	v.Local.sGSSPart.Declare(String)
+	v.Local.sTemp.Declare(String)
+	'WF type can be one of the following:
+	'	Scrap
+	'	AR Credit Memo
+	'	Cancel/Resched
+	'	Freight In
+	'	Freight Out
+	'	RMA
+	'	Customer
+	'	Part
+	'	Pricing
+	f.Intrinsic.Control.Try
+		f.Intrinsic.String.IsInString(v.DataTable.dtWF(0).Title!FieldVal,"Part",True,v.Local.bInStr)
+		f.Intrinsic.Control.If(v.Local.bInStr)
+			v.Local.sWFType.Set("Part")
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.SelectCase(v.Local.sWFType)
+			f.Intrinsic.Control.Case("Part")
+				'Get the short part from the long part
+				'f.Intrinsic.String.Split(v.DataTable.dtWF(0).Ref_0!FieldValTrim," ",v.Local.sTemp)
+				f.Global.Inventory.GetGSSPart(v.DataTable.dtWF(0).Ref_0!FieldValTrim,v.DataTable.dtWF(0).Ref_1!FieldValTrim,v.Local.sGSSPart)
+				'Update the part as Active
+				f.Intrinsic.String.Build("update inventory_mstr set flag_inactive='' where part='{0}' and location='{1}';",v.Local.sGSSPart,v.DataTable.dtWF(0).Ref_2!FieldValTrim,v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+				
+				f.Intrinsic.String.Build("update ATG_BRW_INVENTORY set flag_inactive='' where GSSPart='{0}' and location='{1}';",v.Local.sGSSPart,v.DataTable.dtWF(0).Ref_2!FieldValTrim,v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+				
+				v.Local.iUsrId.Declare
+				v.Local.sTemp1.Declare
+				v.Local.sSender.Declare
+				v.Local.sRecipient.Declare
+				v.Local.sSubj.Declare
+				v.Local.sBody.Declare
+				v.Local.sRefData.Declare
+				v.Local.sRefData1.Declare
+				v.Local.sRefData2.Declare
+				v.Local.sEmailGrp.Declare
+				
+				f.Global.Security.GetUserId(v.Caller.User,v.Caller.CompanyCode,v.Local.iUsrId)
+				f.Global.Security.GetFullName(v.Caller.User,v.Local.sTemp)
+				f.Global.Security.GetUserEmail(v.Caller.User,v.Local.sTemp1)
+				f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sTemp1,v.Local.sTemp,v.Local.sSender)
+				
+				F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,0,v.Local.sRefData)  'PART
+				F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,1,v.Local.sRefData1) 'REV
+				F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,2,v.Local.sRefData2) ' LOC
+				
+				f.Intrinsic.String.Build("PTREL-{0}",v.Local.sRefData2.trim,v.Local.sEmailGrp)
+				
+				f.Global.Security.GetGroupEmails(v.Local.sEmailGrp,v.Local.sTemp1)
+				
+				f.Intrinsic.String.Split(v.Local.sTemp1,"*!*",v.Local.sTemp)
+				f.Intrinsic.Control.If(v.Local.sTemp.Trim,=,"")
+					f.Intrinsic.Control.ExitSub
+				f.Intrinsic.Control.EndIf
+				'put the emails back together
+				f.Intrinsic.String.Join(v.Local.sTemp,"@!@*!*",v.Local.sTemp)
+				'put *!* in the front of the string
+				f.Intrinsic.String.Build("*!*{0}",v.Local.sTemp,v.Local.sRecipient)
+				
+				f.Intrinsic.String.Build("{0} - Part Approval: {1} {2} Loc: {3} Completed",v.Caller.CompanyCode,v.Local.sRefData.trim,v.Local.sRefData1.trim,v.Local.sRefData2.trim,v.Local.sSubj)
+				v.Local.sBody.Set(v.Local.sSubj)
+				f.Global.Messaging.QueueMessage(v.Caller.CompanyCode,v.Local.iUsrID,"GCG_6074WF",v.Local.sSubj,v.Local.sSender,v.Local.sRecipient,v.Local.sBody)
+		f.Intrinsic.Control.EndSelect
+	f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.WFCompleteAction.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+v.Local.sFileName.Declare
+v.Local.sDate.Declare
+v.Local.sTime.Declare
+
+'Get date and time
+f.Intrinsic.String.DateString(v.Ambient.Now,v.Local.sDate)
+f.Intrinsic.String.TimeStringSec(v.Ambient.Now,v.Local.sTime)
+
+'Generate file name
+f.Intrinsic.String.Build("{0}WorkflowID-{1}_Line-{2}_{3}{4}.txt",v.Global.sErrorFolderPath,v.passed.DATA-WFID,v.passed.DATA-WFLINE,v.Local.sDate,v.Local.sTime,v.Local.sFileName)
+
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_6074_WorkflowController.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+
+'Create error file
+f.Intrinsic.File.String2File(v.Local.sFileName,v.Local.sError)
+
+'Closes connection and ends
+f.Intrinsic.Control.CallSub(Unload)
+Program.Sub.ErrorMsg.End
+
+Program.Sub.Unload.Start
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.End
+Program.Sub.Unload.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$rnair$}$20210308233342307$}$JUGEdtlNdgRUPvge2DQ26bz/1piQWHOnr3LWVUI9skGvVwv4gVSJe+U2OvB2K2b/UgSyaZGw1d4=
+Program.Sub.Comments.End
