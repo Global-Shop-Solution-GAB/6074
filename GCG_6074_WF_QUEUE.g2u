@@ -1,0 +1,2864 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.F_Main..create(BaseForm)
+Gui.F_Main..caption("")
+Gui.F_Main..size(17100,12150)
+Gui.F_Main..minx(0)
+Gui.F_Main..miny(0)
+Gui.F_Main..position(0,0)
+Gui.F_Main..event(UnLoad,f_main_unload)
+Gui.F_Main..forecolor(0)
+Gui.F_Main..BackColor(-2147483633)
+Gui.F_Main..mousepointer(0)
+Gui.F_Main..sizeable(False)
+Gui.F_Main..AlwaysOnTop(False)
+Gui.F_Main..FontName("Tahoma")
+Gui.F_Main..FontSize(8.25)
+Gui.F_Main..ControlBox(True)
+Gui.F_Main..MaxButton(True)
+Gui.F_Main..MinButton(True)
+Gui.F_Main..Moveable(True)
+Gui.F_Main..ShowInTaskBar(True)
+Gui.F_Main..TitleBar(True)
+Gui.F_Main.frmHeader.create(frame)
+Gui.F_Main.frmHeader.size(16575,945)
+Gui.F_Main.frmHeader.position(45,105)
+Gui.F_Main.frmHeader.borderstyle(0)
+Gui.F_Main.frmHeader.Enabled(True)
+Gui.F_Main.frmHeader.Visible(True)
+Gui.F_Main.frmHeader.Zorder(0)
+Gui.F_Main.frmHeader.Caption("")
+Gui.F_Main.frmHeader.FontName("Tahoma")
+Gui.F_Main.frmHeader.FontSize(7.8)
+Gui.F_Main.txtID.create(textbox,"",True,1215,330,0,180,345,False,0,"Arial",8,-2147483643,1)
+Gui.F_Main.txtID.parent("frmHeader")
+Gui.F_Main.txtID.defaultvalue("")
+Gui.F_Main.txtID.tabstop(True)
+Gui.F_Main.txtID.tabindex(1)
+Gui.F_Main.txtID.Event(KeyPressEnter,LoadGrid)
+Gui.F_Main.lbl1.create(label,"User",True,645,255,1,195,150,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Main.lbl1.parent("frmHeader")
+Gui.F_Main.lbl1.defaultvalue("")
+Gui.F_Main.lbl1.BorderStyle(0)
+Gui.F_Main.cmdBrowse.create(button)
+Gui.F_Main.cmdBrowse.caption("^")
+Gui.F_Main.cmdBrowse.size(360,330)
+Gui.F_Main.cmdBrowse.position(1440,345)
+Gui.F_Main.cmdBrowse.parent("frmHeader")
+Gui.F_Main.cmdBrowse.event(Click,cmdbrowse_click)
+Gui.F_Main.cmdBrowse.defaultvalue("")
+Gui.F_Main.cmdBrowse.tabstop(True)
+Gui.F_Main.cmdBrowse.tabindex(2)
+Gui.F_Main.cmdBrowse.Enabled(True)
+Gui.F_Main.cmdBrowse.Visible(True)
+Gui.F_Main.cmdBrowse.Zorder(0)
+Gui.F_Main.cmdBrowse.FontName("Tahoma")
+Gui.F_Main.cmdBrowse.FontSize(7.8)
+Gui.F_Main.chkDependency.create(checkbox)
+Gui.F_Main.chkDependency.caption("Dependency Completed")
+Gui.F_Main.chkDependency.size(2625,360)
+Gui.F_Main.chkDependency.position(9885,645)
+Gui.F_Main.chkDependency.parent("frmHeader")
+Gui.F_Main.chkDependency.tabstop(True)
+Gui.F_Main.chkDependency.tabindex(9)
+Gui.F_Main.chkDependency.Enabled(True)
+Gui.F_Main.chkDependency.Visible(True)
+Gui.F_Main.chkDependency.Zorder(0)
+Gui.F_Main.chkDependency.FontName("Tahoma")
+Gui.F_Main.chkDependency.FontSize(7.8)
+Gui.F_Main.chkCompleted.create(checkbox)
+Gui.F_Main.chkCompleted.caption("Show Completed")
+Gui.F_Main.chkCompleted.size(1935,360)
+Gui.F_Main.chkCompleted.position(9885,375)
+Gui.F_Main.chkCompleted.parent("frmHeader")
+Gui.F_Main.chkCompleted.tabstop(True)
+Gui.F_Main.chkCompleted.tabindex(8)
+Gui.F_Main.chkCompleted.Enabled(True)
+Gui.F_Main.chkCompleted.Visible(True)
+Gui.F_Main.chkCompleted.Zorder(0)
+Gui.F_Main.chkCompleted.FontName("Tahoma")
+Gui.F_Main.chkCompleted.FontSize(7.8)
+Gui.F_Main.chkDateDue.create(checkbox)
+Gui.F_Main.chkDateDue.caption("Filter by Date Due")
+Gui.F_Main.chkDateDue.size(1935,360)
+Gui.F_Main.chkDateDue.position(9885,105)
+Gui.F_Main.chkDateDue.parent("frmHeader")
+Gui.F_Main.chkDateDue.tabstop(True)
+Gui.F_Main.chkDateDue.tabindex(7)
+Gui.F_Main.chkDateDue.Enabled(True)
+Gui.F_Main.chkDateDue.Visible(True)
+Gui.F_Main.chkDateDue.Zorder(0)
+Gui.F_Main.chkDateDue.FontName("Tahoma")
+Gui.F_Main.chkDateDue.FontSize(7.8)
+Gui.F_Main.lbl5.create(label,"End Date",True,900,255,1,8535,150,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Main.lbl5.parent("frmHeader")
+Gui.F_Main.lbl5.defaultvalue("")
+Gui.F_Main.lbl5.BorderStyle(0)
+Gui.F_Main.lbl4.create(label,"Start Date",True,1125,255,1,7185,150,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Main.lbl4.parent("frmHeader")
+Gui.F_Main.lbl4.defaultvalue("")
+Gui.F_Main.lbl4.BorderStyle(0)
+Gui.F_Main.dpEnd.create(datepicker)
+Gui.F_Main.dpEnd.size(1320,330)
+Gui.F_Main.dpEnd.position(8505,345)
+Gui.F_Main.dpEnd.parent("frmHeader")
+Gui.F_Main.dpEnd.tabstop(True)
+Gui.F_Main.dpEnd.tabindex(6)
+Gui.F_Main.dpEnd.Enabled(True)
+Gui.F_Main.dpEnd.Visible(True)
+Gui.F_Main.dpEnd.Zorder(0)
+Gui.F_Main.dpEnd.CheckBox(False)
+Gui.F_Main.dpEnd.FontName("Tahoma")
+Gui.F_Main.dpEnd.FontSize(7.8)
+Gui.F_Main.dpStart.create(datepicker)
+Gui.F_Main.dpStart.size(1320,330)
+Gui.F_Main.dpStart.position(7185,345)
+Gui.F_Main.dpStart.parent("frmHeader")
+Gui.F_Main.dpStart.tabstop(True)
+Gui.F_Main.dpStart.tabindex(5)
+Gui.F_Main.dpStart.Enabled(True)
+Gui.F_Main.dpStart.Visible(True)
+Gui.F_Main.dpStart.Zorder(0)
+Gui.F_Main.dpStart.CheckBox(False)
+Gui.F_Main.dpStart.FontName("Tahoma")
+Gui.F_Main.dpStart.FontSize(7.8)
+Gui.F_Main.cmdFilter.create(button)
+Gui.F_Main.cmdFilter.caption("Filter")
+Gui.F_Main.cmdFilter.size(750,315)
+Gui.F_Main.cmdFilter.position(12675,225)
+Gui.F_Main.cmdFilter.parent("frmHeader")
+Gui.F_Main.cmdFilter.event(Click,cmdfilter_click)
+Gui.F_Main.cmdFilter.defaultvalue("")
+Gui.F_Main.cmdFilter.tabstop(True)
+Gui.F_Main.cmdFilter.tabindex(11)
+Gui.F_Main.cmdFilter.Enabled(True)
+Gui.F_Main.cmdFilter.Visible(True)
+Gui.F_Main.cmdFilter.Zorder(0)
+Gui.F_Main.cmdFilter.FontName("Tahoma")
+Gui.F_Main.cmdFilter.FontSize(7.8)
+Gui.F_Main.lbl3.create(label,"Groups",False,1935,255,1,4635,150,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Main.lbl3.parent("frmHeader")
+Gui.F_Main.lbl3.defaultvalue("")
+Gui.F_Main.lbl3.BorderStyle(0)
+Gui.F_Main.dropdownlist2.create(dropdownlist)
+Gui.F_Main.dropdownlist2.size(2520,330)
+Gui.F_Main.dropdownlist2.position(4635,345)
+Gui.F_Main.dropdownlist2.parent("frmHeader")
+Gui.F_Main.dropdownlist2.defaultvalue("")
+Gui.F_Main.dropdownlist2.tabstop(True)
+Gui.F_Main.dropdownlist2.tabindex(4)
+Gui.F_Main.dropdownlist2.Visible(False)
+Gui.F_Main.dropdownlist2.Enabled(True)
+Gui.F_Main.dropdownlist2.Zorder(0)
+Gui.F_Main.dropdownlist2.FontName("Tahoma")
+Gui.F_Main.dropdownlist2.FontSize(7.8)
+Gui.F_Main.dpView.create(dropdownlist)
+Gui.F_Main.dpView.size(2520,330)
+Gui.F_Main.dpView.position(2040,345)
+Gui.F_Main.dpView.parent("frmHeader")
+Gui.F_Main.dpView.defaultvalue("")
+Gui.F_Main.dpView.tabstop(True)
+Gui.F_Main.dpView.tabindex(3)
+Gui.F_Main.dpView.Enabled(True)
+Gui.F_Main.dpView.Visible(True)
+Gui.F_Main.dpView.Zorder(0)
+Gui.F_Main.dpView.FontName("Tahoma")
+Gui.F_Main.dpView.FontSize(7.8)
+Gui.F_Main.lbl2.create(label,"View",True,1935,255,1,2025,150,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Main.lbl2.parent("frmHeader")
+Gui.F_Main.lbl2.defaultvalue("")
+Gui.F_Main.lbl2.BorderStyle(0)
+Gui.F_Main.GCWFQueue.Create(GsGridControl)
+Gui.F_Main.GCWFQueue.Size(16875,10245)
+Gui.F_Main.GCWFQueue.Position(45,1050)
+Gui.F_Main.GCWFQueue.Event(RowCellClick,GCWFQueue_RowCellClick)
+Gui.F_Main.GCWFQueue.Anchor(15)
+Gui.F_Main.GCWFQueue.Enabled(True)
+Gui.F_Main.GCWFQueue.Visible(True)
+Gui.F_Main.GCWFQueue.Zorder(0)
+Gui.F_Main.cmdCompleteLine.Create(Button)
+Gui.F_Main.cmdCompleteLine.Enabled(True)
+Gui.F_Main.cmdCompleteLine.Visible(True)
+Gui.F_Main.cmdCompleteLine.Zorder(0)
+Gui.F_Main.cmdCompleteLine.Size(1725,435)
+Gui.F_Main.cmdCompleteLine.Position(15180,510)
+Gui.F_Main.cmdCompleteLine.Caption("Complete WF Step")
+Gui.F_Main.cmdCompleteLine.FontName("Tahoma")
+Gui.F_Main.cmdCompleteLine.FontSize(7.8)
+Gui.F_Main.cmdCompleteLine.Event(Click,cmdCompleteLine_Click)
+Gui.F_LineExtra..create(BaseForm)
+Gui.F_LineExtra..caption("")
+Gui.F_LineExtra..size(8235,4665)
+Gui.F_LineExtra..minx(0)
+Gui.F_LineExtra..miny(0)
+Gui.F_LineExtra..position(0,0)
+Gui.F_LineExtra..event(UnLoad,f_lineextra_unload)
+Gui.F_LineExtra..forecolor(0)
+Gui.F_LineExtra..fontstyle(False,False,False,False)
+Gui.F_LineExtra..BackColor(-2147483633)
+Gui.F_LineExtra..mousepointer(0)
+Gui.F_LineExtra..sizeable(False)
+Gui.F_LineExtra..AlwaysOnTop(False)
+Gui.F_LineExtra..FontName("Tahoma")
+Gui.F_LineExtra..FontSize(8.25)
+Gui.F_LineExtra..ControlBox(True)
+Gui.F_LineExtra..MaxButton(True)
+Gui.F_LineExtra..MinButton(True)
+Gui.F_LineExtra..Moveable(True)
+Gui.F_LineExtra..ShowInTaskBar(True)
+Gui.F_LineExtra..TitleBar(True)
+Gui.F_LineExtra.tabx1.create(tab)
+Gui.F_LineExtra.tabx1.size(7575,3840)
+Gui.F_LineExtra.tabx1.position(195,195)
+Gui.F_LineExtra.tabx1.Enabled(True)
+Gui.F_LineExtra.tabx1.Visible(True)
+Gui.F_LineExtra.tabx1.Zorder(0)
+Gui.F_LineExtra.tabx1.FontName("Tahoma")
+Gui.F_LineExtra.tabx1.FontSize(7.8)
+Gui.F_LineExtra.tabx1.Tabs(6)
+Gui.F_LineExtra.tabx1.SetTab(0)
+Gui.F_LineExtra.tabx1.Caption("User Fields")
+Gui.F_LineExtra.tabx1.SetTab(1)
+Gui.F_LineExtra.tabx1.Caption("Notes")
+Gui.F_LineExtra.tabx1.SetTab(2)
+Gui.F_LineExtra.tabx1.Caption("Dependencies")
+Gui.F_LineExtra.tabx1.SetTab(3)
+Gui.F_LineExtra.tabx1.Caption("Document References")
+Gui.F_LineExtra.tabx1.SetTab(4)
+Gui.F_LineExtra.tabx1.Caption("Meta Data")
+Gui.F_LineExtra.tabx1.SetTab(5)
+Gui.F_LineExtra.tabx1.Caption("Reference")
+Gui.F_LineExtra.frmUserFields.create(frame)
+Gui.F_LineExtra.frmUserFields.parent("tabx1",0)
+Gui.F_LineExtra.frmUserFields.size(7335,3030)
+Gui.F_LineExtra.frmUserFields.position(50,160)
+Gui.F_LineExtra.frmUserFields.borderstyle(0)
+Gui.F_LineExtra.frmUserFields.Enabled(True)
+Gui.F_LineExtra.frmUserFields.Visible(True)
+Gui.F_LineExtra.frmUserFields.Zorder(0)
+Gui.F_LineExtra.frmUserFields.Caption("")
+Gui.F_LineExtra.frmUserFields.FontName("Tahoma")
+Gui.F_LineExtra.frmUserFields.FontSize(7.8)
+Gui.F_LineExtra.txtU1.create(textbox,"",True,7080,300,0,10,160,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtU1.parent("frmUserFields")
+Gui.F_LineExtra.txtU1.maxLength(120)
+Gui.F_LineExtra.txtU1.defaultvalue("")
+Gui.F_LineExtra.txtU1.tabstop(True)
+Gui.F_LineExtra.txtU1.tabindex(1)
+Gui.F_LineExtra.txtU2.create(textbox,"",True,7080,300,0,10,780,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtU2.parent("frmUserFields")
+Gui.F_LineExtra.txtU2.maxLength(120)
+Gui.F_LineExtra.txtU2.defaultvalue("")
+Gui.F_LineExtra.txtU2.tabstop(True)
+Gui.F_LineExtra.txtU2.tabindex(2)
+Gui.F_LineExtra.txtU3.create(textbox,"",True,7065,300,0,10,1385,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtU3.parent("frmUserFields")
+Gui.F_LineExtra.txtU3.maxLength(120)
+Gui.F_LineExtra.txtU3.defaultvalue("")
+Gui.F_LineExtra.txtU3.tabstop(True)
+Gui.F_LineExtra.txtU3.tabindex(3)
+Gui.F_LineExtra.txtU4.create(textbox,"",True,7065,300,0,10,1945,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtU4.parent("frmUserFields")
+Gui.F_LineExtra.txtU4.maxLength(120)
+Gui.F_LineExtra.txtU4.defaultvalue("")
+Gui.F_LineExtra.txtU4.tabstop(True)
+Gui.F_LineExtra.txtU4.tabindex(4)
+Gui.F_LineExtra.txtU5.create(textbox,"",True,7065,300,0,10,2530,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtU5.parent("frmUserFields")
+Gui.F_LineExtra.txtU5.maxLength(120)
+Gui.F_LineExtra.txtU5.defaultvalue("")
+Gui.F_LineExtra.txtU5.tabstop(True)
+Gui.F_LineExtra.txtU5.tabindex(5)
+Gui.F_LineExtra.lbl2.create(label,"Field 5",True,1935,255,1,10,2325,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl2.parent("frmUserFields")
+Gui.F_LineExtra.lbl2.defaultvalue("")
+Gui.F_LineExtra.lbl2.BorderStyle(0)
+Gui.F_LineExtra.lbl3.create(label,"Field 4",True,1935,255,1,10,1760,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl3.parent("frmUserFields")
+Gui.F_LineExtra.lbl3.defaultvalue("")
+Gui.F_LineExtra.lbl3.BorderStyle(0)
+Gui.F_LineExtra.lbl4.create(label,"Field 3",True,1935,255,1,10,1175,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl4.parent("frmUserFields")
+Gui.F_LineExtra.lbl4.defaultvalue("")
+Gui.F_LineExtra.lbl4.BorderStyle(0)
+Gui.F_LineExtra.lbl5.create(label,"Field 2",True,1935,255,1,10,590,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl5.parent("frmUserFields")
+Gui.F_LineExtra.lbl5.defaultvalue("")
+Gui.F_LineExtra.lbl5.BorderStyle(0)
+Gui.F_LineExtra.lbl6.create(label,"Field 1",True,1935,255,1,10,-40,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl6.parent("frmUserFields")
+Gui.F_LineExtra.lbl6.defaultvalue("")
+Gui.F_LineExtra.lbl6.BorderStyle(0)
+Gui.F_LineExtra.frmNotes.create(frame)
+Gui.F_LineExtra.frmNotes.caption("Notes")
+Gui.F_LineExtra.frmNotes.parent("tabx1",1)
+Gui.F_LineExtra.frmNotes.size(7395,2820)
+Gui.F_LineExtra.frmNotes.position(-45,45)
+Gui.F_LineExtra.frmNotes.borderstyle(0)
+Gui.F_LineExtra.frmNotes.Enabled(True)
+Gui.F_LineExtra.frmNotes.Visible(True)
+Gui.F_LineExtra.frmNotes.Zorder(0)
+Gui.F_LineExtra.frmNotes.FontName("Tahoma")
+Gui.F_LineExtra.frmNotes.FontSize(7.8)
+Gui.F_LineExtra.lbl1.create(label,"Notes",True,1935,255,1,100,95,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl1.parent("frmNotes")
+Gui.F_LineExtra.lbl1.defaultvalue("")
+Gui.F_LineExtra.lbl1.BorderStyle(0)
+Gui.F_LineExtra.txtNotes.create(textboxm)
+Gui.F_LineExtra.txtNotes.size(7260,2145)
+Gui.F_LineExtra.txtNotes.position(110,320)
+Gui.F_LineExtra.txtNotes.parent("frmNotes")
+Gui.F_LineExtra.txtNotes.defaultvalue("")
+Gui.F_LineExtra.txtNotes.tabstop(True)
+Gui.F_LineExtra.txtNotes.tabindex(8)
+Gui.F_LineExtra.txtNotes.Enabled(True)
+Gui.F_LineExtra.txtNotes.Visible(True)
+Gui.F_LineExtra.txtNotes.Zorder(0)
+Gui.F_LineExtra.txtNotes.FontName("Tahoma")
+Gui.F_LineExtra.txtNotes.FontSize(7.8)
+Gui.F_LineExtra.frmDependency.create(frame)
+Gui.F_LineExtra.frmDependency.parent("tabx1",2)
+Gui.F_LineExtra.frmDependency.size(7365,2850)
+Gui.F_LineExtra.frmDependency.position(-5,40)
+Gui.F_LineExtra.frmDependency.borderstyle(0)
+Gui.F_LineExtra.frmDependency.Enabled(True)
+Gui.F_LineExtra.frmDependency.Visible(True)
+Gui.F_LineExtra.frmDependency.Zorder(0)
+Gui.F_LineExtra.frmDependency.Caption("")
+Gui.F_LineExtra.frmDependency.FontName("Tahoma")
+Gui.F_LineExtra.frmDependency.FontSize(7.8)
+Gui.F_LineExtra.fgDependecies.create(gsflexgrid)
+Gui.F_LineExtra.fgDependecies.size(7260,2550)
+Gui.F_LineExtra.fgDependecies.position(75,160)
+Gui.F_LineExtra.fgDependecies.parent("frmDependency")
+Gui.F_LineExtra.fgDependecies.Enabled(True)
+Gui.F_LineExtra.fgDependecies.Visible(True)
+Gui.F_LineExtra.fgDependecies.Zorder(0)
+Gui.F_LineExtra.fgDependecies.FontName("Tahoma")
+Gui.F_LineExtra.fgDependecies.FontSize(7.8)
+Gui.F_LineExtra.frmMeta.create(frame)
+Gui.F_LineExtra.frmMeta.caption("Frame")
+Gui.F_LineExtra.frmMeta.parent("tabx1",4)
+Gui.F_LineExtra.frmMeta.size(7305,3195)
+Gui.F_LineExtra.frmMeta.position(50,40)
+Gui.F_LineExtra.frmMeta.borderstyle(0)
+Gui.F_LineExtra.frmMeta.Enabled(True)
+Gui.F_LineExtra.frmMeta.Visible(True)
+Gui.F_LineExtra.frmMeta.Zorder(0)
+Gui.F_LineExtra.frmMeta.FontName("Tahoma")
+Gui.F_LineExtra.frmMeta.FontSize(7.8)
+Gui.F_LineExtra.lbl7.create(label,"Meta 1",True,1935,255,1,30,50,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl7.parent("frmMeta")
+Gui.F_LineExtra.lbl7.defaultvalue("")
+Gui.F_LineExtra.lbl7.BorderStyle(0)
+Gui.F_LineExtra.txtMeta1.create(textbox,"",True,3300,300,0,35,260,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta1.parent("frmMeta")
+Gui.F_LineExtra.txtMeta1.maxLength(120)
+Gui.F_LineExtra.txtMeta1.defaultvalue("")
+Gui.F_LineExtra.txtMeta1.tabstop(True)
+Gui.F_LineExtra.txtMeta1.tabindex(13)
+Gui.F_LineExtra.txtMeta2.create(textbox,"",True,3300,300,0,30,870,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta2.parent("frmMeta")
+Gui.F_LineExtra.txtMeta2.maxLength(120)
+Gui.F_LineExtra.txtMeta2.defaultvalue("")
+Gui.F_LineExtra.txtMeta2.tabstop(True)
+Gui.F_LineExtra.txtMeta2.tabindex(14)
+Gui.F_LineExtra.txtMeta3.create(textbox,"",True,3300,300,0,20,1455,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta3.parent("frmMeta")
+Gui.F_LineExtra.txtMeta3.maxLength(120)
+Gui.F_LineExtra.txtMeta3.defaultvalue("")
+Gui.F_LineExtra.txtMeta3.tabstop(True)
+Gui.F_LineExtra.txtMeta3.tabindex(15)
+Gui.F_LineExtra.txtMeta4.create(textbox,"",True,3300,300,0,20,2075,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta4.parent("frmMeta")
+Gui.F_LineExtra.txtMeta4.maxLength(120)
+Gui.F_LineExtra.txtMeta4.defaultvalue("")
+Gui.F_LineExtra.txtMeta4.tabstop(True)
+Gui.F_LineExtra.txtMeta4.tabindex(16)
+Gui.F_LineExtra.txtMeta5.create(textbox,"",True,3300,300,0,30,2660,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta5.parent("frmMeta")
+Gui.F_LineExtra.txtMeta5.maxLength(120)
+Gui.F_LineExtra.txtMeta5.defaultvalue("")
+Gui.F_LineExtra.txtMeta5.tabstop(True)
+Gui.F_LineExtra.txtMeta5.tabindex(17)
+Gui.F_LineExtra.txtMeta6.create(textbox,"",True,3300,300,0,3800,260,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta6.parent("frmMeta")
+Gui.F_LineExtra.txtMeta6.maxLength(120)
+Gui.F_LineExtra.txtMeta6.defaultvalue("")
+Gui.F_LineExtra.txtMeta6.tabstop(True)
+Gui.F_LineExtra.txtMeta6.tabindex(18)
+Gui.F_LineExtra.txtMeta7.create(textbox,"",True,3300,300,0,3800,870,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta7.parent("frmMeta")
+Gui.F_LineExtra.txtMeta7.maxLength(120)
+Gui.F_LineExtra.txtMeta7.defaultvalue("")
+Gui.F_LineExtra.txtMeta7.tabstop(True)
+Gui.F_LineExtra.txtMeta7.tabindex(19)
+Gui.F_LineExtra.txtMeta8.create(textbox,"",True,3300,300,0,3800,1455,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta8.parent("frmMeta")
+Gui.F_LineExtra.txtMeta8.maxLength(120)
+Gui.F_LineExtra.txtMeta8.defaultvalue("")
+Gui.F_LineExtra.txtMeta8.tabstop(True)
+Gui.F_LineExtra.txtMeta8.tabindex(20)
+Gui.F_LineExtra.txtMeta9.create(textbox,"",True,3300,300,0,3800,2075,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta9.parent("frmMeta")
+Gui.F_LineExtra.txtMeta9.maxLength(120)
+Gui.F_LineExtra.txtMeta9.defaultvalue("")
+Gui.F_LineExtra.txtMeta9.tabstop(True)
+Gui.F_LineExtra.txtMeta9.tabindex(21)
+Gui.F_LineExtra.txtMeta10.create(textbox,"",True,3300,300,0,3800,2660,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtMeta10.parent("frmMeta")
+Gui.F_LineExtra.txtMeta10.maxLength(120)
+Gui.F_LineExtra.txtMeta10.defaultvalue("")
+Gui.F_LineExtra.txtMeta10.tabstop(True)
+Gui.F_LineExtra.txtMeta10.tabindex(22)
+Gui.F_LineExtra.lbl8.create(label,"Meta 10",True,1935,255,1,3800,2450,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl8.parent("frmMeta")
+Gui.F_LineExtra.lbl8.defaultvalue("")
+Gui.F_LineExtra.lbl8.BorderStyle(0)
+Gui.F_LineExtra.lbl9.create(label,"Meta 9",True,1935,255,1,3800,1860,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl9.parent("frmMeta")
+Gui.F_LineExtra.lbl9.defaultvalue("")
+Gui.F_LineExtra.lbl9.BorderStyle(0)
+Gui.F_LineExtra.lbl10.create(label,"Meta 7",True,1935,255,1,3800,665,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl10.parent("frmMeta")
+Gui.F_LineExtra.lbl10.defaultvalue("")
+Gui.F_LineExtra.lbl10.BorderStyle(0)
+Gui.F_LineExtra.lbl11.create(label,"Meta 6",True,1935,255,1,3800,45,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl11.parent("frmMeta")
+Gui.F_LineExtra.lbl11.defaultvalue("")
+Gui.F_LineExtra.lbl11.BorderStyle(0)
+Gui.F_LineExtra.lbl12.create(label,"Meta 8",True,1935,255,1,3800,1225,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl12.parent("frmMeta")
+Gui.F_LineExtra.lbl12.defaultvalue("")
+Gui.F_LineExtra.lbl12.BorderStyle(0)
+Gui.F_LineExtra.lbl13.create(label,"Meta 5",True,1935,255,1,30,2450,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl13.parent("frmMeta")
+Gui.F_LineExtra.lbl13.defaultvalue("")
+Gui.F_LineExtra.lbl13.BorderStyle(0)
+Gui.F_LineExtra.lbl14.create(label,"Meta 4",True,1935,255,1,10,1860,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl14.parent("frmMeta")
+Gui.F_LineExtra.lbl14.defaultvalue("")
+Gui.F_LineExtra.lbl14.BorderStyle(0)
+Gui.F_LineExtra.lbl15.create(label,"Meta 3",True,1935,255,1,35,1250,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl15.parent("frmMeta")
+Gui.F_LineExtra.lbl15.defaultvalue("")
+Gui.F_LineExtra.lbl15.BorderStyle(0)
+Gui.F_LineExtra.lbl17.create(label,"Meta 2",True,1935,255,1,35,665,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl17.parent("frmMeta")
+Gui.F_LineExtra.lbl17.defaultvalue("")
+Gui.F_LineExtra.lbl17.BorderStyle(0)
+Gui.F_LineExtra.frame5.create(frame)
+Gui.F_LineExtra.frame5.caption("Frame")
+Gui.F_LineExtra.frame5.parent("tabx1",5)
+Gui.F_LineExtra.frame5.size(7305,3195)
+Gui.F_LineExtra.frame5.position(50,40)
+Gui.F_LineExtra.frame5.borderstyle(0)
+Gui.F_LineExtra.frame5.Enabled(True)
+Gui.F_LineExtra.frame5.Visible(True)
+Gui.F_LineExtra.frame5.Zorder(0)
+Gui.F_LineExtra.frame5.FontName("Tahoma")
+Gui.F_LineExtra.frame5.FontSize(7.8)
+Gui.F_LineExtra.lbl18.create(label,"Reference 1",True,1935,255,1,30,15,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl18.parent("frame5")
+Gui.F_LineExtra.lbl18.defaultvalue("")
+Gui.F_LineExtra.lbl18.BorderStyle(0)
+Gui.F_LineExtra.txtRef1.create(textbox,"",True,3300,300,0,30,245,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef1.parent("frame5")
+Gui.F_LineExtra.txtRef1.maxLength(50)
+Gui.F_LineExtra.txtRef1.defaultvalue("")
+Gui.F_LineExtra.txtRef1.tabstop(True)
+Gui.F_LineExtra.txtRef1.tabindex(24)
+Gui.F_LineExtra.txtRef2.create(textbox,"",True,3300,300,0,30,825,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef2.parent("frame5")
+Gui.F_LineExtra.txtRef2.maxLength(50)
+Gui.F_LineExtra.txtRef2.defaultvalue("")
+Gui.F_LineExtra.txtRef2.tabstop(True)
+Gui.F_LineExtra.txtRef2.tabindex(25)
+Gui.F_LineExtra.txtRef3.create(textbox,"",True,3300,300,0,30,1455,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef3.parent("frame5")
+Gui.F_LineExtra.txtRef3.maxLength(50)
+Gui.F_LineExtra.txtRef3.defaultvalue("")
+Gui.F_LineExtra.txtRef3.tabstop(True)
+Gui.F_LineExtra.txtRef3.tabindex(26)
+Gui.F_LineExtra.txtRef4.create(textbox,"",True,3300,300,0,30,2060,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef4.parent("frame5")
+Gui.F_LineExtra.txtRef4.maxLength(50)
+Gui.F_LineExtra.txtRef4.defaultvalue("")
+Gui.F_LineExtra.txtRef4.tabstop(True)
+Gui.F_LineExtra.txtRef4.tabindex(27)
+Gui.F_LineExtra.txtRef5.create(textbox,"",True,3300,300,0,35,2660,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef5.parent("frame5")
+Gui.F_LineExtra.txtRef5.maxLength(50)
+Gui.F_LineExtra.txtRef5.defaultvalue("")
+Gui.F_LineExtra.txtRef5.tabstop(True)
+Gui.F_LineExtra.txtRef5.tabindex(28)
+Gui.F_LineExtra.txtRef6.create(textbox,"",True,3300,300,0,3800,245,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef6.parent("frame5")
+Gui.F_LineExtra.txtRef6.maxLength(50)
+Gui.F_LineExtra.txtRef6.defaultvalue("")
+Gui.F_LineExtra.txtRef6.tabstop(True)
+Gui.F_LineExtra.txtRef6.tabindex(29)
+Gui.F_LineExtra.txtRef7.create(textbox,"",True,3300,300,0,3800,825,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef7.parent("frame5")
+Gui.F_LineExtra.txtRef7.maxLength(50)
+Gui.F_LineExtra.txtRef7.defaultvalue("")
+Gui.F_LineExtra.txtRef7.tabstop(True)
+Gui.F_LineExtra.txtRef7.tabindex(30)
+Gui.F_LineExtra.txtRef8.create(textbox,"",True,3300,300,0,3800,1460,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef8.parent("frame5")
+Gui.F_LineExtra.txtRef8.maxLength(50)
+Gui.F_LineExtra.txtRef8.defaultvalue("")
+Gui.F_LineExtra.txtRef8.tabstop(True)
+Gui.F_LineExtra.txtRef8.tabindex(31)
+Gui.F_LineExtra.txtRef9.create(textbox,"",True,3300,300,0,3800,2060,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef9.parent("frame5")
+Gui.F_LineExtra.txtRef9.maxLength(50)
+Gui.F_LineExtra.txtRef9.defaultvalue("")
+Gui.F_LineExtra.txtRef9.tabstop(True)
+Gui.F_LineExtra.txtRef9.tabindex(32)
+Gui.F_LineExtra.txtRef10.create(textbox,"",True,3300,300,0,3800,2660,True,0,"Arial",8,-2147483643,1)
+Gui.F_LineExtra.txtRef10.parent("frame5")
+Gui.F_LineExtra.txtRef10.maxLength(50)
+Gui.F_LineExtra.txtRef10.defaultvalue("")
+Gui.F_LineExtra.txtRef10.tabstop(True)
+Gui.F_LineExtra.txtRef10.tabindex(33)
+Gui.F_LineExtra.lbl19.create(label,"Reference 10",True,1935,255,1,3800,2435,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl19.parent("frame5")
+Gui.F_LineExtra.lbl19.defaultvalue("")
+Gui.F_LineExtra.lbl19.BorderStyle(0)
+Gui.F_LineExtra.lbl20.create(label,"Reference 9",True,1935,255,1,3800,1845,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl20.parent("frame5")
+Gui.F_LineExtra.lbl20.defaultvalue("")
+Gui.F_LineExtra.lbl20.BorderStyle(0)
+Gui.F_LineExtra.lbl21.create(label,"Reference 7",True,1935,255,1,3800,620,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl21.parent("frame5")
+Gui.F_LineExtra.lbl21.defaultvalue("")
+Gui.F_LineExtra.lbl21.BorderStyle(0)
+Gui.F_LineExtra.lbl22.create(label,"Reference 6",True,1935,255,1,3800,30,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl22.parent("frame5")
+Gui.F_LineExtra.lbl22.defaultvalue("")
+Gui.F_LineExtra.lbl22.BorderStyle(0)
+Gui.F_LineExtra.lbl23.create(label,"Reference 8",True,1935,255,1,3800,1225,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl23.parent("frame5")
+Gui.F_LineExtra.lbl23.defaultvalue("")
+Gui.F_LineExtra.lbl23.BorderStyle(0)
+Gui.F_LineExtra.lbl24.create(label,"Reference 5",True,1935,255,1,45,2435,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl24.parent("frame5")
+Gui.F_LineExtra.lbl24.defaultvalue("")
+Gui.F_LineExtra.lbl24.BorderStyle(0)
+Gui.F_LineExtra.lbl25.create(label,"Reference 4",True,1935,255,1,25,1830,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl25.parent("frame5")
+Gui.F_LineExtra.lbl25.defaultvalue("")
+Gui.F_LineExtra.lbl25.BorderStyle(0)
+Gui.F_LineExtra.lbl26.create(label,"Reference 3",True,1935,255,1,35,1235,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl26.parent("frame5")
+Gui.F_LineExtra.lbl26.defaultvalue("")
+Gui.F_LineExtra.lbl26.BorderStyle(0)
+Gui.F_LineExtra.lbl27.create(label,"Reference 2",True,1935,255,1,35,605,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_LineExtra.lbl27.parent("frame5")
+Gui.F_LineExtra.lbl27.defaultvalue("")
+Gui.F_LineExtra.lbl27.BorderStyle(0)
+Gui.F_LineExtra.cmdSaveNotes.create(button)
+Gui.F_LineExtra.cmdSaveNotes.caption("Save")
+Gui.F_LineExtra.cmdSaveNotes.size(855,375)
+Gui.F_LineExtra.cmdSaveNotes.position(45,2940)
+Gui.F_LineExtra.cmdSaveNotes.parent("tabx1",1)
+Gui.F_LineExtra.cmdSaveNotes.event(Click,cmdsavenotes_click)
+Gui.F_LineExtra.cmdSaveNotes.defaultvalue("")
+Gui.F_LineExtra.cmdSaveNotes.tabstop(True)
+Gui.F_LineExtra.cmdSaveNotes.tabindex(9)
+Gui.F_LineExtra.cmdSaveNotes.Enabled(True)
+Gui.F_LineExtra.cmdSaveNotes.Visible(True)
+Gui.F_LineExtra.cmdSaveNotes.Zorder(0)
+Gui.F_LineExtra.cmdSaveNotes.FontName("Tahoma")
+Gui.F_LineExtra.cmdSaveNotes.FontSize(7.8)
+Gui.F_LineExtra.fgDocuments.create(gsflexgrid)
+Gui.F_LineExtra.fgDocuments.size(7290,2580)
+Gui.F_LineExtra.fgDocuments.position(50,190)
+Gui.F_LineExtra.fgDocuments.parent("tabx1",3)
+Gui.F_LineExtra.fgDocuments.event(CommandClick,fgdocuments_commandclick)
+Gui.F_LineExtra.fgDocuments.Enabled(True)
+Gui.F_LineExtra.fgDocuments.Visible(True)
+Gui.F_LineExtra.fgDocuments.Zorder(0)
+Gui.F_LineExtra.fgDocuments.FontName("Tahoma")
+Gui.F_LineExtra.fgDocuments.FontSize(7.8)
+Gui.F_LineExtra.txtActiveRow.create(textbox,"",False,450,300,0,7465,0,True,0,"Arial",8,255,1)
+Gui.F_LineExtra.txtActiveRow.defaultvalue("")
+Gui.F_LineExtra.txtHeader.create(textbox,"",False,360,300,0,7045,0,True,0,"Arial",8,255,1)
+Gui.F_LineExtra.txtHeader.defaultvalue("")
+Gui.F_Workflow..create(BaseForm)
+Gui.F_Workflow..caption("")
+Gui.F_Workflow..size(3345,2325)
+Gui.F_Workflow..minx(0)
+Gui.F_Workflow..miny(0)
+Gui.F_Workflow..position(0,0)
+Gui.F_Workflow..event(UnLoad,f_Workflow_unload)
+Gui.F_Workflow..forecolor(0)
+Gui.F_Workflow..BackColor(-2147483633)
+Gui.F_Workflow..maxbutton(False)
+Gui.F_Workflow..minbutton(False)
+Gui.F_Workflow..mousepointer(0)
+Gui.F_Workflow..sizeable(False)
+Gui.F_Workflow..AlwaysOnTop(False)
+Gui.F_Workflow..FontName("Tahoma")
+Gui.F_Workflow..FontSize(8.25)
+Gui.F_Workflow..ControlBox(True)
+Gui.F_Workflow..Moveable(True)
+Gui.F_Workflow..ShowInTaskBar(True)
+Gui.F_Workflow..TitleBar(True)
+Gui.F_Workflow.lbl1.create(label,"Percent Complete",True,1935,255,1,200,100,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_Workflow.lbl1.defaultvalue("")
+Gui.F_Workflow.lbl1.BorderStyle(0)
+Gui.F_Workflow.txtPercent.create(textbox,"",True,990,270,0,1600,100,True,0,"Arial",8,-2147483643,1)
+Gui.F_Workflow.txtPercent.numericonly(1)
+Gui.F_Workflow.txtPercent.defaultvalue("")
+Gui.F_Workflow.chkComplete.create(checkbox)
+Gui.F_Workflow.chkComplete.caption("Complete Line")
+Gui.F_Workflow.chkComplete.size(1425,360)
+Gui.F_Workflow.chkComplete.position(195,405)
+Gui.F_Workflow.chkComplete.Enabled(True)
+Gui.F_Workflow.chkComplete.Visible(True)
+Gui.F_Workflow.chkComplete.Zorder(0)
+Gui.F_Workflow.chkComplete.FontName("Tahoma")
+Gui.F_Workflow.chkComplete.FontSize(7.8)
+Gui.F_Workflow.chkSignOff.create(checkbox)
+Gui.F_Workflow.chkSignOff.caption("Sign Off")
+Gui.F_Workflow.chkSignOff.size(990,360)
+Gui.F_Workflow.chkSignOff.position(1620,425)
+Gui.F_Workflow.chkSignOff.enabled(False)
+Gui.F_Workflow.chkSignOff.Visible(True)
+Gui.F_Workflow.chkSignOff.Zorder(0)
+Gui.F_Workflow.chkSignOff.FontName("Tahoma")
+Gui.F_Workflow.chkSignOff.FontSize(7.8)
+Gui.F_Workflow.cmdSaveWorkflow.create(button)
+Gui.F_Workflow.cmdSaveWorkflow.caption("Save")
+Gui.F_Workflow.cmdSaveWorkflow.size(855,330)
+Gui.F_Workflow.cmdSaveWorkflow.position(225,1155)
+Gui.F_Workflow.cmdSaveWorkflow.event(Click,cmdsave_click)
+Gui.F_Workflow.cmdSaveWorkflow.defaultvalue("")
+Gui.F_Workflow.cmdSaveWorkflow.Enabled(True)
+Gui.F_Workflow.cmdSaveWorkflow.Visible(True)
+Gui.F_Workflow.cmdSaveWorkflow.Zorder(0)
+Gui.F_Workflow.cmdSaveWorkflow.FontName("Tahoma")
+Gui.F_Workflow.cmdSaveWorkflow.FontSize(7.8)
+Gui.F_Workflow.txtActiveRow.create(textbox,"",False,480,240,0,2300,700,True,0,"Arial",8,255,1)
+Gui.F_Workflow.txtActiveRow.defaultvalue("")
+Gui.F_Workflow.cmdLink.create(button)
+Gui.F_Workflow.cmdLink.caption("Link")
+Gui.F_Workflow.cmdLink.size(855,330)
+Gui.F_Workflow.cmdLink.position(1170,1155)
+Gui.F_Workflow.cmdLink.event(Click,cmdlink_click)
+Gui.F_Workflow.cmdLink.defaultvalue("")
+Gui.F_Workflow.cmdLink.Enabled(True)
+Gui.F_Workflow.cmdLink.Visible(True)
+Gui.F_Workflow.cmdLink.Zorder(0)
+Gui.F_Workflow.cmdLink.FontName("Tahoma")
+Gui.F_Workflow.cmdLink.FontSize(7.8)
+Gui.F_Workflow.chkReject.Create(CheckBox)
+Gui.F_Workflow.chkReject.Enabled(True)
+Gui.F_Workflow.chkReject.Visible(True)
+Gui.F_Workflow.chkReject.Zorder(0)
+Gui.F_Workflow.chkReject.Size(2085,360)
+Gui.F_Workflow.chkReject.Position(195,780)
+Gui.F_Workflow.chkReject.Caption("Reject Work Flow")
+Gui.F_Workflow.chkReject.FontName("Tahoma")
+Gui.F_Workflow.chkReject.FontSize(7.8)
+Gui.F_Workflow.frameWFREject.Create(Frame)
+Gui.F_Workflow.frameWFREject.Enabled(True)
+Gui.F_Workflow.frameWFREject.Visible(False)
+Gui.F_Workflow.frameWFREject.Zorder(0)
+Gui.F_Workflow.frameWFREject.Size(3195,1635)
+Gui.F_Workflow.frameWFREject.Position(-60,1590)
+Gui.F_Workflow.frameWFREject.Caption("")
+Gui.F_Workflow.frameWFREject.FontName("Tahoma")
+Gui.F_Workflow.frameWFREject.FontSize(7.8)
+Gui.F_Workflow.txtMultReject.Create(TextboxM)
+Gui.F_Workflow.txtMultReject.Enabled(True)
+Gui.F_Workflow.txtMultReject.Visible(True)
+Gui.F_Workflow.txtMultReject.Zorder(0)
+Gui.F_Workflow.txtMultReject.Size(2985,1110)
+Gui.F_Workflow.txtMultReject.Position(0,0)
+Gui.F_Workflow.txtMultReject.FontName("Tahoma")
+Gui.F_Workflow.txtMultReject.FontSize(7.8)
+Gui.F_Workflow.txtMultReject.Parent("frameWFREject")
+Gui.F_Workflow.txtMultReject.MaxLength(200)
+Gui.F_Workflow.cmdMultRejSave.Create(Button)
+Gui.F_Workflow.cmdMultRejSave.Enabled(True)
+Gui.F_Workflow.cmdMultRejSave.Visible(True)
+Gui.F_Workflow.cmdMultRejSave.Zorder(0)
+Gui.F_Workflow.cmdMultRejSave.Size(1125,390)
+Gui.F_Workflow.cmdMultRejSave.Position(15,1155)
+Gui.F_Workflow.cmdMultRejSave.Caption("Save")
+Gui.F_Workflow.cmdMultRejSave.FontName("Tahoma")
+Gui.F_Workflow.cmdMultRejSave.FontSize(7.8)
+Gui.F_Workflow.cmdMultRejSave.Event(Click,cmdMultRejSave_Click)
+Gui.F_Workflow.cmdMultRejSave.Parent("frameWFREject")
+Gui.F_Widget..create(BaseForm)
+Gui.F_Widget..caption("")
+Gui.F_Widget..size(4500,6000)
+Gui.F_Widget..minx(0)
+Gui.F_Widget..miny(0)
+Gui.F_Widget..position(0,0)
+Gui.F_Widget..event(UnLoad,f_widget_unload)
+Gui.F_Widget..forecolor(0)
+Gui.F_Widget..BackColor(-2147483633)
+Gui.F_Widget..mousepointer(0)
+Gui.F_Widget..AlwaysOnTop(False)
+Gui.F_Widget..FontName("Tahoma")
+Gui.F_Widget..FontSize(8.25)
+Gui.F_Widget..ControlBox(True)
+Gui.F_Widget..MaxButton(True)
+Gui.F_Widget..MinButton(True)
+Gui.F_Widget..Moveable(True)
+Gui.F_Widget..Sizeable(True)
+Gui.F_Widget..ShowInTaskBar(True)
+Gui.F_Widget..TitleBar(True)
+Gui.F_Widget.picCol.create(picturebox)
+Gui.F_Widget.picCol.size(3900,5100)
+Gui.F_Widget.picCol.position(200,200)
+Gui.F_Widget.picCol.event(DblClick,Widget_Resize)
+Gui.F_Widget.picCol.BackColor(16777215)
+Gui.F_Widget.picCol.Enabled(True)
+Gui.F_Widget.picCol.Visible(True)
+Gui.F_Widget.picCol.Zorder(0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.Global.bInitChart.Declare(Boolean,True)
+Variable.Global.bBusy.Declare(Boolean,False)
+Variable.Global.bDocked.Declare(Boolean,True)
+v.Global.iWFidLinkClicked.Declare(long)
+Program.Sub.Preflight.End
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+v.Global.sRET.Declare
+'F.Intrinsic.Debug.BenchmarkModeEnable
+V.Local.sGrps.Declare(String)
+V.Local.iC.Declare(Long)
+V.Local.sRet.Declare
+V.Local.bRet.Declare
+
+'Gui.F_Main.dlOrder.AddItem("WF")
+'Gui.F_Main.dlOrder.AddItem("Title")
+'Gui.F_Main.dlOrder.AddItem("Line")
+'Gui.F_Main.dlOrder.AddItem("Description")
+'Gui.F_Main.dlOrder.AddItem("Start Date")
+'Gui.F_Main.dlOrder.AddItem("Due Date")
+'Gui.F_Main.dlOrder.AddItem("Dependency")
+'Gui.F_Main.dlOrder.AddItem("Sign Off")
+'Gui.F_Main.dlOrder.AddItem("Workflow")
+'Gui.F_Main.dlOrder.AddItem("Completion")
+
+Gui.F_LineExtra.fgDependecies.Cols(5)
+Gui.F_LineExtra.fgDependecies.Rows(2)
+Gui.F_LineExtra.fgDependecies.TextMatrix(0,0,"Dep ID")
+Gui.F_LineExtra.fgDependecies.TextMatrix(1,0,"Type")
+Gui.F_LineExtra.fgDependecies.TextMatrix(2,0,"ID")
+Gui.F_LineExtra.fgDependecies.TextMatrix(3,0,"Line")
+Gui.F_LineExtra.fgDependecies.TextMatrix(4,0,"Title")
+Gui.F_LineExtra.fgDependecies.ColWidth(0,700)
+Gui.F_LineExtra.fgDependecies.ColWidth(1,700)
+Gui.F_LineExtra.fgDependecies.ColWidth(2,700)
+Gui.F_LineExtra.fgDependecies.ColWidth(4,3200)
+Gui.F_LineExtra.fgDependecies.BuildStyle(1,0,"type","locked","true")
+Gui.F_LineExtra.fgDependecies.BuildStyle(1,1,"type","locked","true")
+Gui.F_LineExtra.fgDependecies.BuildStyle(1,2,"type","locked","true")
+Gui.F_LineExtra.fgDependecies.BuildStyle(1,3,"type","locked","true")
+Gui.F_LineExtra.fgDependecies.BuildStyle(1,4,"type","locked","true")
+
+Gui.F_LineExtra.fgDependecies.Fixedrows(1)
+
+Gui.F_LineExtra.fgDocuments.Cols(5)
+Gui.F_LineExtra.fgDocuments.Rows(2)
+Gui.F_LineExtra.fgDocuments.Colwidth(4,0)
+Gui.F_LineExtra.fgDocuments.ColWidth(0,700)
+Gui.F_LineExtra.fgDocuments.ColWidth(1,2150)
+Gui.F_LineExtra.fgDocuments.ColWidth(2,2150)
+Gui.F_LineExtra.fgDocuments.ColWidth(3,1000)
+Gui.F_LineExtra.fgDocuments.ColWidth(4,700)
+Gui.F_LineExtra.fgDocuments.BuildStyle(1,0,"type","locked","true")
+Gui.F_LineExtra.fgDocuments.BuildStyle(1,1,"type","locked","true")
+Gui.F_LineExtra.fgDocuments.BuildStyle(1,2,"type","locked","true")
+Gui.F_LineExtra.fgDocuments.BuildStyle(1,4,"format","alignment",4)
+Gui.F_LineExtra.fgDocuments.BuildStyle(1,4,"Type","command","Open")
+Gui.F_LineExtra.fgDocuments.FixedRows(1)
+
+Gui.F_Main.dpView.AddItem("All")
+Gui.F_Main.dpView.AddItem("Assigned")
+Gui.F_Main.dpView.AddItem("Sign Off")
+Gui.F_Main.dpView.Text("All")
+'Gui.F_Main.chkDependency.Value(1)
+
+
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!conc.OpenConnection(V.Ambient.cCON,V.Ambient.CUSER,V.Ambient.CPass)
+
+F.Intrinsic.Control.If(V.Caller.Switches,=,"Q")
+	Gui.F_Main.cmdBrowse.Enabled(False)
+	Gui.F_Main.txtID.Text(V.Caller.User)
+	F.Global.Security.GetUserGroups(V.Caller.User,V.Caller.CompanyCode,V.Local.sGrps)
+	F.Intrinsic.String.Split(V.Local.sGrps,"*!*",V.Local.sGrps)
+	F.Intrinsic.Control.For(V.Local.iC,0,V.Local.sGrps.UBound,1)
+		Gui.F_Main.dropdownlist2.AddItem(V.Local.sGrps(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	Gui.F_Main.dropdownlist2.AddItem(" ")
+	F.Intrinsic.Control.CallSub(Loadgrid)
+	'Remove borders
+	Gui.F_Widget.picCol.BorderStyle(0)
+	F.Global.General.UpdateProcess("Queue Items")
+	F.Intrinsic.Control.CallSub(Widget_main)
+F.Intrinsic.Control.Else
+	Gui.F_Main.cmdBrowse.Enabled(true)
+	F.Global.Security.GetAllUserGroups(V.Caller.CompanyCode,V.Local.sGrps)
+	F.Intrinsic.String.Split(V.Local.sGrps,"*!*",V.Local.sGrps)
+	F.Intrinsic.Control.For(V.Local.iC,0,V.Local.sGrps.UBound,1)
+		Gui.F_Main.dropdownlist2.AddItem(V.Local.sGrps(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	Gui.F_Main.dropdownlist2.AddItem(" ")
+	V.Global.bDocked.Set(False)
+	Gui.F_Main.txtID.Enabled(True)
+'	
+'	'Lock UserText
+
+f.Intrinsic.Control.If(v.Caller.Hook,=,10230)
+	gui.F_Main.txtID.Text(v.Caller.user)
+	f.Intrinsic.Control.CallSub(LoadGrid)
+	gui.F_Main.txtID.Enabled(False)
+	gui.F_Main.cmdBrowse.Enabled(False)
+f.Intrinsic.Control.Else	
+	Function.Global.Security.GetGroupMembers("DOA-APPR",V.Caller.CompanyCode,V.Local.sRet)
+	f.Intrinsic.String.IsInString(Variable.Local.sRet,v.Caller.user,true,V.Local.bRet)
+	f.Intrinsic.Control.If(V.Local.bRet)
+		gui.F_Main.txtID.Enabled(True)
+		gui.F_Main.cmdBrowse.Enabled(True)
+	f.Intrinsic.Control.Else
+		gui.F_Main.txtID.Text(v.Caller.user)
+		f.Intrinsic.Control.CallSub(LoadGrid)
+		gui.F_Main.txtID.Enabled(False)
+		gui.F_Main.cmdBrowse.Enabled(False)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+	
+	Gui.F_Main..Caption("Workflow Queue - 6074")
+	Gui.F_Main..Show
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.cmdsave_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.shold.Declare(String)
+V.Local.sWF.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.sPercent.Declare(Long)
+V.Local.bCompleted.Declare(Boolean,False)
+
+'addedd code for REJECT
+'f.Intrinsic.Control.Label("LBL1")
+'gui.DialogForm..Visible(true)
+'gui.DialogForm..Show
+'gui.DialogForm..WaitForDismiss
+
+
+f.Intrinsic.Control.If(v.Screen.F_Workflow!chkReject.Value,=,1)
+	Gui.F_Workflow.frameWFREject.Position(45,60)
+	gui.F_Workflow.chkReject.Value(0)
+	v.Global.sRET.Set("***NORETURN***")
+	gui.F_Workflow.txtMultReject.Text("")
+	gui.F_Workflow.frameWFREject.Visible(true)
+	f.Intrinsic.Control.If(v.Global.sRET,=,"***NORETURN***")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+''	Variable.Passed.GLOBAL.Set(v.Screen.DialogForm!ddlRmaType.Text)
+'f.Intrinsic.Control.If(v.Screen.DialogForm!txtRejectReason.Text,=,"")
+'	f.Intrinsic.UI.Msgbox("Please enter Reject Reason")
+''	f.Intrinsic.Control.GoTo("LBL1")
+'	f.Intrinsic.Control.ExitSub
+'f.Intrinsic.Control.Else
+'	f.Intrinsic.Control.CallSub(RejectWF)
+'f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Workflow!txtActiveRow.Text,<>,"")
+	'Gui.F_Main.fgLines.GetTextMatrix(0,V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+	'Gui.F_Main.fgLines.GetTextMatrix(2,V.screen.F_Workflow!txtActiveRow.Text,V.Local.sLine)
+	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","LINE",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sLine)
+
+	V.Local.sPercent.Set(V.screen.F_Workflow!txtPercent.Text)
+	F.Intrinsic.String.Trim(V.Local.sPercent,V.Local.sPercent)
+	F.Intrinsic.Control.If(V.Local.sPercent,=,"")
+		V.Local.sPercent.Set("0")
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.If(V.Local.sWF,<>,"")
+		F.Intrinsic.Control.If(V.screen.F_Workflow!txtPercent.Text,=,"")
+			Gui.F_Workflow.txtPercent.text(0)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(V.Screen.F_Workflow!txtPercent.Text,=,"100")
+			F.Global.workflow.completeline(V.Local.sWF,V.Local.sLine)
+			V.Local.bCompleted.Set(True)
+		F.Intrinsic.Control.endif
+
+		'Gui.F_Main.fgLines.TextMatrix(9,V.screen.F_Workflow!txtActiveRow.Text,V.Local.sPercent)
+		Gui.F_Main.GCWFQueue.SetCellValueByColumnName("gvWFQueue","PERC_COMPLETION",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sPercent)
+
+		F.Intrinsic.Control.If(V.Screen.F_Workflow!chkComplete.value,=,1,"AND",V.Local.bCompleted,=,False)
+			F.Global.workflow.completeline(V.Local.sWF,V.Local.sLine)
+			'Gui.F_Main.fgLines.TextMatrix(9,V.screen.F_Workflow!txtActiveRow.Text,100)
+			Gui.F_Main.GCWFQueue.SetCellValueByColumnName("gvWFQueue","PERC_COMPLETION",V.screen.F_Workflow!txtActiveRow.Text,"100")
+			F.global.workflow.SETLINECOMPLETIONPERCENTAGE(V.Local.sWF,V.Local.sLine,100)
+		F.Intrinsic.Control.Else
+			F.global.workflow.SETLINECOMPLETIONPERCENTAGE(V.Local.sWF,V.Local.sLine,V.Local.sPercent)
+		F.Intrinsic.Control.endif
+
+		F.Intrinsic.Control.If(V.Screen.F_Workflow!chksignoff.value,=,1)
+			F.Intrinsic.Control.ErrorResume(True)
+			F.Intrinsic.Control.ClearErrors
+			F.Global.workflow.SIGNOFFLINE(V.Local.sWF,V.Local.sLine,V.Caller.User,True)
+			F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+				F.Intrinsic.UI.Msgbox("You are not allowed to sign off this step. The line should be completed to sign it off.")
+				Gui.F_Workflow.chkSignOff.Value(0)
+			f.Intrinsic.Control.Else
+				f.Intrinsic.Control.CallSub(loadgrid)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.ErrorResume(False)
+		F.Intrinsic.Control.endif
+	F.Intrinsic.control.endif
+F.Intrinsic.Control.endif
+Gui.F_Workflow..Visible(false)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdsave_click.End
+
+Program.Sub.f_main_unload.Start
+F.Intrinsic.Control.SetErrorHandler("f_main_unload_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Ambient.IsWidget,=,False)
+	F.ODBC.Connection!conx.Close
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Else
+	V.Global.bDocked.Set(True)
+	F.Intrinsic.Control.CallSub(Widget_resize)
+	Gui.F_Main..Visible(False)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("f_main_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.f_main_unload.End
+
+Program.Sub.CloseDataTables.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	f.Intrinsic.Control.If(v.DataTable.dtWfHeader.exists,=,True)
+		f.Data.DataTable.Close("dtWFHEADER")	
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtWFHEADER$dtWfLines.exists,=,True)
+		f.Data.DataTable.Close("dtWFHEADER$dtWfLines")
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtGridWFList.exists,=,True)
+		f.Data.DataTable.Close("dtGridWFList")	
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Dataview.dtWFHEADER$dtWfLines!dvHeaderLines.exists,=,True)
+		f.Data.DataView.Close("dtWFHEADER$dtWfLines","dvHeaderLines")
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Dataview.dtWFCurrentList!dvCurrentList.exists,=,True)
+		f.Data.DataView.Close("dtWFCurrentList", "dvCurrentList")
+		f.Data.DataTable.Close("dtWFCurrentList")
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Dataview.dtCurrentGroupList!dvCurrentGroupList.exists,=,True)
+		f.Data.DataView.Close("dtCurrentGroupList", "dvCurrentGroupList")
+		f.Data.DataTable.Close("dtCurrentGroupList")
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtWfDependency.exists,=,True)
+		f.Data.DataTable.Close("dtWfDependency")
+	f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CloseDataTables.End
+
+Program.Sub.EnableControls.Start
+F.Intrinsic.Control.SetErrorHandler("EnableControls_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+gui.F_Main.cmdBrowse.Enabled(v.Args.bEnable)
+gui.F_Main.cmdFilter.Enabled(v.Args.bEnable)
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("EnableControls_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.EnableControls.End
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+V.Local.iC.Declare(Long)
+V.Local.sAssign.Declare(String)
+V.Local.iRow.Declare(Long)
+V.Local.iFilter.Declare(Long)
+V.Local.sStart.declare(String)
+V.Local.sEnd.Declare(String)
+V.Local.dStart.declare(date)
+V.Local.dEnd.Declare(date)
+V.Local.bRet.Declare(Boolean)
+V.Local.sgrps.Declare(String)
+V.Local.iret.Declare(Long)
+V.Local.sDep.Declare(String)
+V.Local.sLA.Declare(String)
+V.Local.bShowCompleted.Declare(Boolean,False)
+v.Local.sQuery.Declare(String)
+V.Local.irows.Declare(Long)
+v.Local.sFilter.Declare(String)
+v.Local.sFieldList.Declare(String)
+v.Local.iIndex.Declare(long)
+
+v.Local.sGSSPart.Declare
+
+Gui.F_Main..MousePointer(11)
+F.Intrinsic.UI.InvokeWaitDialog("Loading Queue","Workflow Queue")
+
+f.Intrinsic.Control.CallSub(enablecontrols,"bEnable",False)
+f.Intrinsic.Control.CallSub(closedatatables)
+
+
+' ref_0 = 'ZPF000000000207205' and REF_1 = 'A'
+
+v.Local.sSubsql.Declare
+f.Intrinsic.Control.If(v.Caller.Hook,=,10230)
+'Inventory View
+
+
+'	Function.Global.Inventory.GetGSSPart(display part, display revision, short part return)
+	
+'	F.Intrinsic.String.GSSPartString(v.Passed.000007,v.Passed.000008,v.Local.sGSSPart)
+	
+'	f.Intrinsic.String.Build("select WF_ID from INV_LXR JOIN ATG_WF_Header on rtrim(display_part) = rtrim(REF_0) and rtrim(Display_Rev) = rtrim(REF_1) where gss_part = '{0}' and REF_2 = '{1}'",v.Local.sGSSPart,v.Passed.000009,v.Local.sSubsql)
+'	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSubsql,v.Local.sRet)
+'	f.Intrinsic.String.Build(" where ATG_WF_HEADER.WF_ID = '{0}' ",v.Local.sRet,v.Local.sSubsql)
+	f.Intrinsic.String.Build(" where ATG_WF_HEADER.Title like 'Part Approval%' ",v.Local.sRet,v.Local.sSubsql)
+'	f.Intrinsic.String.Build(" where ATG_wf_Header.ref_0 = '{0}' and ATG_wf_Header.REF_1 = '{1}'",v.Passed.000007,v.Passed.000008,v.Local.sSubsql)
+f.Intrinsic.Control.EndIf
+
+'Creates the Work Flow heaher datatable
+'v.Local.sQuery.Set("SELECT DISTINCT WF_ID, TITLE FROM ATG_WF_HEADER where ref_0 = 'ZPF000000000207205' and REF_1 = 'A'")
+f.Intrinsic.String.Build("SELECT DISTINCT WF_ID, TITLE FROM ATG_WF_HEADER {0}",v.Local.sSubsql,v.Local.sQuery)
+f.Data.DataTable.CreateFromSQL("dtWfHeader","conx",v.Local.sQuery,true)
+v.Local.sQuery.Set("")
+'f.Intrinsic.String.Concat(v.Local.sQuery,"SELECT DISTINCT ATG_WF_LINES.WF_ID, ATG_WF_LINES.LINE, ATG_WF_LINES.DESCRIPTION, ATG_WF_LINES.START_DATE,",v.Local.sQuery)
+'f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.DUE_DATE, ATG_WF_LINES.DEPENDENCY_ID, ATG_WF_LINES.PERC_COMPLETION, ATG_WF_LINES.STATUS, ATG_WF_LINES.SIGNOFF_REQ,",v.Local.sQuery)
+'f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.SIGNOFF_USER_GRP , ATG_WF_LINES.SIGNOFF_TYPE, ATG_WF_LINES.USER_GROUP, ATG_WF_LINES.USR_GRP_FLAG, ATG_WF_LINES.SIGNEDOFF_DATE,",v.Local.sQuery)
+'f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.LINE_ID FROM ATG_wf_LINES ORDER BY WF_ID, LINE",v.Local.sQuery)
+'Creates the WorkFlow Lines datatable
+
+f.Intrinsic.String.Concat(v.Local.sQuery,"SELECT DISTINCT ATG_WF_LINES.WF_ID, ATG_WF_LINES.LINE, ATG_WF_LINES.DESCRIPTION, ATG_wf_Header.REF_0 + ' '  + ATG_wf_Header.REF_1 as Reference,ATG_WF_LINES.START_DATE,",v.Local.sQuery)
+f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.DUE_DATE, ATG_WF_LINES.DEPENDENCY_ID, ATG_WF_LINES.PERC_COMPLETION, ATG_WF_LINES.STATUS, ATG_WF_LINES.SIGNOFF_REQ,",v.Local.sQuery)
+f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.SIGNOFF_USER_GRP , ATG_WF_LINES.SIGNOFF_TYPE, ATG_WF_LINES.USER_GROUP, ATG_WF_LINES.USR_GRP_FLAG, ATG_WF_LINES.SIGNEDOFF_DATE,",v.Local.sQuery)
+'f.Intrinsic.String.Concat(v.Local.sQuery,"ATG_WF_LINES.LINE_ID FROM ATG_wf_LINES JOIN ATG_wf_Header on ATG_WF_LINES.WF_ID = ATG_wf_Header.WF_ID  where ATG_wf_Header.ref_0 = 'ZPF000000000207205' and ATG_wf_Header.REF_1 = 'A' ORDER BY ATG_WF_LINES.WF_ID, LINE",v.Local.sQuery)
+
+f.Intrinsic.String.Build("{0} ATG_WF_LINES.LINE_ID FROM ATG_wf_LINES JOIN ATG_wf_Header on ATG_WF_LINES.WF_ID = ATG_wf_Header.WF_ID {1} ORDER BY ATG_WF_LINES.WF_ID desc, LINE ",v.Local.sQuery,v.Local.sSubsql,v.Local.sQuery)
+f.Data.DataTable.CreateFromSQL("dtWFHEADER$dtWfLines","conx",v.Local.sQuery,true)
+
+'Creates a virtual reference between WF header and lines datatables
+F.Data.DataTable.AddRelation("dtWFHEADER","WF_ID","dtWFHEADER$dtWfLines","WF_ID","Title_Test")
+F.Data.DataTable.AddExpressionColumn("dtWFHEADER$dtWfLines","Title","String","Parent(Title_Test).Title") 	
+f.Data.DataView.Create("dtWFHEADER$dtWfLines","dvHeaderLines")
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+'gui.F_Main.dpView.Text("All")
+'Set filters based on All, Assigned or Sign Off WF
+F.Intrinsic.Control.If(V.Screen.F_Main!dpView.Text,=,"All")
+	V.Local.iFilter.set(0)
+'	f.Intrinsic.String.Concat(v.Local.sFilter,"((USER_GROUP ='",V.Screen.F_Main!txtID.Text,"' AND USR_GRP_FLAG = 1) OR (SIGNOFF_USER_GRP = '", V.Screen.F_Main!txtID.Text,"' AND SIGNOFF_TYPE = -1))",V.Local.sFilter)			
+'	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)		
+	Function.Data.DataView.ToDataTable("dtWFHEADER", "dvHeaderLines", "dtWFCurrentList",true)
+	f.Data.DataView.Create("dtWFCurrentList","dvCurrentList")	
+	
+	
+	
+F.Intrinsic.Control.elseIf(V.Screen.F_Main!dpView.Text,=,"Assigned")
+	V.Local.iFilter.set(1)
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(USER_GROUP = '",V.Screen.F_Main!txtID.Text,"' AND USR_GRP_FLAG = 1)",V.Local.sFilter)
+	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)	
+	Function.Data.DataView.ToDataTable("dtWFHEADER", "dvHeaderLines", "dtWFCurrentList",true)
+	f.Data.DataView.Create("dtWFCurrentList","dvCurrentList")	
+F.Intrinsic.Control.elseIf(V.Screen.F_Main!dpView.Text,=,"Sign Off")
+	V.Local.iFilter.set(2)
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(SIGNOFF_USER_GRP = '",V.Screen.F_Main!txtID.Text,"' AND SIGNOFF_TYPE = -1)",V.Local.sFilter)
+	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)		
+	Function.Data.DataView.ToDataTable("dtWFHEADER", "dvHeaderLines", "dtWFCurrentList",true)
+	f.Data.DataView.Create("dtWFCurrentList","dvCurrentList")
+F.Intrinsic.Control.endif
+
+F.Intrinsic.String.Concat(V.Screen.F_Main!txtID.Text,",",V.Local.sgrps,",",V.Local.iFilter,V.Local.sLA)
+F.Intrinsic.Debug.SetLA(V.Local.sLA)
+
+f.Intrinsic.Control.If(v.Caller.Hook,<>,10230)
+	F.Intrinsic.Control.If(V.Screen.F_Main!chkCompleted.Value,=,0)
+		V.Local.bShowCompleted.Set(True)
+		v.Local.sFilter.Set("(PERC_COMPLETION Is Null Or PERC_COMPLETION <> 100)")	
+		f.Data.DataView.SetFilter("dtWFCurrentList","dvCurrentList",v.Local.sFilter)	
+		f.Intrinsic.Control.CallSub(movedttemp)	
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkDateDue.Value,=,1)
+	v.Local.sFilter.Set("")	
+	v.Local.dStart.Set(V.Screen.F_Main!dpStart.Value)	
+	v.Local.dEnd.Set(V.Screen.F_Main!dpEnd.Value)
+	f.Intrinsic.Date.DateAdd("H",23,v.Local.dEnd,v.Local.dEnd)			
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(DUE_DATE >= #", v.Local.dStart,"# AND DUE_DATE <= #",v.Local.dEnd,"#)",v.Local.sFilter)
+	f.Data.DataView.SetFilter("dtWFCurrentList","dvCurrentList",v.Local.sFilter)	
+	f.Intrinsic.Control.CallSub(movedttemp)
+F.Intrinsic.Control.EndIf
+
+'Filters based on the User groups
+F.Intrinsic.Control.If(V.Screen.F_Main!dropdownlist2.Text,=,"")
+	v.Local.sFilter.Set("")
+	F.Global.Security.GetUserGroups(V.Screen.F_Main!txtID.Text,V.Caller.CompanyCode,V.Local.sgrps)	
+	f.Intrinsic.String.Instr(v.Local.sgrps,"*!*",0,v.Local.iret)
+	f.Intrinsic.Control.If(v.Local.iret,=,0)
+		f.Intrinsic.String.Concat(v.Local.sgrps,"*!*",v.Local.sgrps)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Split(v.Local.sgrps,"*!*",v.Local.sgrps)
+	f.Intrinsic.Control.If(v.Local.sgrps.UBound,>,0)				
+		f.Intrinsic.Control.For(v.Local.iIndex,0,v.Local.sgrps.UBound,1)	
+			f.Intrinsic.Control.If(v.Local.sgrps(v.Local.iIndex),<>,"")
+				f.Intrinsic.Control.If(v.Local.sFilter,=,"")
+					v.Local.sFilter.Set("'")
+				f.Intrinsic.Control.endif
+				f.Intrinsic.String.Concat(v.Local.sFilter,v.Local.sgrps(v.Local.iIndex),"','",v.Local.sFilter)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.Next(v.Local.iIndex)		
+	f.Intrinsic.Control.EndIf	
+	f.Intrinsic.Control.If(v.Local.sFilter,<>,"")
+		f.Intrinsic.Math.Sub(v.Local.sFilter.Length,2,v.Local.iret)
+		f.Intrinsic.String.Mid(v.Local.sFilter,1,v.Local.iret,v.Local.sFilter)		
+		f.Intrinsic.Control.CallSub(filterbygroups,"sGroupFilter",v.Local.sFilter,"sRet",v.Local.sRet)		
+	f.Intrinsic.Control.EndIf			
+F.Intrinsic.Control.Elseif(V.Screen.F_Main!dropdownlist2.Text,<>,"")
+	V.Local.sgrps.Set(V.Screen.F_Main!dropdownlist2.Text)	
+	f.Intrinsic.String.Concat("'",v.Local.sgrps,"'",v.Local.sFilter)
+	f.Intrinsic.Control.CallSub(filterbygroups,"sGroupFilter",v.Local.sFilter,"sRet",v.Local.sRet)	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(v.Global.bDocked.Not)
+	F.Intrinsic.UI.InvokeWaitDialog("Loading Queue","Workflow Queue")
+F.Intrinsic.Control.EndIf
+
+'Creates a new datatable with the data retrieved from both filters
+f.Intrinsic.Control.CallSub(setupgriddatatable)
+
+f.Intrinsic.Control.CallSub(checkadditionalgridproperties)
+f.Intrinsic.Control.CallSub(loadgvwfqueue)
+v.Local.bType.Declare
+f.Intrinsic.Control.If(v.Caller.Hook,=,10230)
+	f.Intrinsic.Control.If(v.Passed.000007,<>,"")
+		f.Intrinsic.String.IsInString(v.Passed.000007,"||",true,v.Local.bType)
+		f.Intrinsic.Control.If(v.Local.bType)
+			f.Intrinsic.String.Build("Title like 'Part Approval:%{0} {1}%'",v.Passed.000007,v.Passed.000008,v.Local.sFilter)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("Reference='{0} {1}'",v.Passed.000007,v.Passed.000008,v.Local.sFilter)
+		f.Intrinsic.Control.EndIf
+		Gui.F_Main.GCWFQueue.setGridviewProperty("gvWFQueue","ActiveFilterString",V.Local.sFilter)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+Gui.F_Main..MousePointer(0)
+F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.CallSub(enablecontrols,"bEnable",True)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("LoadGrid_Err")
+Gui.F_Main..MousePointer(0)
+F.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.LoadGrid.End
+
+Program.Sub.SetUpGridDatatable.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	f.Data.DataView.ToDataTable("dtWFCurrentList","dvCurrentList","dtGridWFList",True)
+	
+	f.Intrinsic.Control.If(v.DataTable.dtCurrentGroupList.exists,=,True)	
+		f.Data.DataView.ToDataTable("dtCurrentGroupList","dvCurrentGroupList","dtGridGroupList")
+		f.Data.DataTable.Merge("dtGridGroupList","dtGridWFList",True,2)
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataTable.AddColumn("dtGridWFList","DEP_COMPLETED","String","")
+	f.Data.DataTable.AddColumn("dtGridWFList","INFO","String","")
+	f.Data.DataTable.AddColumn("dtGridWFList","EDIT","String","")
+		
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.SetUpGridDatatable.End
+
+Program.Sub.CheckAdditionalGridProperties.Start
+F.Intrinsic.Control.SetErrorHandler("CheckAdditionalGridProperties_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	v.Local.iIndex.Declare(long)
+	v.Local.bRet.Declare(boolean)
+	v.Local.sQuery.Declare(String)
+	v.Local.iStatusBar.Declare(long)
+	v.Local.iUBound.Declare(long)
+	
+	v.Local.sQuery.Set("SELECT ASSOC_ID, DEPENDENCY, DEPEND_ID, ASSOC_TYPE FROM ATG_WF_DEPENDENCY")
+	f.Data.DataTable.CreateFromSQL("dtWFDependency","conx",v.Local.sQuery,true)
+	v.Local.iUBound.Set(Variable.DataTable.dtGridWFList.Rowcount--)
+	f.Intrinsic.Control.For(v.Local.iIndex,0,Variable.DataTable.dtGridWFList.Rowcount--,1)
+		'F.Intrinsic.UI.ChangeWaitStatus("Loading Queue",V.Local.iIndex,1,Variable.DataTable.dtGridWFList.Rowcount--)			
+		f.Intrinsic.Math.Add(v.Local.iStatusBar,1,v.Local.iStatusBar)
+		F.Intrinsic.UI.ChangeWaitStatus("Loading Queue",V.Local.iStatusBar,1,v.Local.iUBound)
+		f.Intrinsic.Control.CallSub(checklinedependency,"LINE_ID",v.DataTable.dtGridWFList(v.Local.iIndex).LINE_ID!FieldValLong)		
+		F.Intrinsic.Control.If(V.Screen.F_Main!chkDependency.Value,=,1)
+			f.Intrinsic.Control.AndIf(v.Args.sRet,=,"Pending")
+				f.Data.DataTable.DeleteRow("dtGridWFList",v.Local.iIndex)
+				f.Intrinsic.Math.Sub(v.Local.iIndex,1,v.Local.iIndex)
+		f.Intrinsic.Control.Else
+			Function.Data.DataTable.SetValue("dtGridWFList",v.Local.iIndex,"DEP_COMPLETED",v.Args.sRet)				
+		f.Intrinsic.Control.EndIf						
+	f.Intrinsic.Control.Next(v.Local.iIndex)
+	f.Data.DataTable.Close("dtWFDependency")	
+	
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("CheckAdditionalGridProperties_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CheckAdditionalGridProperties.End
+
+Program.Sub.CheckLineDependency.Start
+F.Intrinsic.Control.SetErrorHandler("CheckLineDependency_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	v.Local.sQuery.Declare(String)	
+	v.Local.iIndex.Declare(long)	
+	v.Local.sRet.Declare(String,"NA")
+	
+	v.Local.sExpression.Declare(String,"")
+	v.Local.sAssoc.Declare(String,"")
+	
+	f.Intrinsic.String.Concat(v.Local.sExpression,"ASSOC_ID = ",v.Args.LINE_ID, " AND ASSOC_TYPE = 1",v.Local.sExpression)
+	Function.Data.DataTable.Select("dtWFDependency",v.Local.sExpression,v.Local.sAssoc)
+	f.Intrinsic.Control.If(v.Local.sAssoc,<>,"***NORETURN***")	
+		f.Intrinsic.String.Concat("SELECT DEPENDENCY FROM ATG_WF_DEPENDENCY WHERE ASSOC_ID = ",v.Args.LINE_ID," AND ASSOC_TYPE = 1",v.Local.sQuery)
+		f.Data.DataTable.CreateFromSQL("dtDependencyID","conx",v.Local.sQuery)
+		f.Intrinsic.Control.For(v.Local.iIndex,0,v.DataTable.dtDependencyID.Rowcount--,1)
+			f.Intrinsic.String.Concat("SELECT COMPLETION_DATE FROM ATG_WF_LINES WHERE LINE_ID = ",v.DataTable.dtDependencyID(v.Local.iIndex).DEPENDENCY!FieldValLong,v.Local.sQuery)
+			f.Data.DataTable.CreateFromSQL("dtCompletionDate","conx",v.Local.sQuery)
+			f.Intrinsic.Control.If(v.DataTable.dtCompletionDate.Rowcount,>,0)
+				f.Intrinsic.Control.If(v.DataTable.dtCompletionDate(0).COMPLETION_DATE!FieldVal,=,v.Ambient.Null)
+					v.Local.sRet.Set("Pending")					
+					f.Intrinsic.Control.ExitFor(v.Local.iIndex)
+				f.Intrinsic.Control.Else
+					v.Local.sRet.Set("Completed")
+				f.Intrinsic.Control.EndIf								
+			f.Intrinsic.Control.EndIf
+			f.Data.DataTable.Close("dtCompletionDate")
+		f.Intrinsic.Control.Next(v.Local.iIndex)
+		f.Data.DataTable.Close("dtDependencyID")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Variable.AddRV("sRet",v.Local.sRet)
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("CheckLineDependency_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CheckLineDependency.End
+Program.Sub.LoadGVWFQueue.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGVWFQueue_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	f.Data.Datatable.AddColumn("dtGridWFList","Select","Bit",0)
+	'Create GridView from DataView
+	Gui.F_Main.GCWFQueue.AddGridviewFromDatatable("gvWFQueue","dtGridWFList")
+	
+	'Set Grid Propertites
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","MultiSelect",True)
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","AllowSort",True)	
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","AllowFilter",True)
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","OptionsDetailShowDetailTabs",False)
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","OptionsViewShowGroupPanel",True)
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","EnableAppearanceOddRow",True)
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","Showgrouppanel",True)
+	
+	'Caption
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","WF_ID","Caption","WF")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Title","Caption","Title")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line","Caption","Line")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Description","Caption","Description")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","Caption","Start Date")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","Caption","Due Date")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_User_grp","Caption","Sign Off")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dep_Completed","Caption","Dep Completed")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","PERC_COMPLETION","Caption","% Completed")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","Caption","Info")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","Caption","Edit")	
+	
+	'VisibleIndex
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","WF_ID","VisibleIndex",0)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Title","VisibleIndex",1)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line","VisibleIndex",2)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Description","VisibleIndex",3)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Reference","VisibleIndex",4)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","VisibleIndex",5)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","VisibleIndex",6)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dep_Completed","VisibleIndex",7)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_User_grp","VisibleIndex",8)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","PERC_COMPLETION","VisibleIndex",9)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","VisibleIndex",10)
+	
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","VisibleIndex",11)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","VisibleIndex",12)
+	
+	'Visible
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dependency_id","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Status","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_Req","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_Type","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","User_group","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Usr_grp_flag","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Signedoff_date","Visible",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line_ID","Visible",False)
+	
+	f.Intrinsic.Control.If(v.Caller.Hook,=,10230)
+		Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","Visible",False)
+		Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","Visible",False)
+		gui.F_Main.cmdFilter.Visible(false)
+		gui.F_Main.cmdCompleteLine.Visible(false)
+	f.Intrinsic.Control.endif
+	
+	'AllowEdit
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","WF_ID","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Reference","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Title","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Description","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_User_grp","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dep_Completed","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","PERC_COMPLETION","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","AllowEdit",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","AllowEdit",False)
+	
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","AllowEdit",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","ReadOnly",False)
+	
+	'Readonly
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","ReadOnly",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","ReadOnly",True)
+	
+	
+	'Width
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","WF_ID","Width",50)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Title","Width",190)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Description","Width",190)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line","Width",25)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","Width",60)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","Width",60)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_User_grp","Width",60)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dep_Completed","Width",60)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","PERC_COMPLETION","Width",60)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","Width",30)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","Width",30)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","Width",40)
+		
+	'AllowSize
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","WF_ID","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Title","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Description","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Line","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","SignOff_User_grp","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Dep_Completed","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","PERC_COMPLETION","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","AllowSize",True)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","AllowSize",True)
+		
+	'DateFormats
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Start_Date","DisplayCustomDatetime","d")
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Due_Date","DisplayCustomDatetime","d")		
+		
+	'Button columns
+	Gui.F_Main.GCWFQueue.ColumnEdit("gvWFQueue","INFO","EditorButton","Info")
+	Gui.F_Main.GCWFQueue.ColumnEdit("gvWFQueue","EDIT","EditorButton","Edit")		
+
+	'Allow move
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","INFO","AllowMove",False)
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","EDIT","AllowMove",False)		
+	Gui.F_Main.GCWFQueue.SetColumnProperty("gvWFQueue","Select","AllowMove",False)		
+	
+	Gui.F_Main.GCWFQueue.SetGridViewProperty("gvWFQueue","OptionsViewShowAutoFilterRow",True)
+	
+	'Conditional fomatting: Make column due_date pink if it less or equal than today's date
+	gui.F_Main.GCWFQueue.AddStyleFormatCOndition("gvWFQueue","DUE_DATE","TagDueDate","LessOrEqual",v.Ambient.Now)
+	gui.F_Main.GCWFQueue.SetStyleFormatCOnditionProperty("gvWFQueue","DUE_DATE","TagDueDate","backcolor","pink")
+
+	'Set MainView
+	Gui.F_Main.GCWFQueue.MainView("gvWFQueue")
+	
+	
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("LoadGVWFQueue_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.LoadGVWFQueue.End
+
+Program.Sub.MoveDtTemp.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	'Creates a temp datatable and dataview to preserve the filter changes
+	Function.Data.DataView.ToDataTable("dtWFCurrentList", "dvCurrentList", "dtTemp",true)
+	f.Data.DataView.Create("dtTemp","dvTemp")
+	f.Data.DataView.Close("dtWFCurrentList", "dvCurrentList")
+	f.Data.DataTable.Close("dtWFCurrentList")
+	
+	'Close the temp datatable and reasign the changes to the current list
+	Function.Data.DataView.ToDataTable("dtTemp", "dvTemp", "dtWFCurrentList", true)
+	f.Data.DataView.Create("dtWFCurrentList","dvCurrentList")
+	f.Data.DataView.Close("dtTemp", "dvTemp")
+	f.Data.DataTable.Close("dtTemp")	
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.MoveDtTemp.End
+
+Program.Sub.MoveGroupDtTemp.Start
+F.Intrinsic.Control.SetErrorHandler("FilterByGroups_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+	'Creates a temp datatable and dataview to preserve the filter changes
+	Function.Data.DataView.ToDataTable("dtCurrentGroupList", "dvCurrentGroupList", "dtTempGroup")
+	f.Data.DataView.Create("dtTempGroup","dvTempGroup")
+	f.Data.DataView.Close("dtCurrentGroupList", "dvCurrentGroupList")
+	f.Data.DataTable.Close("dtCurrentGroupList")
+	
+	'Close the temp datatable and reasign the changes to the current list
+	Function.Data.DataView.ToDataTable("dtTempGroup", "dvTempGroup", "dtCurrentGroupList", true)
+	f.Data.DataView.Create("dtCurrentGroupList","dvCurrentGroupList")
+	f.Data.DataView.Close("dtTempGroup", "dvTempGroup")
+	f.Data.DataTable.Close("dtTempGroup")
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("FilterByGroups_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.MoveGroupDtTemp.End
+
+Program.Sub.FilterByGroups.Start
+F.Intrinsic.Control.SetErrorHandler("FilterByGroups_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+v.Local.sFilter.Declare(String)
+v.Local.sRetDataString.Declare(String)
+v.Local.sFieldList.Declare(String)
+v.Local.dStart.Declare(date)
+v.Local.dEnd.Declare(date)
+
+F.Intrinsic.Control.If(V.Screen.F_Main!dpView.Text,=,"All")	
+	f.Intrinsic.String.Concat("((USER_GROUP IN (",v.Args.sGroupFilter,") AND USR_GRP_FLAG = 0) OR (SIGNOFF_USER_GRP IN (", v.Args.sGroupFilter,") AND SIGNOFF_TYPE = 0))",v.Local.sFilter)
+	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)			
+F.Intrinsic.Control.elseIf(V.Screen.F_Main!dpView.Text,=,"Assigned")
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(USER_GROUP IN (", v.Args.sGroupFilter,") AND USR_GRP_FLAG = 0)",v.Local.sFilter)
+	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)
+F.Intrinsic.Control.elseIf(V.Screen.F_Main!dpView.Text,=,"Sign Off")
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(SIGNOFF_USER_GRP IN (", v.Args.sGroupFilter,") AND SIGNOFF_TYPE = 0)",v.Local.sFilter)	
+	f.Data.DataView.SetFilter("dtWFHEADER","dvHeaderLines",v.Local.sFilter)
+F.Intrinsic.Control.endif
+Function.Data.DataView.ToDataTable("dtWFHEADER", "dvHeaderLines", "dtCurrentGroupList",true)
+f.Data.DataView.Create("dtCurrentGroupList","dvCurrentGroupList")
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkCompleted.Value,=,0)	
+	v.Local.sFilter.Set("(PERC_COMPLETION Is Null Or PERC_COMPLETION <> 100)")	
+	f.Data.DataView.SetFilter("dtCurrentGroupList","dvCurrentGroupList",v.Local.sFilter)
+	f.Intrinsic.Control.CallSub(movegroupdttemp)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkDateDue.Value,=,1)
+	v.Local.sFilter.Set("")	
+	v.Local.dStart.Set(V.Screen.F_Main!dpStart.Value)	
+	v.Local.dEnd.Set(V.Screen.F_Main!dpEnd.Value)
+	f.Intrinsic.Date.DateAdd("H",23,v.Local.dEnd,v.Local.dEnd)			
+	f.Intrinsic.String.Concat(v.Local.sFilter,"(DUE_DATE >= #", v.Local.dStart,"# AND DUE_DATE <= #",v.Local.dEnd,"#)",v.Local.sFilter)
+	f.Data.DataView.SetFilter("dtCurrentGroupList","dvCurrentGroupList",v.Local.sFilter)	
+	f.Intrinsic.Control.CallSub(movegroupdttemp)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("FilterByGroups_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.FilterByGroups.End
+
+Program.Sub.cmdfilter_click.Start
+f.Intrinsic.Control.If(v.Screen.F_Main!txtID.Text,<>,"")		
+	F.Intrinsic.Control.CallSub(Loadgrid)	
+f.Intrinsic.Control.EndIf
+Program.Sub.cmdfilter_click.End
+
+Program.Sub.f_lineextra_unload.Start
+Gui.F_LineExtra..Visible(False)
+
+Program.Sub.f_lineextra_unload.End
+Program.Sub.f_Workflow_unload.Start
+v.Global.sRET.Set("")
+
+gui.F_Workflow.frameWFREject.Visible(false)
+Gui.F_Workflow..Visible(false)
+
+Program.Sub.f_Workflow_unload.End
+
+Program.Sub.fglines_commandclick.Start
+F.Intrinsic.Control.SetErrorHandler("fglines_commandclick_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.shold.Declare(String)
+V.Local.iID.Declare(Long)
+V.Local.sMeta.Declare(String)
+V.Local.iC.Declare(Long)
+V.Local.iX.Declare(Long)
+V.Local.sret.Declare(String)
+V.Local.squery.Declare(String)
+V.Local.sWF.Declare(String)
+V.Local.sLine.Declare(String)
+
+
+Gui.F_Main.fgLines.GetTextMatrix(0,V.Args.key,V.Local.sWF)
+F.Intrinsic.String.Trim(V.Local.sWF,V.Local.sWF)
+F.Intrinsic.Control.If(V.Local.sWF,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Args.column,=,11)
+	Gui.F_Main.fgLines.GetTextMatrix(0,V.args.key,V.Local.shold)
+	F.Intrinsic.control.if(V.local.shold,<>,"")
+		Gui.F_Workflow.txtActiveRow.Text(V.Args.key)
+		Gui.F_Main.fgLines.GetTextMatrix(9,V.args.key,V.Local.shold)
+		Gui.F_Workflow.txtPercent.Text(V.Local.shold)
+		Gui.F_Workflow.chkSignOff.enabled(true)
+		F.Intrinsic.Control.If(V.Local.shold,=,100)
+			Gui.F_Workflow.chkComplete.Value(1)
+		f.Intrinsic.Control.Else
+			Gui.F_Workflow.chkComplete.Value(0)
+		F.Intrinsic.Control.EndIf
+
+		Gui.F_Workflow..Show
+	F.intrinsic.control.endif
+F.Intrinsic.Control.ElseIf(V.Args.column,=,10)
+	F.Intrinsic.Control.CallSub(Clear_extra)
+	
+	'Load User fields from grid
+	F.Intrinsic.UI.InvokeWaitDialog("Loading Additional Data","Loading Line Data")
+	Gui.F_LineExtra.txtActiveRow.Text(V.Args.key)
+
+	Gui.F_Main.fgLines.GetTextMatrix(0,V.Args.key,V.Local.sWF)
+	Gui.F_Main.fgLines.GetTextMatrix(2,V.Args.key,V.Local.sLine)
+	F.Global.WorkFlow.GetLineID(V.Local.sWF,V.Local.sLine,V.Local.iID)
+
+	F.Intrinsic.String.Concat("SELECT USER_1, USER_2, USER_3, USER_4, USER_5 FROM ATG_WF_LINES WHERE LINE_ID = ",V.Local.iID,V.Local.squery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstX",V.Local.squery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstX.EOF,=,False)
+		Gui.F_LineExtra.txtU1.Text(V.odbc.conx!rstX.FieldVal!USER_1)
+		Gui.F_LineExtra.txtU2.Text(V.odbc.conx!rstX.FieldVal!USER_2)
+		Gui.F_LineExtra.txtU3.Text(V.odbc.conx!rstX.FieldVal!USER_3)
+		Gui.F_LineExtra.txtU4.Text(V.odbc.conx!rstX.FieldVal!USER_4)
+		Gui.F_LineExtra.txtU5.Text(V.odbc.conx!rstX.FieldVal!USER_5)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Conx!rstX.Close
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Dependencies",2,1,5)
+	F.Intrinsic.Control.CallSub(Load_depend,"KEY",V.Args.key,"iID",V.Local.iID)
+
+	'load dependenciesgui.F_LineExtra.ta
+	
+	Gui.F_LineExtra.tabx1.tabvisible(0,True)
+	Gui.F_LineExtra.tabx1.tabvisible(1,True)
+	Gui.F_LineExtra.tabx1.tabvisible(2,True)
+	Gui.F_LineExtra.tabx1.tabvisible(3,True)
+
+	Gui.F_LineExtra.tabx1.SetTab(0)
+	'load notes
+	
+	F.Intrinsic.Control.CallSub(Load_doc_depend,"KEY",V.Args.key,"iID",V.Local.iID)
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Notes",3,1,5)
+	F.global.workflow.READNOTE(V.Local.iID,V.Local.sHold)
+	Gui.F_LineExtra.txtNotes.Text(V.Local.sHold)
+	'load meta data
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Meta Data",4,1,5)
+	F.global.workflow.READMETADATA(V.Local.iID,0,-1,V.Local.sHold)
+	F.Intrinsic.String.Split(V.Local.sHold,"*!*",V.Local.smeta)
+
+	F.Intrinsic.Control.for(V.Local.iC,V.Local.sMeta.LBound,V.Local.sMeta.UBound,1)
+		F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iX)
+		Gui.F_LineExtra.txtMeta[v.local.iX].text(V.Local.sMeta(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Reference",5,1,5)
+	F.global.workflow.READREFERENCELINEDATA(V.Local.sWF,V.Local.sLine,-1,V.Local.sHold)
+	F.Intrinsic.String.Split(V.Local.sHold,"*!*",V.Local.smeta)
+	F.Intrinsic.Control.for(V.Local.iC,V.Local.sMeta.LBound,V.Local.sMeta.UBound,1)
+		F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iX)
+		Gui.F_LineExtra.txtRef[v.local.iX].text(V.Local.sMeta(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	Gui.F_LineExtra.txtHeader.Text("")
+	
+
+
+'	F.Intrinsic.String.Concat("SELECT REF_0 + ' ' + REF_1 as REFPART FROM ATG_WF_HEADER WHERE WF_ID = ",V.Local.sWF,V.Local.squery)
+'	F.ODBC.Connection!conx.OpenRecordsetRO("rstX",V.Local.squery)
+'	F.Intrinsic.Control.If(V.ODBC.conx!rstX.EOF,=,False)
+'		Gui.F_LineExtra.txtRef1.Text(V.odbc.conx!rstX.FieldVal!USER_1)
+'	F.Intrinsic.Control.EndIf
+'	F.ODBC.Conx!rstX.Close
+	
+
+	
+	Gui.F_LineExtra..Show
+	F.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.Control.endif
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("fglines_commandclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.fglines_commandclick.End
+Program.Sub.cmdbrowse_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdbrowse_click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.sCol.Declare(String)
+V.Local.sWidth.Declare(String)
+V.Local.sType.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sTitle.Declare(String)
+V.Local.sTypeCol.Declare(String)
+V.Local.sHold.Declare(String)
+
+'F.Intrinsic.UI.MsgBoxExt("Select User or Group","Browse by User or Group","24*!*User*!*Group","1000","2000")
+'F.Intrinsic.Control.If(V.Ambient.altboxclick,=,3)
+	F.Intrinsic.String.Split("3000*!*3500*!*3000*!*1000*!*3400","*!*",V.Local.swidth)
+	F.Intrinsic.String.Split("ID*!*First*!*Last*!*Company*!*Email","*!*",V.Local.sCol)
+	F.Intrinsic.String.Concat("SELECT GS_USER, FIRST_NAME,LAST_NAME, COMPANY, EMAIL FROM USER_INFORMATION WHERE COMPANY = '",V.Caller.CompanyCode,"' OR COMPANY = ''",V.Local.sQuery)
+
+	V.Local.sTitle.Set("Select User")
+	V.Local.sType.Set("User")
+'F.Intrinsic.Control.ElseIf(V.Ambient.altboxclick,=,4)
+'	F.Intrinsic.String.Split("1000","*!*",V.Local.swidth)
+'	F.Intrinsic.String.Split("Group","*!*",V.Local.sCol)
+'	F.Intrinsic.String.Concat("SELECT DISTINCT GROUP_ID FROM USER_GROUP WHERE COMPANY = '",V.Caller.CompanyCode,"'",V.Local.sQuery)
+'	V.Local.sTitle.Set("Select Group")
+'	V.Local.sType.Set("Group")
+'F.Intrinsic.Control.Else
+'	F.Intrinsic.Control.Exitsub
+'F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.intrinsic.UI.Browser(V.Local.stitle,"conc",V.Local.squery,V.Local.sCol,V.Local.sWidth,V.Local.sret)
+
+GUI.F_Main..AlwaysOnTop(1)
+GUI.F_Main..AlwaysOnTop(0)
+
+F.Intrinsic.Control.If(V.Local.sret,<>,"***CANCEL***")
+	F.Intrinsic.string.Split(V.Local.sret,"*!*",V.Local.sRet)
+	Gui.F_Main.txtID.Text(V.local.sRet(0))
+	F.Intrinsic.Control.CallSub(Loadgrid)
+F.Intrinsic.Control.endif
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("cmdbrowse_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdbrowse_click.End
+
+Program.Sub.clear_extra.Start
+F.Intrinsic.Control.SetErrorHandler("clear_extra_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.iC.Declare(Long)
+
+Gui.F_LineExtra.txtActiveRow.Text("")
+
+Gui.F_LineExtra.txtMeta1.Text("")
+Gui.F_LineExtra.txtMeta2.Text("")
+Gui.F_LineExtra.txtMeta3.Text("")
+Gui.F_LineExtra.txtMeta4.Text("")
+Gui.F_LineExtra.txtMeta5.Text("")
+Gui.F_LineExtra.txtMeta6.Text("")
+Gui.F_LineExtra.txtMeta7.Text("")
+Gui.F_LineExtra.txtMeta8.Text("")
+Gui.F_LineExtra.txtMeta9.Text("")
+Gui.F_LineExtra.txtMeta10.Text("")
+
+Gui.F_LineExtra.txtU1.Text("")
+Gui.F_LineExtra.txtU2.Text("")
+Gui.F_LineExtra.txtU3.Text("")
+Gui.F_LineExtra.txtU4.Text("")
+Gui.F_LineExtra.txtU5.Text("")
+
+Gui.F_LineExtra.txtNotes.Text("")
+
+Gui.F_LineExtra.fgDependecies.Rows(1)
+Gui.F_LineExtra.fgDependecies.Rows(2)
+Gui.F_LineExtra.fgDependecies.Fixedrows(1)
+
+Gui.F_LineExtra.fgDocuments.Rows(1)
+Gui.F_LineExtra.fgDocuments.Rows(2)
+Gui.F_LineExtra.fgDocuments.FixedRows(1)
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("clear_extra_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.clear_extra.End
+
+Program.Sub.Load_doc_Depend.Start
+F.Intrinsic.Control.SetErrorHandler("Load_doc_Depend_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.shold.Declare(String)
+V.Local.iHold.Declare(Long,1)
+V.Local.iID.Declare(Long)
+V.Local.iC.Declare(Long)
+V.Local.iRow.Declare(Long)
+V.Local.irows.declare(Long)
+V.Local.sret.Declare(String)
+
+V.Local.sfile.Declare(String)
+V.Local.sDesc.Declare(String)
+V.Local.sGroup.Declare(String)
+V.Local.bRet.Declare(Boolean)
+
+'Gui.F_Main.fgLines.GetTextMatrix(0,V.Screen.F_LineExtra!txtActiveRow.text,V.Local.iid)
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.Screen.F_LineExtra!txtActiveRow.text,V.Local.iid)
+	'load document associated
+F.Global.workflow.GETDOCUMENTREFERENCES(V.local.iid,1,V.Local.iHold,V.Local.sHold)
+
+Gui.F_LineExtra.fgDocuments.Cols(5)
+Gui.F_LineExtra.fgDocuments.Rows(1)
+Gui.F_LineExtra.fgDocuments.Rows(2)
+Gui.F_LineExtra.fgDocuments.TextMatrix(0,0,"ID")
+Gui.F_LineExtra.fgDocuments.TextMatrix(1,0,"File")
+Gui.F_LineExtra.fgDocuments.TextMatrix(2,0,"Template")
+Gui.F_LineExtra.fgDocuments.ColWidth(0,700)
+Gui.F_LineExtra.fgDocuments.ColWidth(1,3900)
+Gui.F_LineExtra.fgDocuments.ColWidth(2,1000)
+Gui.F_LineExtra.fgDocuments.ColWidth(3,600)
+Gui.F_LineExtra.fgDocuments.ColWidth(4,600)
+Gui.F_LineExtra.fgDocuments.FixedRows(1)
+V.Local.iRow.Set(0)
+V.Local.irows.Set(1)
+F.Intrinsic.string.Split(V.Local.shold,"*!*",V.Local.shold)
+
+F.Intrinsic.Control.For(V.Local.iC,0,V.Local.shold.UBound,1)
+	F.Intrinsic.Control.If(V.Local.shold(v.Local.iC).trim,<>,"")
+		F.Intrinsic.Math.Add(V.Local.irows,1,V.Local.irows)
+		F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+		Gui.F_LineExtra.fgDocuments.Rows(V.Local.irows)
+		Gui.F_LineExtra.fgDocuments.ApplyStyle(V.Local.iRow,1)
+		Gui.F_LineExtra.fgDocuments.TextMatrix(0,V.Local.irow,V.Local.shold(v.Local.iC))
+		f.Global.WorkFlow.Readdocument(V.Local.shold(v.Local.iC),V.Local.sRet)
+		F.Intrinsic.String.Split(V.Local.sret,"*!*",V.Local.sret)
+		F.Intrinsic.control.If(V.Local.sret.UBound,=,1)
+			Gui.F_LineExtra.fgDocuments.TextMatrix(1,V.Local.irow,V.Local.sret(1))
+			Gui.F_LineExtra.fgDocuments.TextMatrix(2,V.Local.irow,V.Local.sret(0))
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Next(V.Local.iC)
+Gui.F_LineExtra.fgDocuments.FixedRows(1)
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Load_doc_Depend_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Load_doc_Depend.End
+
+Program.Sub.load_depend.Start
+F.Intrinsic.Control.SetErrorHandler("load_depend_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.sHold.Declare(String)
+V.Local.iID.Declare(Long)
+V.Local.iC.Declare(Long)
+V.Local.iX.Declare(Long)
+V.Local.sret.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.iRow.Declare(Long)
+
+'Gui.F_Main.fgLines.GetTextMatrix(1,V.args.key,V.Local.sHold)
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","Title",V.Args.Key,V.Local.sHold)
+'load document associated
+
+V.Local.iRow.Set(0)
+V.Local.irows.Set(1)
+Gui.F_LineExtra.fgDependecies.Rows(1)
+Gui.F_LineExtra.fgDependecies.Rows(2)
+f.Global.WorkFlow.ReadLineDependency(V.Args.iID,1,V.Local.sRet)
+
+F.Intrinsic.String.Split(V.Local.sret,V.Ambient.NewLine,V.Local.sret)
+F.Intrinsic.Control.For(V.Local.iC,V.Local.sret.LBound,V.Local.sret.UBound,1)
+	F.Intrinsic.String.Split(V.Local.sret(v.Local.iC),"*!*",V.Local.sHold)
+	F.Intrinsic.Control.If(V.Local.sHold.UBound,>=,4)
+		F.Intrinsic.Math.Add(V.Local.irows,1,V.Local.irows)
+		F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+		Gui.F_LineExtra.fgDependecies.Rows(V.Local.irows)
+		Gui.F_LineExtra.fgDependecies.ApplyStyle(V.Local.iRow,1)
+		Gui.F_LineExtra.fgDependecies.TextMatrix(0,V.Local.irow,V.Local.shold(0))
+		Gui.F_LineExtra.fgDependecies.TextMatrix(1,V.Local.irow,V.Local.shold(1))
+		Gui.F_LineExtra.fgDependecies.TextMatrix(2,V.Local.irow,V.Local.shold(2))
+		Gui.F_LineExtra.fgDependecies.TextMatrix(3,V.Local.irow,V.Local.shold(3))
+		Gui.F_LineExtra.fgDependecies.TextMatrix(4,V.Local.irow,V.Local.shold(4))
+		Gui.F_LineExtra.fgDependecies.ApplyStyle(V.Local.iRow,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iC)
+Gui.F_LineExtra.fgDependecies.FixedRows(1)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("load_depend_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.load_depend.End
+
+Program.Sub.cmdsavenotes_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdsavenotes_click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.iID.Declare(Long)
+V.Local.sWF.Declare(String)
+V.Local.sLine.Declare(String)
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.Screen.F_LineExtra!txtActiveRow.text,V.Local.sWF)
+'Gui.F_Main.fgLines.GetTextMatrix(0,V.Screen.F_LineExtra!txtActiveRow.text,V.Local.sWF)
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","LINE",V.Screen.F_LineExtra!txtActiveRow.text,V.Local.sLine)
+'Gui.F_Main.fgLines.GetTextMatrix(2,V.Screen.F_LineExtra!txtActiveRow.text,V.Local.sLine)
+F.Global.WorkFlow.GetLineID(V.Local.sWF,V.Local.sLine,V.Local.iID)
+F.global.workflow.SaveNote(V.Local.iID,V.Screen.F_LineExtra!txtNotes.text)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("cmdsavenotes_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdsavenotes_click.End
+Program.Sub.cmdlink_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdlink_click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.shold.Declare(String)
+V.Local.sWF.Declare(String)
+v.Local.sDesc.Declare(String)
+V.Local.sScript.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.iRet.Declare(Long)
+v.Local.iPID.Declare(Long)
+
+F.Intrinsic.Control.If(V.Screen.F_Workflow!txtActiveRow.Text,<>,"")
+    Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+    Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","Title",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sDesc)
+
+   
+    f.Global.DocumentControl.Invoke(v.Local.sWF,90,v.Local.sDesc,v.Local.iPID)
+
+F.Intrinsic.Control.endif
+'Gui.F_Workflow..Visible(false)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("cmdlink_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+    Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'F.Intrinsic.Control.SetErrorHandler("cmdlink_click_Err")
+'F.Intrinsic.Control.ClearErrors
+'V.Local.sError.Declare(String)
+
+'V.Local.shold.Declare(String)
+'V.Local.sWF.Declare(String)
+'V.Local.sScript.Declare(String)
+'V.Local.sLine.Declare(String)
+'V.Local.iRet.Declare(Long)
+
+
+'F.Intrinsic.Control.If(V.Screen.F_Workflow!txtActiveRow.Text,<>,"")
+'	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+
+'	f.Intrinsic.Control.CallSub(linkexists,"id",v.Local.sWF)
+'	
+'	F.Global.General.ResetPassedDataElements
+
+'	F.Global.General.SetPassedDataElement("DATA-LINK-TYPE","90")
+'	F.Global.General.SetPassedDataElement("DATA-LINK-KEY",V.Local.sWF)
+'	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","Title",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+'	F.Global.General.SetPassedDataElement("DATA-LINK-DESC",V.Local.sWF)
+'		
+'	F.Intrinsic.Control.If(v.DataTable.dtHook.Exists)
+'		f.Data.DataTable.Close("dtHook")
+'	f.Intrinsic.Control.EndIf
+'	
+'	f.Data.DataTable.CreateFromSQL("dtHook","conx","SELECT SYNC_FLAG, SCRIPT_PATH, SCRIPT_NAME FROM HOOK_ASSOCIATION WHERE ACTIVE_FLAG = 'A' AND ID = '000016120'")
+'	F.Intrinsic.Control.If(v.DataTable.dtHook.RowCount,>,0)
+'		f.Intrinsic.Control.If(v.DataTable.dtHook(0).SCRIPT_PATH!FieldValTrim,=,"#SCRIPT-PATH#")
+'			F.Intrinsic.string.Concat(V.caller.PluginsDir,"\GAB\GAS\",v.DataTable.dtHook(0).SCRIPT_NAME!FieldValTrim,V.Local.sScript)
+'		F.Intrinsic.Control.Else
+'			F.Intrinsic.String.Right(v.DataTable.dtHook(0).SCRIPT_PATH!FieldValTrim,1,V.Local.shold)
+'			F.Intrinsic.Control.If(V.Local.shold,<>,"\")
+'				F.Intrinsic.string.Concat(v.DataTable.dtHook(0).SCRIPT_PATH!FieldValTrim,"\",v.DataTable.dtHook(0).SCRIPT_NAME!FieldValTrim,V.Local.sScript)
+'			F.Intrinsic.Control.Else
+'				F.Intrinsic.string.Concat(v.DataTable.dtHook(0).SCRIPT_PATH!FieldValTrim,v.DataTable.dtHook(0).SCRIPT_NAME!FieldValTrim,V.Local.sScript)
+'			F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.EndIf
+'		
+'		F.Intrinsic.Control.If(v.DataTable.dtHook(0).SYNC_FLAG!FieldValTrim,=,"S")
+'			F.Global.General.CallsyncGAS(V.Local.sScript,"",1)
+'		F.Intrinsic.Control.Else
+'			F.Global.General.CallAsyncGAS(V.Local.sScript,"",1,V.Local.iRet)
+'		F.Intrinsic.Control.EndIf				
+'		
+'	F.Intrinsic.Control.Else
+'		F.Intrinsic.UI.Msgbox("Hook 000016120 not active. Unable to launch links.")
+'	F.Intrinsic.Control.EndIf
+'	
+'	F.Intrinsic.Control.If(v.DataTable.dtHook.Exists)
+'		f.Data.DataTable.Close("dtHook")
+'	f.Intrinsic.Control.EndIf
+'F.Intrinsic.Control.endif
+''Gui.F_Workflow..Visible(false)
+
+'F.Intrinsic.Control.ExitSub
+'F.Intrinsic.Control.Label("cmdlink_click_Err")
+'F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+'	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+'	F.Intrinsic.UI.Msgbox(V.Local.sError)
+'Function.Intrinsic.Control.EndIf
+Program.Sub.cmdlink_click.End
+
+Program.Sub.fglines_mouseup.Start
+F.Intrinsic.Control.SetErrorHandler("fglines_mouseup_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+'F.Intrinsic.Control.If(V.Args.mouserow,=,0)
+'	F.Intrinsic.Control.If(V.Args.mousecol,=,0)
+'		Gui.F_MAIN.fglines.sortcolumn(V.Args.mousecol,1)
+'	F.Intrinsic.Control.else
+'		Gui.F_MAIN.fglines.sortcolumn(V.Args.mousecol,0)
+'	F.intrinsic.control.endif
+'F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("fglines_mouseup_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.fglines_mouseup.End
+
+Program.Sub.Widget_EventHandlers.Start
+F.Intrinsic.Control.SetErrorHandler("Widget_EventHandlers_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.AddEventHandler("WidgetRequestDock",Widget_dock)
+F.Intrinsic.Control.AddEventHandler("WidgetRequestUndock",Widget_undock)
+F.Intrinsic.Control.AddEventHandler("WidgetDockResize",Widget_resize)
+F.Intrinsic.Control.AddEventHandler("WidgetRequestClose",Widget_unload_dockedform)
+F.Intrinsic.Control.AddEventHandler("WidgetThemeChange",Widget_theme_changed)
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Widget_EventHandlers_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Widget_EventHandlers.End
+
+Program.Sub.Widget_Dock.Start
+F.Intrinsic.Control.SetErrorHandler("Widget_Dock_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+'Hide undocked form
+Gui.F_Main..Visible(False)
+
+'Apply current menu theme
+Gui.F_Widget..ApplyTheme
+
+'Show docked form
+F.Global.General.UpdateProcess("Queue Items")
+Gui.F_Widget..Show
+
+'Dock docked form to menu
+Gui.F_Widget..DockWidget
+
+'Notify the menu of preferred Widget width, based on F_Widget's width.
+Gui.F_Widget..RequestDockWidth
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Widget_Dock_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Widget_Dock.End
+
+Program.Sub.Widget_Main.Start
+F.Intrinsic.Control.SetErrorHandler("Widget_Main_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Ambient.IsWidgetCapable,=,True)
+
+	F.Intrinsic.Control.CallSub(Widget_eventhandlers)
+
+	Gui.F_Widget..AllowDock(1)
+	Gui.F_Widget..AllowUndock(1)
+
+	Gui.F_Widget..SetMinWidgetSize(200,300)
+		
+	'Setting form names here to prevent widget title flicker
+	Gui.F_LineExtra..Caption("Template Line Extra")
+	Gui.F_Main..Caption("Workflow Queue")
+	Gui.F_Workflow..Caption("Line Workflow")
+
+	F.Intrinsic.Control.CallSub(Widget_dock)
+
+F.Intrinsic.Control.Else
+
+	F.Intrinsic.Control.CallSub(Widget_undock)
+
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Widget_Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Widget_Main.End
+
+Program.Sub.f_widget_unload.Start
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+Program.Sub.f_widget_unload.End
+
+Program.Sub.Widget_Resize.Start
+F.Intrinsic.Control.SetErrorHandler("Widget_Resize_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.x1.Declare(Long)
+V.Local.y1.Declare(Long)
+V.Local.iC.Declare(Long)
+V.Local.sSize.Declare(String)
+V.Local.iRet.Declare(Long)
+V.Local.iRetX.Declare(Long)
+V.Local.iRetY.Declare(Long)
+
+
+F.Intrinsic.Control.If(V.Screen.F_Widget.Visible,=,True)
+
+	f.Intrinsic.Control.If(v.Global.bBusy.Not)
+		V.Global.bBusy.Set(True)
+
+		Gui.F_Widget..SetWidgetSize
+
+		F.Intrinsic.Math.Sub(V.Screen.F_Widget.Width,1000,V.Local.x1)
+		F.Intrinsic.Math.Sub(V.Screen.F_Widget.Height,1000,V.Local.y1)
+
+		Gui.F_Widget.picCol.Size(V.Local.x1,V.Local.y1)
+
+		'Draw chart in resize so chart can change size if need
+		F.Intrinsic.Control.CallSub(Drawcolumn)
+
+		Gui.F_Widget..ClearScreen
+
+		V.Global.bBusy.Set(False)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("Widget_Resize_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Widget_Resize.End
+
+Program.Sub.Widget_Theme_Changed.Start
+F.Intrinsic.Control.If(V.Ambient.IsDocked,=,True)
+	'Apply theme for Docked form
+	Gui.F_Widget..ApplyTheme
+F.Intrinsic.Control.EndIf
+
+Program.Sub.Widget_Theme_Changed.End
+
+Program.Sub.Widget_Undock.Start
+V.Global.bDocked.Set(False)
+Gui.F_Main..Show
+
+Program.Sub.Widget_Undock.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.End
+
+Program.Sub.Unload.End
+
+Program.Sub.Widget_Unload_DockedForm.Start
+F.Intrinsic.Control.CallSub(Unload)
+
+Program.Sub.Widget_Unload_DockedForm.End
+
+Program.Sub.DrawColumn.Start
+F.Intrinsic.Control.SetErrorHandler("DrawColumn_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local..BulkDeclareString(X,Y,Sy2colors,Scolors,Svalues,Spath,Sret,Iret,Stemp,Stemp2)
+V.Local..BulkDeclareLong(Ix,Iy,Ic)
+V.Local..BulkDeclareBoolean(Bexists,Btemp)
+V.Local.iCount.Declare(Long)
+V.Local.sItem.Declare(String)
+V.Local.sChartName.Declare(String)
+V.Local.iSeriesCount.Declare(Long)
+V.Local.iStart.Declare(Long,0)
+V.Local.sParams.Declare(String)
+
+F.Intrinsic.String.Concat(V.Caller.CompanyCode,"*!*",V.Caller.User,V.Local.sParams)
+F.Intrinsic.IPM.GenericMenuIPM(64000,V.Local.sParams,V.Local.Y)
+'Returns Ready*!*Total
+F.Intrinsic.String.Split(V.Local.Y,"*!*",V.Local.Y)
+
+F.Intrinsic.String.Concat(V.System.Temp,"\GABChart-WF.bmp",V.Local.sPath)
+F.Intrinsic.Math.Sub(V.Screen.F_Widget!picCol.Width,0,V.Local.Ix)
+F.Intrinsic.Math.Sub(V.Screen.F_Widget!picCol.Height,0,V.Local.Iy)
+F.Intrinsic.Math.Div(V.Local.Ix,15,V.Local.Ix)
+F.Intrinsic.Math.Div(V.Local.Iy,15,V.Local.Iy)
+
+'Clear if not first time making chart
+f.Intrinsic.Control.If(v.Global.bInitChart.Not)
+	F.Global.Presentation.ClearChart("Workflow",V.Local.sRet)
+F.Intrinsic.Control.Else
+	V.Global.bInitChart.Set(False)
+F.Intrinsic.Control.EndIf
+
+'Create Chart
+F.Global.Presentation.CreateChart("Workflow",V.Local.iRet)
+
+'Colors
+F.Global.Presentation.SetChartProperty("Workflow","BackColor",V.Ambient.THEMEFORMBACKCOLOR,V.Local.sRet)
+
+'Chart Area
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","BackColor",V.Ambient.THEMEFORMBACKCOLOR,V.Local.sRet)
+
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:Enable3d","True",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:LightStyle","Realistic",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:PointDepth","100",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:Rotation","30",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:WallWidth","5",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","Area3dStyle:Perspective","5",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","ChartArea","BackColor",V.Ambient.THEMEFORMFORECOLOR,V.Local.sRet)
+
+'Axis X
+F.Global.Presentation.SetChartProperty("Workflow","Axis","X","MajorGrid:Enabled",False,V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Axis","X","LabelStyle:Enabled",False,V.Local.sRet)
+
+'Axis Y
+F.Global.Presentation.SetChartProperty("Workflow","Axis","Y","LabelStyle:ForeColor",V.Ambient.THEMEFORMFORECOLOR,V.Local.sRet)
+
+'Series
+
+'Total
+F.Intrinsic.String.Concat("Total","!*!",V.Local.Y(1),V.Local.sValues)
+F.Global.Presentation.CreateChartMember("Workflow","Series","Total","Column",V.Local.sValues,V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Total","Font","Arial|8",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Total","Label","#VALY",V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Total","LabelForeColor",V.Ambient.THEMEFORMFORECOLOR,V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Total","LabelBackColor",V.Ambient.THEMEFORMBACKCOLOR,V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Total","Item:DrawingStyle","Emboss",V.Local.sRet)
+
+'Ready
+F.Intrinsic.String.Concat("Ready","!*!",V.Local.Y(0),V.Local.sValues)
+F.Global.Presentation.CreateChartMember("Workflow","Series","Ready","Column",V.Local.sValues,V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Ready","Font","Arial|8",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Ready","Label","#VALY",V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Ready","LabelForeColor",V.Ambient.THEMEFORMFORECOLOR,V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Ready","LabelBackColor",V.Ambient.THEMEFORMBACKCOLOR,V.local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Series","Ready","Item:DrawingStyle","Emboss",V.Local.sRet)
+
+'Add Legend
+F.Global.Presentation.CreateChartMember("Workflow","Legend","Legend1",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Legend","Legend1","Font","Arial|8",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Legend","Legend1","Docking","Bottom",V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Legend","Legend1","BackColor",V.Ambient.THEMEFORMBACKCOLOR,V.Local.sRet)
+F.Global.Presentation.SetChartProperty("Workflow","Legend","Legend1","ForeColor",V.Ambient.THEMEFORMFORECOLOR,V.Local.sRet)
+
+'Render
+F.Global.Presentation.RenderChart("Workflow",V.Local.sPath,"True",V.Local.Ix,V.Local.Iy,V.Local.sRet)
+
+F.Intrinsic.File.Exists(V.Local.sPath,V.Local.Bexists)
+F.Intrinsic.Control.If(V.Local.Bexists,=,"True")
+	Gui.F_Widget.picCol.Picture(V.Local.sPath)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("DrawColumn_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.DrawColumn.End
+
+Program.Sub.fgdocuments_commandclick.Start
+F.Intrinsic.Control.SetErrorHandler("fgdocuments_commandclick_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+V.Local.sFile.Declare(String)
+V.Local.iHdl.Declare(Long)
+
+Gui.F_LineExtra.fgDocuments.GetTextMatrix(1,V.Args.Key,V.Local.sFile)
+F.Intrinsic.File.GetHandle(V.Local.iHdl)
+F.Intrinsic.Task.ShellExec(V.Local.iHdl,"Open",V.Local.sFile.Trim,"","",1)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Label("fgdocuments_commandclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_WF_QUEUE.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.fgdocuments_commandclick.End
+
+Program.Sub.GCWFQueue_RowCellClick.Start
+V.Local.shold.Declare(String)
+V.Local.iID.Declare(Long)
+V.Local.sMeta.Declare(String)
+V.Local.iC.Declare(Long)
+V.Local.iX.Declare(Long)
+V.Local.sret.Declare(String)
+V.Local.squery.Declare(String)
+V.Local.sWF.Declare(String)
+V.Local.sLine.Declare(String)
+
+f.Intrinsic.Control.If(v.Args.Column,=,"EDIT")	
+		Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.Args.RowIndex,V.Local.sHold)		
+		
+		F.Intrinsic.control.if(V.local.shold,<>,"")
+			Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.Args.RowIndex,V.Global.iWFidLinkClicked)
+		
+			Gui.F_Workflow.txtActiveRow.Text(V.Args.RowIndex)
+			Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","PERC_COMPLETION",V.Args.RowIndex,V.Local.sHold)
+			Gui.F_Workflow.txtPercent.Text(V.Local.shold)			
+			F.Intrinsic.Control.If(V.Local.shold,=,100)
+				Gui.F_Workflow.chkComplete.Value(1)
+			f.Intrinsic.Control.Else
+				Gui.F_Workflow.chkComplete.Value(0)
+			F.Intrinsic.Control.EndIf
+						
+			Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","SIGNEDOFF_DATE",V.Args.RowIndex,V.Local.sHold)
+			f.Intrinsic.Control.If(v.Local.shold,=,"")				
+				Gui.F_Workflow.chkSignOff.enabled(true)
+				Gui.F_Workflow.chkSignOff.Value(0)
+			f.Intrinsic.Control.Else
+				Gui.F_Workflow.chkSignOff.Value(1)
+				Gui.F_Workflow.chkSignOff.enabled(false)
+			f.Intrinsic.Control.EndIf
+			
+			Gui.F_Workflow..Show
+		F.intrinsic.control.endif
+f.Intrinsic.Control.ElseIf(v.Args.Column,=,"INFO")
+	F.Intrinsic.Control.CallSub(Clear_extra)
+	
+	'Load User fields from grid
+	F.Intrinsic.UI.InvokeWaitDialog("Loading Additional Data","Loading Line Data")
+	'Gui.F_LineExtra.txtActiveRow.Text(V.Args.key)
+	
+	Gui.F_LineExtra.txtActiveRow.Text(V.Args.RowIndex)	
+	
+	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.Args.RowIndex,V.Local.sWF)
+	'Gui.F_Main.fgLines.GetTextMatrix(0,V.Args.key,V.Local.sWF)
+	Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","LINE",V.Args.RowIndex,V.Local.sLine)
+	'Gui.F_Main.fgLines.GetTextMatrix(2,V.Args.key,V.Local.sLine)
+	F.Global.WorkFlow.GetLineID(V.Local.sWF,V.Local.sLine,V.Local.iID)
+
+	F.Intrinsic.String.Concat("SELECT USER_1, USER_2, USER_3, USER_4, USER_5 FROM ATG_WF_LINES WHERE LINE_ID = ",V.Local.iID,V.Local.squery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstX",V.Local.squery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstX.EOF,=,False)
+		Gui.F_LineExtra.txtU1.Text(V.odbc.conx!rstX.FieldVal!USER_1)
+		Gui.F_LineExtra.txtU2.Text(V.odbc.conx!rstX.FieldVal!USER_2)
+		Gui.F_LineExtra.txtU3.Text(V.odbc.conx!rstX.FieldVal!USER_3)
+		Gui.F_LineExtra.txtU4.Text(V.odbc.conx!rstX.FieldVal!USER_4)
+		Gui.F_LineExtra.txtU5.Text(V.odbc.conx!rstX.FieldVal!USER_5)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Conx!rstX.Close
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Dependencies",2,1,5)
+	
+	F.Intrinsic.Control.CallSub(Load_depend,"KEY",V.Args.RowIndex,"iID",V.Local.iID)
+	'F.Intrinsic.Control.CallSub(Load_depend,"KEY",V.Args.key,"iID",V.Local.iID)
+
+	'load dependenciesgui.F_LineExtra.ta
+	
+	Gui.F_LineExtra.tabx1.tabvisible(0,True)
+	Gui.F_LineExtra.tabx1.tabvisible(1,True)
+	Gui.F_LineExtra.tabx1.tabvisible(2,True)
+	Gui.F_LineExtra.tabx1.tabvisible(3,True)
+
+	Gui.F_LineExtra.tabx1.SetTab(0)
+	'load notes
+	
+	'F.Intrinsic.Control.CallSub(Load_doc_depend,"KEY",V.Args.key,"iID",V.Local.iID)
+	F.Intrinsic.Control.CallSub(Load_doc_depend,"KEY",V.Args.RowIndex,"iID",V.Local.iID)
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Notes",3,1,5)
+	F.global.workflow.READNOTE(V.Local.iID,V.Local.sHold)
+	Gui.F_LineExtra.txtNotes.Text(V.Local.sHold)
+	'load meta data
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Meta Data",4,1,5)
+	F.global.workflow.READMETADATA(V.Local.iID,0,-1,V.Local.sHold)
+	F.Intrinsic.String.Split(V.Local.sHold,"*!*",V.Local.smeta)
+
+	F.Intrinsic.Control.for(V.Local.iC,V.Local.sMeta.LBound,V.Local.sMeta.UBound,1)
+		F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iX)
+		Gui.F_LineExtra.txtMeta[v.local.iX].text(V.Local.sMeta(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Reference",5,1,5)
+	F.global.workflow.READREFERENCELINEDATA(V.Local.sWF,V.Local.sLine,-1,V.Local.sHold)
+	F.Intrinsic.String.Split(V.Local.sHold,"*!*",V.Local.smeta)
+	F.Intrinsic.Control.for(V.Local.iC,V.Local.sMeta.LBound,V.Local.sMeta.UBound,1)
+		F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iX)
+		Gui.F_LineExtra.txtRef[v.local.iX].text(V.Local.sMeta(v.Local.iC))
+	F.Intrinsic.Control.Next(V.Local.iC)
+	Gui.F_LineExtra.txtHeader.Text("")
+	
+	
+	v.Local.sRefData.Declare
+	v.Local.sRefData1.Declare
+	
+	F.Global.WorkFlow.ReadReferenceData(V.Local.sWF,0,v.Local.sRefData)  'PART
+	F.Global.WorkFlow.ReadReferenceData(V.Local.sWF,1,v.Local.sRefData1) 'REV
+	f.Intrinsic.String.Build("{0} {1}",v.Local.sRefData,v.Local.sRefData1,V.Local.squery)
+	Gui.F_LineExtra.txtRef1.Text(V.Local.squery)
+	
+	Gui.F_LineExtra..Show
+	F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.EndIf
+Program.Sub.GCWFQueue_RowCellClick.End
+
+Program.Sub.LinkExists.Start
+v.Local.iRet.Declare(Long)
+v.Local.sScript.Declare(String)
+
+'f.Global.DocumentControl.GetLinkID(v.Screen.F_Main!txtID.Text,90,v.Local.iRet)
+f.Global.DocumentControl.GetLinkID(v.Global.iWFidLinkClicked,90,v.Local.iRet)
+
+Function.Intrinsic.Control.If(v.Local.iRet,=,-1)
+	'Create new ref
+	F.Global.General.ResetPassedDataElements
+	F.Global.General.SetPassedDataElement("DATA-LINK-TYPE","90")
+	F.Global.General.SetPassedDataElement("DATA-LINK-KEY",V.Global.iWFidLinkClicked)
+	f.Intrinsic.String.Build("{0}\PPT_CreateDocReference.g2u",v.Caller.GasDir,v.Local.sScript)	
+	f.Global.General.CallSyncGAS(v.Local.sScript)	
+f.Intrinsic.Control.EndIf
+Program.Sub.LinkExists.End
+
+Program.Sub.RejectWF.Start
+f.Intrinsic.Control.Try
+v.Local.sError.Declare
+
+v.Local.sSQL.Declare
+V.Local.lWF.Declare
+v.Local.sFilter.declare
+V.Local.sWF.Declare
+
+
+'WF_RejectReason
+'WF_ID
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","WF_ID",V.screen.F_Workflow!txtActiveRow.Text,V.Local.lWF)
+Gui.F_Main.GCWFQueue.GetCellValueByColumnName("gvWFQueue","Title",V.screen.F_Workflow!txtActiveRow.Text,V.Local.sWF)
+f.Intrinsic.String.Build("select * from GCG_6074_WFReject where WF_ID = {0}",V.Local.lWF,v.Local.Ssql)
+
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.Ssql)
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,True)
+	F.ODBC.conx!rst.AddNew
+	F.ODBC.conx!rst.Set!WF_ID(V.Local.lWF)
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rst.Set!WF_RejectReason(v.Screen.F_Workflow!txtMultReject.Text)
+F.ODBC.conx!rst.Set!WF_RejectUser(v.Caller.User)
+F.ODBC.conx!rst.Set!WF_RejectDate(v.Ambient.Now)
+F.ODBC.conx!rst.Update
+F.ODBC.conx!rst.Close
+
+f.Intrinsic.String.Build("update ATG_WF_HEADER set COMPLETION_DATE = NULL where WF_ID = {0}",V.Local.lWF,v.Local.sSQL)
+f.ODBC.Connection!conx.execute(v.Local.sSQL)
+f.Intrinsic.String.Build("update ATG_WF_LINES set PERC_COMPLETION = 0 ,COMPLETED_BY='',COMPLETION_DATE = NULL where WF_ID = {0}",V.Local.lWF,v.Local.sSQL)
+f.ODBC.Connection!conx.execute(v.Local.sSQL)
+
+
+f.Intrinsic.String.Build("WF_ID={0}",V.Local.lWF,v.Local.sFilter)
+
+f.Data.DataView.Create("DTGRIDWFLIST","DVGRIDWFLIST")
+f.Data.DataView.SetFilter("DTGRIDWFLIST","DVGRIDWFLIST",v.Local.sFilter)
+f.Data.DataView.SetValue("DTGRIDWFLIST","DVGRIDWFLIST",-1,"PERC_COMPLETION",0)
+f.Data.DataView.close("DTGRIDWFLIST","DVGRIDWFLIST")
+gui.F_Workflow.txtPercent.Text("0")
+
+
+f.Intrinsic.Control.CallSub(Reject_Notify,"WF",V.Local.lWF,"TITLE",V.Local.sWF,"REASON",v.Screen.F_Workflow!txtMultReject.Text)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry
+Program.Sub.RejectWF.End
+
+Program.Sub.cmdRejectSave_Click.Start
+	f.Intrinsic.Control.CallSub(RejectWF)
+Program.Sub.cmdRejectSave_Click.End
+Program.Sub.cmdMultRejSave_Click.Start
+f.Intrinsic.Control.If(v.Screen.F_Workflow!txtMultReject.Text,=,"")
+	f.Intrinsic.UI.Msgbox("Please enter Reject Reason")
+	v.Global.sRET.Set("***NORETURN***")
+	gui.F_Workflow.txtMultReject.SetFocus
+f.Intrinsic.Control.Else
+	f.Intrinsic.Control.CallSub(RejectWF)
+	v.Global.sRET.Set("")
+	gui.F_Workflow.frameWFREject.Visible(false)
+	Gui.F_Workflow..Visible(false)
+f.Intrinsic.Control.EndIf
+
+Program.Sub.cmdMultRejSave_Click.End
+
+Program.Sub.Reject_Notify.Start
+f.Intrinsic.Control.Try
+
+v.Local.sError.Declare
+v.Local.sSQL.Declare
+v.Local.sRep.Declare
+v.Local.iRet.Declare
+v.Local.sTitle.Declare
+v.local.sMsg.Declare
+V.Local.semail.Declare
+v.Local.i.Declare
+
+v.Local.sTitle.Set(v.Args.TITLE)
+F.Global.Security.GetUserEmail(V.Caller.User,V.Local.semail)
+f.Intrinsic.String.Build("WorkFlow Rejected{0}WorkFlow:{1}{0}Title:{2}{0}Reject Reason:{3}",v.Ambient.NewLine,v.Args.WF,v.Args.TITLE,v.Args.REASON,v.Local.sMsg)
+
+'Set the email message
+f.Intrinsic.String.Build("SELECT  distinct NOTIFY, USER_GROUP, USR_GRP_FLAG FROM ATG_WF_LINES WHERE WF_ID = {0} AND NOTIFY= 1  ORDER BY LINE",v.Args.WF,v.Local.sSQL)
+f.data.datatable.CreateFromSQL("dtEmailNotify","conx",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+	f.Intrinsic.Control.For(v.Local.i,0,v.DataTable.dtEmailNotify.RowCount--,1)
+		f.Intrinsic.Control.If(v.DataTable.dtEmailNotify(v.Local.i).USR_GRP_FLAG!FieldVal,=,False)	'This is if a group was specified
+			f.Global.Security.GetGroupEmails(v.DataTable.dtEmailNotify(v.Local.i).USER_GROUP!FieldVal,v.Local.sRep)
+			f.Intrinsic.String.Split(v.Local.sRep,"*!*",v.Local.sRep)
+			f.Intrinsic.Control.For(v.Local.iRet,0,v.Local.sRep.UBound,1)
+				f.Intrinsic.Control.If(v.Local.sRep(v.Local.iRet).trim,<>,"")
+					f.Global.Messaging.CreateEMMessage(v.Local.sRep(v.Local.iRet),v.Local.sRep(v.Local.iRet),v.Local.sEmail,"GSSystem",v.Local.sTitle,v.local.sMsg)
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.Next(v.Local.iRet)
+		f.Intrinsic.Control.Else	'This is if a user was specified
+			f.Global.Security.GetUserEmail(v.DataTable.dtEmailNotify(v.Local.i).USER_GROUP!FieldVal,v.Local.sRep)
+			f.Intrinsic.Control.If(v.Local.sRep,<>,"")
+				f.Global.Messaging.CreateEMMessage(v.Local.sRep,v.DataTable.dtEmailNotify(v.Local.i).USER_GROUP!FieldVal,v.Local.sEmail,"GSSystem",v.Local.sTitle,v.local.sMsg)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.i)
+f.Intrinsic.Control.EndIf
+f.data.datatable.close("dtEmailNotify")
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry
+Program.Sub.Reject_Notify.End
+
+Program.Sub.cmdCompleteLine_Click.Start
+f.Intrinsic.Control.Try
+
+v.Local.sError.Declare
+v.Local.i.Declare
+v.Local.iLineID.Declare
+v.Local.iWFID.Declare
+v.Local.iLineNO.Declare
+
+f.Data.DataView.create("dtGridWFList","dVGridWFList")
+
+'F.Data.DataView.SetFilter("dtGridWFList","dVGridWFList","Select=1 and (PERC_COMPLETION Is Null Or PERC_COMPLETION < 100 )")
+
+F.Data.DataView.SetFilter("dtGridWFList","dVGridWFList","Select=1")
+f.Intrinsic.Control.If(v.DataView.dtGridWFList!dVGridWFList.RowCount,=,0)
+	f.Intrinsic.UI.Msgbox("Please select lines")
+f.Intrinsic.Control.else
+	F.Intrinsic.UI.InvokeWaitDialog("")
+'	f.Intrinsic.Control.If(v.Caller.CompanyCode,=,"TST")
+'		Function.Intrinsic.Debug.InvokeDebugger
+'		Function.Intrinsic.Debug.Stop
+'	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.For(v.Local.i,v.DataView.dtGridWFList!dVGridWFList.RowCount--,0,-1)
+		F.Intrinsic.UI.ChangeWaitStatus("Closing WorkFlow Steps...Please Wait...",v.Local.i,1,v.DataView.dtGridWFList!dVGridWFList.RowCount)
+		f.Intrinsic.Control.If(v.DataView.dtGridWFList!dVGridWFList(v.Local.i).Dep_Completed!FieldValtrim,<>,"Pending")
+			v.Local.iWFID.Set(v.DataView.dtGridWFList!dVGridWFList(v.Local.i).WF_ID!FieldVal)
+			v.Local.iLineID.Set(v.DataView.dtGridWFList!dVGridWFList(v.Local.i).Line_ID!FieldVal)
+			v.Local.iLineNO.Set(v.DataView.dtGridWFList!dVGridWFList(v.Local.i).LINE!FieldVal)
+			f.Intrinsic.Math.Add(v.Local.iLineNO,1,v.Local.iLineNO)
+			F.Global.workflow.completeline(v.DataView.dtGridWFList!dVGridWFList(v.Local.i).WF_ID!FieldVal,v.DataView.dtGridWFList!dVGridWFList(v.Local.i).LINE!FieldVal)
+			f.Intrinsic.Control.CallSub(GetDependencyNotify,"LINE_ID",v.Local.iLineID,"WFID",v.Local.iWFID,"LNO",v.Local.iLineNO,"Title",v.DataView.dtGridWFList!dVGridWFList(v.Local.i).Title!FieldValtrim)
+			f.Data.DataView.SetValue("dtGridWFList","dVGridWFList",v.Local.i,"PERC_COMPLETION",100,"Select",False)
+		f.Intrinsic.Control.endif
+	f.Intrinsic.Control.Next(v.Local.i)
+	f.Data.Datatable.AcceptChanges("dtGridWFList")
+	F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.EndIf
+
+f.Data.DataView.Close("dtGridWFList","dVGridWFList")
+
+f.Intrinsic.Control.Catch
+
+F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry	
+Program.Sub.cmdCompleteLine_Click.End
+
+Program.Sub.GetDependencyNotify.Start
+f.Intrinsic.Control.Try
+v.Local.sSQL.Declare
+V.Local.sRet.Declare
+v.Local.sRep.Declare
+v.Local.iRet.Declare
+v.Local.iUsrId.Declare
+v.Local.sTemp.Declare
+v.Local.sTemp1.Declare
+v.Local.sSender.Declare
+v.Local.sRecipient.Declare
+v.Local.sError.Declare
+
+
+f.Intrinsic.String.Build("select assoc_id from ATG_WF_DEPENDENCY where  DEPENDENCY  ={0}",v.Args.LINE_ID,v.Local.sSQL)
+f.Data.DataTable.CreateFromSQL("dtDepend","conx",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.dtDepend.RowCount,>,0)
+'			F.Global.WorkFlow.ReadLineByID(V.Local.sRet,V.Local.sRet)
+	F.Global.WorkFlow.ReadLineByID(v.DataTable.dtDepend(0).assoc_id!FieldValLong,V.Local.sRet)
+	f.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'0 name
+	'1 notify
+	'6 grp
+	'7 user/grp?
+	'10 status
+
+	f.Intrinsic.Control.If(V.Local.sRet(1),=,1)
+		f.Global.Security.GetUserId(v.Caller.User,v.Caller.CompanyCode,v.Local.iUsrId)
+		f.Global.Security.GetFullName(v.Caller.User,v.Local.sTemp)
+		f.Global.Security.GetUserEmail(v.Caller.User,v.Local.sTemp1)
+		f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sTemp1,v.Local.sTemp,v.Local.sSender)
+				
+		f.Intrinsic.Control.If(V.Local.sRet(7),=,False)'This is if a group was specified
+			f.Global.Security.GetGroupEmails(V.Local.sRet(6),v.Local.sRep)
+''			f.Intrinsic.String.Split(v.Local.sRep,"*!*",v.Local.sRep)
+			f.Intrinsic.Control.If(v.Local.sRep.Trim,=,"")
+				f.Intrinsic.Control.ExitSub
+			f.Intrinsic.Control.EndIf
+			'put the emails back together
+			f.Intrinsic.String.Join(v.Local.sRep,"@!@*!*",v.Local.sRep)
+			'put *!* in the front of the string
+			f.Intrinsic.String.Build("*!*{0}",v.Local.sRep,v.Local.sRecipient)
+		f.Intrinsic.Control.Else	'This is if a user was specified
+			f.Global.Security.GetUserEmail(V.Local.sRet(6),v.Local.sRecipient)
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.CallSub(Get_WFType,"Title",v.Args.Title)
+		
+		f.Intrinsic.Control.If(v.Args.Error,=,0)
+			f.Intrinsic.Control.CallSub(EmailCompose,"EType",v.Args.TYPE,"WFID",v.Args.WFID,"LNO",v.Args.LNO,"CODE",v.Args.CODE,"LOC",v.Args.LOC)
+			f.Intrinsic.Control.If(v.Args.EmailSubj.trim,<>,"")
+				f.Global.Messaging.QueueMessage(v.Caller.CompanyCode,v.Local.iUsrID,"GCG_6074WF",v.Args.EmailSubj,v.Local.sSender,v.Local.sRecipient,v.Args.EmailBody)
+			f.Intrinsic.Control.endif
+		f.Intrinsic.Control.EndIf
+		
+	f.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("dtDepend")
+
+
+f.Intrinsic.Control.Catch
+
+F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry
+Program.Sub.GetDependencyNotify.End
+
+Program.Sub.EmailCompose.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSubject.Declare
+v.Local.sBody.Declare
+v.Local.sTemp.Declare
+v.Local.sBody1.Declare
+v.Local.sRefData.Declare
+v.Local.sRefData1.Declare
+v.Local.sSQL.Declare
+v.Local.stitle.Declare
+v.Local.sError.Declare
+
+f.Intrinsic.Control.If(v.Args.EType,=,"SCRAPAPPROVAL")
+
+	v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the Scrap Approval DOA Workflow.")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-6 will use the Workflow Queue in GS to approver/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 7-10 will forward this email to Casey Brooks with their decision to approve or reject.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	F.Global.WorkFlow.ReadReferenceData(v.Args.WFID,0,v.Local.sRefData)  'NCMR
+	F.Global.WorkFlow.ReadReferenceData(v.Args.WFID,1,v.Local.sRefData1) 'SEQ
+	F.Intrinsic.String.LPad(v.Local.sRefData1,"0",3,v.Local.sRefData1)
+
+	v.Local.sSQL.set("select  Part,Location,User_Disposed_By,Disposed_Value,Qty_Disposed,Discrepancy,Date_Disposed,Text from   v_QUALITY_DISP A left Join QUAL_MSTR_NOTES on number = A.control_number and Seq = disposition_Seq")
+	f.Intrinsic.String.Build("{0} join v_QUALITY B on A.control_number = B.control_number where A.control_number = '{1}' and disposition_seq = '{2}'",v.Local.sSQL,v.Local.sRefData,v.Local.sRefData1,v.Local.sSQL)
+
+	f.data.datatable.CreateFromSQL("dtEmailNotify","conx",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+		f.Intrinsic.String.Build("Company:  {0}",v.Caller.CompanyCode,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Location:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Location!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}NCMR#/Seq#:  {2} {3}",v.Local.sBody1,v.Ambient.NewLine,v.Local.sRefData,v.Local.sRefData1,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Part #/Rev:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Part!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Date:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Date_Disposed!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Qty:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Qty_Disposed!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Value($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Disposed_Value!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed By:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).User_Disposed_By!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Discrepancy:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Discrepancy!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposal Action:  Scrap",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Discrepancy Notes:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Text!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("Scrap Approval NCMR#/Seq#:{0} {1} LOC:{2}",v.Local.sRefData,v.Local.sRefData1,v.DataTable.dtEmailNotify(0).Location!FieldVal,v.Local.sSubject)
+	f.Intrinsic.Control.EndIf
+	f.data.datatable.close("dtEmailNotify")
+
+f.Intrinsic.Control.elseIf(v.Args.EType,=,"CREDITMEMOAR")
+		v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the AR Credit Memo DOA Workflow.")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-5 will use the Workflow Queue - 6074 in GS to approver/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 6-9 will forward this email to Casey Brooks with their decision to approve or reject.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	f.Intrinsic.String.Build("select distinct Batch,abs(INVTOT) as INVTOT,Post_Date_SQL,REFN from AR_BATCH_TRANS where Batch = '{0}' and code = 12",v.Args.Code,,v.Local.sSQL)
+
+	f.data.datatable.CreateFromSQL("dtEmailNotify","conx",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+		f.Intrinsic.String.Build("Company:  {0}",v.Caller.CompanyCode,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Location:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.lOC,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Batch:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.Code,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Type:  AR",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Transaction:  CMEMO",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Reference:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).REFN!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Date:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Post_Date_SQL!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Amount($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).INVTOT!FieldVal,v.Local.sBody1)
+	
+		f.Intrinsic.String.Build("Credit Memo Approval CMEMO:{0} LOC:{1}",v.DataTable.dtEmailNotify(0).REFN!FieldVal,v.Args.lOC,v.Local.sSubject)
+	f.Intrinsic.Control.EndIf
+	f.data.datatable.close("dtEmailNotify")
+f.Intrinsic.Control.elseIf(v.Args.EType,=,"CUSTAPPROVAL")
+
+	v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the Customer Approval (Credit Hold) DOA Workflow.  ")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-2 will use the Workflow Queue - 6074 in GS to approve/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	f.Intrinsic.String.Build("select name_Customer,credit_amount,terms_message from v_customer_master C left join AR_CREDIT_LIMIT on Credit = credit_code left Join v_CUSTOMER_SALES S on C.customer = S.customer left join v_AR_TERMS_DESCR on Payment_Terms = terms_code  where C.customer = '{0}'",v.Args.CODE,v.Local.sSQL)
+	f.data.datatable.CreateFromSQL("dtEmailNotify","conx",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+		f.Intrinsic.String.Build("Customer#:  {0}",v.Args.Code,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Customer Name:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).name_Customer!FieldVal,v.Local.sBody1)
+	
+		f.Intrinsic.String.Build("{0}{1}Credit Limit($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).credit_amount!FieldVal,v.Local.sBody1)
+	
+		f.Intrinsic.String.Build("{0}{1}Terms:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).terms_message!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+	
+		f.Intrinsic.String.Build("Customer Approval (Credit Hold) DOA Workflow:{0} - {1}",v.Args.Code,v.DataTable.dtEmailNotify(0).name_Customer!FieldVal,v.Local.sSubject)
+	f.Intrinsic.Control.EndIf
+	f.data.datatable.close("dtEmailNotify")
+
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("EmailSubj","")
+	f.Intrinsic.Variable.AddRV("EmailBody","")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("{0}{1}{1}{2}",v.Local.sBody,v.Ambient.NewLine,v.Local.sBody1,v.Local.sBody)
+
+f.Intrinsic.Variable.AddRV("EmailSubj",v.Local.sSubject)
+f.Intrinsic.Variable.AddRV("EmailBody",v.Local.sBody)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry
+Program.Sub.EmailCompose.End
+
+Program.Sub.Get_WFType.Start
+f.Intrinsic.Control.Try
+
+v.Local.bRet.Declare
+v.Local.sRet.Declare
+
+		f.Intrinsic.Variable.AddRV("Error",0)
+		
+		f.Intrinsic.String.IsInString(v.Args.Title,"Credit Memo Approval",True,v.Local.bRet)
+		'Credit Memo Approval-S0092 - KT
+		f.Intrinsic.Control.If(v.Local.bRet)
+			f.Intrinsic.String.Split(v.Args.Title,"Credit Memo Approval-",v.Local.sRet)
+			f.Intrinsic.Variable.AddRV("TYPE","CREDITMEMOAR")
+			
+			f.Intrinsic.String.Split(v.Local.sRet(1),"-",v.Local.sRet)
+			f.Intrinsic.Variable.AddRV("CODE",v.Local.sRet(0).trim)
+			f.Intrinsic.Variable.AddRV("LOC",v.Local.sRet(1).trim)
+			f.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.String.IsInString(v.Args.Title,"Scrap Approval",True,v.Local.bRet)
+		f.Intrinsic.Control.If(v.Local.bRet)
+			f.Intrinsic.Variable.AddRV("TYPE","SCRAPAPPROVAL")
+			f.Intrinsic.Variable.AddRV("CODE","")
+			f.Intrinsic.Variable.AddRV("LOC","")
+			f.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.String.IsInString(v.Args.Title,"Customer Approval",True,v.Local.bRet)
+		f.Intrinsic.Control.If(v.Local.bRet)
+			f.Intrinsic.String.Split(v.Args.Title,"Customer Approval: CUSTOMER",v.Local.sRet)
+			f.Intrinsic.Variable.AddRV("TYPE","CUSTAPPROVAL")
+			'Customer Approval: CUSTOMER 8705
+			'Customer Approval: CUSTOMER 8448
+			f.Intrinsic.Variable.AddRV("CODE",v.Local.sRet(1).trim)
+			f.Intrinsic.Variable.AddRV("LOC","")
+			f.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Variable.AddRV("Error",1)
+	f.Intrinsic.String.Build("Project GCG_6074_WF_QUEUE.g2u {0}{0} {0}Error: {1} with Description: {2}", v.Ambient.NewLine, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndTry
+Program.Sub.Get_WFType.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$$}$8/5/2014 5:09:20 PM$}$False
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$Tables:
+${$5$}$2.0.0.0$}$2
+${$6$}$rnair$}$20210712142335131$}$JUGEdtlNdgRUPvge2DQ26bz/1piQWHOnPFfzWq13iZgAh2wJfjjz3y4fT9guA955W/rVrVd6IAE=
+Program.Sub.Comments.End
