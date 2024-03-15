@@ -1,0 +1,2964 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.frmAddLines..Create(BaseForm)
+Gui.frmAddLines..Caption("Product Codes")
+Gui.frmAddLines..Size(1202,940)
+Gui.frmAddLines..MinX(0)
+Gui.frmAddLines..MinY(0)
+Gui.frmAddLines..Position(0,0)
+Gui.frmAddLines..AlwaysOnTop(False)
+Gui.frmAddLines..FontName("Tahoma")
+Gui.frmAddLines..FontSize(8.25)
+Gui.frmAddLines..ControlBox(True)
+Gui.frmAddLines..MaxButton(False)
+Gui.frmAddLines..MinButton(True)
+Gui.frmAddLines..MousePointer(0)
+Gui.frmAddLines..Moveable(True)
+Gui.frmAddLines..Sizeable(True)
+Gui.frmAddLines..ShowInTaskBar(True)
+Gui.frmAddLines..TitleBar(True)
+Gui.frmAddLines..Event(UnLoad,Unload)
+Gui.frmAddLines.GsGridlines.Create(GsGridControl)
+Gui.frmAddLines.GsGridlines.Enabled(True)
+Gui.frmAddLines.GsGridlines.Visible(True)
+Gui.frmAddLines.GsGridlines.Zorder(0)
+Gui.frmAddLines.GsGridlines.Size(1160,849)
+Gui.frmAddLines.GsGridlines.Position(19,42)
+Gui.frmAddLines.GsGridlines.Event(RowCellClick,GsGridlines_RowCellClick)
+Gui.frmAddLines.cmdSave.Create(Button)
+Gui.frmAddLines.cmdSave.Enabled(True)
+Gui.frmAddLines.cmdSave.Visible(True)
+Gui.frmAddLines.cmdSave.Zorder(0)
+Gui.frmAddLines.cmdSave.Size(94,29)
+Gui.frmAddLines.cmdSave.Position(1079,5)
+Gui.frmAddLines.cmdSave.Caption("Save")
+Gui.frmAddLines.cmdSave.FontName("Tahoma")
+Gui.frmAddLines.cmdSave.FontSize(7.8)
+Gui.frmAddLines.cmdSave.Event(Click,cmdSave_Click)
+Gui.frmAddLines.frameLOC.Create(Frame)
+Gui.frmAddLines.frameLOC.Enabled(True)
+Gui.frmAddLines.frameLOC.Visible(True)
+Gui.frmAddLines.frameLOC.Zorder(0)
+Gui.frmAddLines.frameLOC.Size(357,32)
+Gui.frmAddLines.frameLOC.Position(15,6)
+Gui.frmAddLines.frameLOC.Caption("")
+Gui.frmAddLines.frameLOC.FontName("Tahoma")
+Gui.frmAddLines.frameLOC.FontSize(7.8)
+Gui.frmAddLines.lbllocation.Create(Label,"Location :",True,56,16,0,11,7,True,0,"Tahoma",7.8,,0,0)
+Gui.frmAddLines.lbllocation.BorderStyle(0)
+Gui.frmAddLines.lbllocation.Parent("frameLOC")
+Gui.frmAddLines.txtLocation.Create(TextBox,"",True,45,22,0,74,5,True,0,"Tahoma",7.8,,1)
+Gui.frmAddLines.txtLocation.Locked(True)
+Gui.frmAddLines.txtLocation.Parent("frameLOC")
+Gui.frmAddLines.cmdLocBrow.Create(Button)
+Gui.frmAddLines.cmdLocBrow.Enabled(True)
+Gui.frmAddLines.cmdLocBrow.Visible(True)
+Gui.frmAddLines.cmdLocBrow.Zorder(0)
+Gui.frmAddLines.cmdLocBrow.Size(30,22)
+Gui.frmAddLines.cmdLocBrow.Position(128,6)
+Gui.frmAddLines.cmdLocBrow.Caption("^")
+Gui.frmAddLines.cmdLocBrow.FontName("Tahoma")
+Gui.frmAddLines.cmdLocBrow.FontSize(7.8)
+Gui.frmAddLines.cmdLocBrow.Event(Click,cmdLocBrow_Click)
+Gui.frmAddLines.cmdLocBrow.Parent("frameLOC")
+Gui.frmAddLines.cmdRefreshData.Create(Button)
+Gui.frmAddLines.cmdRefreshData.Enabled(True)
+Gui.frmAddLines.cmdRefreshData.Visible(True)
+Gui.frmAddLines.cmdRefreshData.Zorder(0)
+Gui.frmAddLines.cmdRefreshData.Size(94,29)
+Gui.frmAddLines.cmdRefreshData.Position(202,1)
+Gui.frmAddLines.cmdRefreshData.Caption("Load Data")
+Gui.frmAddLines.cmdRefreshData.FontName("Tahoma")
+Gui.frmAddLines.cmdRefreshData.FontSize(7.8)
+Gui.frmAddLines.cmdRefreshData.Event(Click,LoadGrid_NEWPartApproval)
+Gui.frmAddLines.cmdRefreshData.Parent("frameLOC")
+Gui.DialogForm..Create(DialogForm)
+Gui.DialogForm..Caption("RMA Type")
+Gui.DialogForm..Size(300,200)
+Gui.DialogForm..MinX(0)
+Gui.DialogForm..MinY(0)
+Gui.DialogForm..Position(0,0)
+Gui.DialogForm..AlwaysOnTop(False)
+Gui.DialogForm..FontName("Tahoma")
+Gui.DialogForm..FontSize(8.25)
+Gui.DialogForm..MousePointer(0)
+Gui.DialogForm..DialogStyle(0)
+Gui.DialogForm..Moveable(True)
+Gui.DialogForm..Sizeable(True)
+Gui.DialogForm..ShowInTaskBar(True)
+Gui.DialogForm..TitleBar(True)
+Gui.DialogForm..Prompt("Select RMA Type")
+Gui.DialogForm.ddlRmaType.Create(DropDownList)
+Gui.DialogForm.ddlRmaType.Enabled(True)
+Gui.DialogForm.ddlRmaType.Visible(True)
+Gui.DialogForm.ddlRmaType.Zorder(0)
+Gui.DialogForm.ddlRmaType.Size(179,22)
+Gui.DialogForm.ddlRmaType.Position(15,14)
+Gui.DialogForm.ddlRmaType.FontName("Tahoma")
+Gui.DialogForm.ddlRmaType.FontSize(7.8)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.External.Include.Library("3500.lib")
+Program.Sub.Preflight.End
+Program.Sub.Main.Start
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+
+f.Intrinsic.Control.Try
+v.Local.sDISPType.Declare
+v.Local.sNCMR.Declare
+v.Local.sSEQ.Declare
+v.local.sTitle.Declare
+v.Local.iWF.Declare
+V.Local.sStatus.Declare
+v.Local.bSelectCase.Declare
+v.Local.bSelectCaseType.Declare
+v.Local.sSQL.Declare
+V.Global.bSave.Declare
+v.global.bMultiWF.Declare
+
+
+'ii)	Hook 28902 –NCMR – Pre Process
+'(1)	If the disposal action is “Scrap”, “Remake in a New WO”, “Create New PO”, or “Put Back on Original PO” check if the NCMR has an open workflow.  If it does, cancel the process and throw an error.
+'(2)	If was never a workflow initiated for this NCMR, create one and throw an error to the user.
+'(3)	If the disposal action is anything else, delete the open workflow associated with this NCMR.
+
+v.Local.sTemp.Declare
+V.Local.iRows.Declare
+V.Local.i.Declare
+V.Local.sLoc.Declare
+V.Local.sTemplate.Declare
+
+V.Local.sOrderNo.Declare
+V.Local.sOrdLine.Declare
+V.Local.sID.Declare
+V.Local.fValue.Declare
+
+
+'pouplate hook
+'f.Intrinsic.Control.If(v.Caller.Hook,=,11565)
+'f.Intrinsic.UI.Msgbox("")
+'	'email
+'	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000079,"LOCK","1")
+'	'print
+'	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000085,"LOCK","1")
+'f.Intrinsic.Control.EndIf
+'f.Intrinsic.Control.end
+'v.Local.iRetAscii.Declare
+
+'Function.Intrinsic.String.Asc("-",v.Local.iRetAscii)
+'f.Intrinsic.UI.Msgbox(v.Local.iRetAscii)
+'Function.Intrinsic.String.Asc("9",v.Local.iRetAscii)
+'f.Intrinsic.UI.Msgbox(v.Local.iRetAscii)
+'Function.Intrinsic.String.Asc("1",v.Local.iRetAscii)
+'f.Intrinsic.UI.Msgbox(v.Local.iRetAscii)
+'Function.Intrinsic.String.Asc("A",v.Local.iRetAscii)
+'f.Intrinsic.UI.Msgbox(v.Local.iRetAscii)
+
+'Hook 16911 - Email Button hook  PremiumFreightInbound
+'GCG_3178_email_PO_pdf_6074.g2u
+'Hook 11780 - Email Button hook   FreightOutBound
+'GCG_order_ack_pdf_6074.g2u
+
+f.Intrinsic.Control.If(v.Caller.Switches,=,"D")
+'WorkFlow dashboard - PART RELEASE
+	f.ODBC.Connection!con.opencompanyconnection
+	gui.frmAddLines.txtLocation.Text("KT")
+	'f.Intrinsic.Control.CallSub(LoadGrid_NEWPartApproval)
+	
+	gui.frmAddLines.GsGridLines.Anchor(15)
+	gui.frmAddLines.cmdSave.Visible(true)
+	gui.frmAddLines.cmdSave.Caption("Create selected WF")
+	gui.frmAddLines..Caption("Part Approval Workflow Dashboard")
+	Gui.frmAddLines.cmdSave.Size(100,29)
+	Gui.frmAddLines.cmdSave.Enabled(false)
+	gui.frmAddLines..MaxButton(True)
+	gui.frmAddLines..WindowState(2)
+	gui.frmAddLines.cmdSave.Anchor(9)
+	gui.frmAddLines..Show 
+f.Intrinsic.Control.elseIf(v.Caller.Switches,=,"R")
+	'Reject Reason
+	f.Intrinsic.Control.CallSub(Load_GridReject)
+f.Intrinsic.Control.elseIf(v.Caller.Switches,=,"M")
+	'Custom menu item - Product Grouping Codes
+	f.Intrinsic.Control.CallSub(Load_Grid)
+	'
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,30720)
+''RMA WF
+'' 	Variable.Passed.000004 - New RMA - N
+''	Variable.Passed.000010  - New stand - S
+''	Variable.Passed.000008  - value adjustment  - V
+'	f.Intrinsic.Control.If(Variable.Passed.000004,=,"N","OR",Variable.Passed.000010,=,"S",Variable.Passed.000008,=,"V")
+'		gui.DialogForm.ddlRmaType.AddItem("RMA Quality")
+'		gui.DialogForm.ddlRmaType.AddItem("RMA Non-Quality")
+'		f.Intrinsic.Control.Label("LBL1")
+'		gui.DialogForm..Show
+'		gui.DialogForm..WaitForDismiss
+'		f.Intrinsic.UI.Msgbox(v.Screen.DialogForm!ddlRmaType.Text)
+'		Variable.Passed.GLOBAL.Set(v.Screen.DialogForm!ddlRmaType.Text)
+'		f.Intrinsic.Control.If(v.Screen.DialogForm!ddlRmaType.Text,=,"")
+'			f.Intrinsic.UI.Msgbox("Please select RMA Type")
+'			f.Intrinsic.Control.GoTo("LBL1")
+'		f.Intrinsic.Control.EndIf
+''		gui.DialogForm..Dispose(true)
+'	f.Intrinsic.Control.EndIf
+
+ 
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,55600)
+'Credit Memo Approval: AR Batch
+	f.Intrinsic.Control.CallSub(CreditApprovalAR)
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,30720)
+'RMA Populate
+	f.Intrinsic.Control.if(Variable.Passed.000010.trim,=,"S")
+		v.Passed.Global.Set("STANDALONE")
+	f.Intrinsic.Control.Else
+		v.Passed.Global.Set("")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,30810)
+'RMA Populate
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(Check_RMAWF,"RMANO",Variable.Passed.000125)
+	f.Intrinsic.Control.If(v.Args.WFExist,=,False)
+'		gui.DialogForm.ddlRmaType.AddItem("RMA-Quality")
+'		gui.DialogForm.ddlRmaType.AddItem("RMA-Non Quality")
+		gui.DialogForm.ddlRmaType.AddItem("RMA Quality")
+		gui.DialogForm.ddlRmaType.AddItem("RMA Non-Quality")
+		f.Intrinsic.Control.Label("LBL1")
+		gui.DialogForm..Show
+		gui.DialogForm..WaitForDismiss
+	'	Variable.Passed.GLOBAL.Set(v.Screen.DialogForm!ddlRmaType.Text)
+'		f.Intrinsic.Control.If(v.Screen.DialogForm!ddlRmaType.Text,=,"")
+		f.Intrinsic.Control.If(v.Screen.DialogForm!ddlRmaType.ListIndex,=,-1)
+			f.Intrinsic.UI.Msgbox("Please select RMA Type")
+			f.Intrinsic.Control.GoTo("LBL1")
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.CallSub(GET_RMAData,"RMANO",Variable.Passed.000125)
+		
+		f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",Variable.Passed.000125,"SCRAPVALUE",v.Args.Amt,"LOC",v.Args.LOC,"WF",v.Screen.DialogForm!ddlRmaType.Text,"Type","RMA")
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Control.If(v.Args.WFExistClosed,=,False)
+			V.Passed.777777.Set(1)
+			f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf	
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,30840)
+'Variable.Passed.000125 - RMA no
+'line save
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(Check_RMAWF,"RMANO",Variable.Passed.000125)
+	f.Intrinsic.Control.If(v.Args.WFExist,=,True)
+		V.Passed.777777.Set(1)
+		f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,10531)
+'Pricing Approval
+'Save Line
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(Find_WFGrpCode_PricingApproval,"Line","Y")
+	f.Intrinsic.Control.If(v.Args.PApprovalWF,<>,"")
+		'Pricing Approval WF Exist
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","PricingApproval","Template",v.Args.PApprovalWF,"Line",Variable.Passed.000051)
+		f.Intrinsic.Control.If(v.Args.WF,=,-1)
+		    'Variable.Passed.000032 extension
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Args.Title,"SCRAPVALUE",Variable.Passed.000032,"Type","PricingApproval","Template",v.Args.PApprovalWF)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.ElseIf(v.Caller.Hook,=,10940,"OR",v.Caller.Hook,=,10850)
+	f.ODBC.Connection!con.opencompanyconnection
+'email hook QTE Header & 'print 
+	F.Intrinsic.String.Format(V.Passed.000003,"0000000",V.Local.sOrderNo)
+	f.Intrinsic.String.Build("select WF_ID from ATG_WF_HEADER where Title like 'Pricing%{0}%'",V.Local.sOrderNo,v.Local.ssql)
+	f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+		f.Global.WorkFlow.readcompletion(V.DataTable.DTWF(0).WF_ID!FieldVal,V.Local.sStatus)
+		f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+			V.Passed.777777.Set(1)
+			f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	f.Data.Datatable.Close("DTWF")
+f.Intrinsic.Control.ElseIf(v.Caller.Hook,=,11780,"OR",v.Caller.Hook,=,11890,v.Caller.Hook,=,11565)
+	'SO FreightOutbound
+'email hook SO Header & 'print 
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(FreightOutBound,"INCALL","LOAD")
+	f.Intrinsic.Control.If(v.Args.WF,<>,-1)
+		'WFlow Exist
+'		pouplate hook
+		f.Intrinsic.Control.If(v.Caller.Hook,=,11565)
+			'email
+			F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000079,"LOCK","1")
+			'print
+			F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000085,"LOCK","1")
+		f.Intrinsic.Control.elseIf(v.Caller.Hook,=,11780,"OR",v.Caller.Hook,=,11890)
+'				email hook SO Header & 'print
+			V.Passed.777777.Set(1)
+			f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16855,"OR",v.Caller.Hook,=,16911,v.Caller.Hook,=,16913,v.Caller.Hook,=,16880)
+'PO Change FreightInbound
+'email hook PO Header & 'print 
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+	f.ODBC.Connection!con.opencompanyconnection
+'	f.Intrinsic.Control.CallSub(Find_INOUTBOUND_LOC,"Type","PremiumFreightInbound","TRANNO",Variable.Passed.000008)
+	f.Intrinsic.Control.CallSub(Find_INOUTBOUND_LOC,"Type","POInventory","TRANNO",Variable.Passed.000008)
+	f.Intrinsic.Control.If(v.Args.STATUS,=,True)
+		'Freight line Exist
+'		f.Intrinsic.Control.CallSub(WF_Status,"Type","PremiumFreightInbound","ID",v.Args.ID)
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","POInventory","ID",v.Args.ID)
+		f.Intrinsic.Control.If(v.Args.WF,<>,-1)
+			f.Intrinsic.Control.If(v.Caller.Hook,=,16855)
+				'print
+				F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000047,"LOCK","1")
+				'email
+				F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000064,"LOCK","1")
+			f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16911,"OR",v.Caller.Hook,=,16913)
+'				email hook PO Header & 'print
+				V.Passed.777777.Set(1)
+				f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.If(v.Caller.Hook,=,16880)
+			'post save
+				f.Intrinsic.Control.If(v.Args.WFExist,=,-1)
+					f.Intrinsic.String.LPad(Variable.Passed.000008,"0",7,v.Local.sOrderNo)
+					f.Intrinsic.String.Build("select sum(extension) as EXT from v_PO_lines where purchase_order = '{0}'",V.Local.sOrderNo,v.Local.ssql)
+					f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+					F.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+						V.Local.fValue.Set(V.DataTable.DTWF(0).EXT!FieldVal)
+					F.Intrinsic.Control.EndIf
+					f.Data.Datatable.Close("DTWF")
+					f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Args.ID,"SCRAPVALUE",V.Local.fValue,"LOC",v.Args.LOCATION,"Type","POInventory","TRANNO",v.Local.sOrderNo)
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16884)
+'POST delete PO Header
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16911)
+'' email hook PO Header
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16090)
+'print process PO Header
+
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,16090)
+''Print
+'	f.Intrinsic.Control.CallSub(Print_Validation,"Type","PremiumFreightInbound")
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,17060)
+'PRE SAVE LINE FreightInbound
+
+'Variable.Passed.000021 qty 
+'	Variable.Passed.000111  cost
+'	part loc Variable.Passed.000011
+'	Variable.Passed.000008  part
+'	partno qty price
+
+	f.Intrinsic.String.Build("Premium Freight Inbound-LOC:{0} ORDNO:{1}",Variable.Passed.000011,Variable.Passed.008002,V.Local.sID)
+		f.Intrinsic.Control.If(Variable.Passed.000008,=,"FREIGHT")
+'	f.Intrinsic.Control.If(Variable.Passed.000008,=,"0020-40327       A01")
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","PremiumFreightInbound","ID",V.Local.sID)
+		f.Intrinsic.Control.If(v.Args.WF,=,-1)
+		'WF exist 
+			F.Intrinsic.Math.Mult(Variable.Passed.000111,Variable.Passed.000021,V.Local.fValue)
+			f.ODBC.Connection!con.opencompanyconnection
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",V.Local.sID,"SCRAPVALUE",V.Local.fValue,"LOC",Variable.Passed.000011,"Type","PremiumFreightInbound")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.endif
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,17070)
+'PRE DEL Line 12241
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,12242)
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,12241)
+'Customer Cancellations and Reschedules
+'DELETE LINE SO
+	f.Intrinsic.Control.CallSub(Get_ORDERNO-LINE)
+'	Variable.Passed.000052 part
+'	Variable.Passed.000054 loC
+
+	f.Intrinsic.Control.CallSub(WF_Status,"Type","CUSTCANCEL","ID",v.Args.ID)
+	f.Intrinsic.Control.If(v.Args.WF,<>,-1)
+	'WF exist dont delete line
+		Variable.Passed.777777.Set(1)
+		f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,11870)
+'save hdr
+	f.ODBC.Connection!con.opencompanyconnection
+	'Freight Outbound WorkFlow
+	f.Intrinsic.Control.CallSub(FreightOutBound,"INCALL","SAVE")
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,12230)
+'PRESAVE SAVE LINE
+	f.ODBC.Connection!con.opencompanyconnection
+
+	f.Intrinsic.Control.CallSub(Get_ORDERNO-LINE)
+	f.Intrinsic.Control.If(Variable.Passed.000052.Trim,=,"CANCEL")
+	'Part
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","CUSTCANCEL","ID",v.Args.ID)
+		f.Intrinsic.Control.If(v.Args.WF,=,-1)
+		'WF exist 
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Args.ID,"SCRAPVALUE",Variable.Passed.000092,"LOC",Variable.Passed.000054,"Type","CUSTCANCEL")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Control.CallSub(ItemPromise_Status,"Order",v.Args.OrderNo,"Line",v.Args.OrdLine)
+		f.Intrinsic.Control.If(v.Args.ItemPromise_Status,=,True)
+		'item promise date chaged initiate WF
+			f.Intrinsic.Control.CallSub(WF_Status,"Type","CUSTCANCEL","ID",v.Args.ID)
+			f.Intrinsic.Control.If(v.Args.WF,=,-1)
+			'WF exist 
+				f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Args.ID,"SCRAPVALUE",Variable.Passed.000092,"LOC",Variable.Passed.000054,"Type","CUSTCANCEL")
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+'f.Intrinsic.Control.elseIf(v.Caller.Hook,=,12230)
+''PRESAVE LINE
+'	f.Intrinsic.Control.CallSub(Get_ORDERNO-LINE)
+'	V.Local.sOrderNo.Set(v.Args.OrderNo)
+'	V.Local.sOrdLine.Set(v.Args.OrdLine)
+f.Intrinsic.Control.elseIf(Variable.Ambient.IsInTaskScheduler,=,True)
+
+	'Create WF
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(Schedule_CreateWF)
+f.Intrinsic.Control.elseIf(v.Caller.Switches,=,"M")
+'Manual TaskScheduler - Scrap Approval
+    f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(Schedule_CreateWF)
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,34700)	
+'Workflow Task Completed
+'	Variable.Passed.F_WORKFLOW-TXTPERCENT
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.CallSub(FindWF_ID)
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,14384)
+'Customer Approval
+''14384 - Customer Master Pre Save
+	f.Intrinsic.Control.If(v.Caller.Switches,=,"N")
+		'New Customer
+		'credit HOLD
+		Variable.Passed.000037.Set("Y")
+		f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000037,"LOCK","1")
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","CUST","ID",Variable.Passed.000002)
+		f.Intrinsic.Control.If(v.Args.WF,=,-1)
+		'WF dont exist
+			f.ODBC.Connection!con.opencompanyconnection
+			f.Intrinsic.Control.CallSub(Customer_DataChanged,"WFExist",v.Args.WFExist)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.endif	
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,14385)	
+'Customer Approval
+'14385 - Customer Master POST Save
+	'	terms     Variable.Passed.000041
+
+	f.Intrinsic.Control.If(v.Caller.Switches,=,"N")
+		'New Customer
+		f.ODBC.Connection!con.opencompanyconnection
+'		f.Intrinsic.Control.CallSub(Find_Terms,"Type","C")
+'		f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",Variable.Passed.000002,"SCRAPVALUE",v.Args.RETDUEDAYS,"LOC","CUST","Type","")
+		f.Intrinsic.Control.CallSub(Customer_DataChanged,"WFExist","")
+	f.Intrinsic.Control.endif
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,14350)
+'Customer Approval
+'14350 - Customer Master Populate
+	' Variable.Passed.000002 Customer
+	f.ODBC.Connection!con.opencompanyconnection
+	f.Intrinsic.Control.If(v.Caller.Switches,<>,"N")
+		f.Intrinsic.Control.CallSub(WF_Status,"Type","CUST","ID",Variable.Passed.000002)
+	f.Intrinsic.Control.endif
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,45260)
+'45260 - Convert Prospect to Customer Post Save
+	f.ODBC.Connection!con.opencompanyconnection
+'	f.Intrinsic.Control.CallSub(Find_Terms,"Type","P")
+'	f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",Variable.Passed.000002,"SCRAPVALUE",v.Args.RETDUEDAYS,"LOC","CUST","Type","")
+	f.Intrinsic.Control.CallSub(Customer_DataChanged,"WFExist","")
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,28902)
+'Scrap Approval
+'Quality Reject Disposition
+	V.Local.sLoc.Set(v.Passed.000054.trim)
+	f.Intrinsic.String.Build("Scrap Approval-{0}",V.Local.sLoc,V.Local.sTemplate)
+'	v.Local.sDISPType.Set("SCRAP,REMAKE IN A NEW WO,CREATE NEW PO,PUT BACK ON ORGINAL PO")
+	
+'	f.Intrinsic.UI.Msgbox(v.Local.sDISPType)
+'	F.Intrinsic.Control.SelectCase(v.Local.sDISPType.ucase)
+'		F.Intrinsic.Control.CaseAny("SCRAP","REMAKE IN A NEW WO","CREATE NEW PO","PUT BACK ON ORGINAL PO")
+'			v.Local.bSelectCase.set(true)
+'		F.Intrinsic.Control.CaseElse
+'			v.Local.bSelectCase.set(false)
+'	F.Intrinsic.Control.EndSelect
+	
+	
+	F.Intrinsic.UI.InvokeWaitDialog("Please wait...","Checking WF...")
+	f.ODBC.Connection!con.opencompanyconnection
+	Function.Intrinsic.BDF.Load("AUX001","AUX001")
+	F.Intrinsic.BDF.ReadRowCount("AUX001",V.Local.iRows)
+	
+	F.Intrinsic.math.Sub(V.Local.iRows,1,V.Local.iRows)
+	v.Local.fScrapVal.Declare
+	'check disposition type
+	F.Intrinsic.Control.For(V.Local.i,0,V.Local.iRows,1)
+		Function.Intrinsic.BDF.TextMatrix("AUX001",6,V.Local.i,v.Local.sTemp) 
+		v.Local.sDISPType.Set("SCRAP")
+		v.Local.sTemp.Set(v.Local.sTemp.UCase)
+		f.Intrinsic.String.IsInString(v.Local.sDISPType,v.Local.sTemp.Trim,true,v.Local.bSelectCaseType)
+		Function.Intrinsic.BDF.TextMatrix("AUX001",7,V.Local.i,v.Local.sTemp) 
+		f.Intrinsic.Control.If(v.Local.sTemp,=,"N")
+	'		v.Local.sDISPType.Set("SCRAP,REMAKE ON NEW WO,CREATE NEW PO,PUT BACK ON ORIGINAL PO")
+			f.Intrinsic.Control.If(v.Local.bSelectCaseType)
+				Function.Intrinsic.BDF.TextMatrix("AUX001",3,V.Local.i,v.Local.fScrapVal) 
+				
+				f.Intrinsic.String.LPad(Variable.Passed.000002,"0",7,v.Local.sNCMR)
+'				f.Intrinsic.String.Build("{0}: NCMR {1}",V.Local.sTemplate,v.Local.sNCMR,v.local.sTitle)
+
+				Function.Intrinsic.BDF.TextMatrix("AUX001",0,V.Local.i,v.Local.sSEQ) 
+				f.Intrinsic.String.Build("{0}: NCMR {1} SEQ:{2}",V.Local.sTemplate,v.Local.sNCMR,v.Local.sSEQ,v.local.sTitle)
+				F.Global.WorkFlow.GetIDFromTitle(v.local.sTitle,v.Local.iWF)
+				f.Global.WorkFlow.readcompletion(v.Local.iWF,V.Local.sStatus)
+				f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+					v.Local.bSelectCase.Set(True)
+				'WF Open
+					f.Intrinsic.Control.If(v.Local.iWF,=,-1)
+						f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Local.sNCMR,"SCRAPVALUE",v.Local.fScrapVal,"LOC",V.Local.sLoc,"Type","","SEQ",v.Local.sSEQ)
+						v.Local.iWF.Set(v.Args.RETWFID)
+						f.Global.WorkFlow.SetReferenceData(v.Local.iWF,0,v.Local.sNCMR)
+						f.Intrinsic.String.LPad(v.Local.sSEQ,"0",3,v.Local.sSEQ)
+						f.Global.WorkFlow.SetReferenceData(v.Local.iWF,1,v.Local.sSEQ)
+						f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE","SCRAPAPPROVAL","WFID",v.Local.iWF)
+					f.Intrinsic.Control.EndIf
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+			
+'			f.Intrinsic.Control.If(v.Local.iWF,>,0)
+'			f.Intrinsic.Control.andIf(v.Local.bSelectCaseType,=,false)
+'			'If WF Exist and not scrap delete WF
+'				F.Global.WorkFlow.Delete(v.Local.iWF)
+'			f.Intrinsic.Control.endif
+			
+'		f.Intrinsic.Control.Else
+'			v.Local.bSelectCase.Set(False)
+		f.Intrinsic.Control.EndIf
+		
+		
+		
+	F.Intrinsic.Control.Next(V.Local.i)
+	F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.If(v.Local.bSelectCase)
+'		f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+		f.Intrinsic.String.Build("Workflow is Open, please complete the workflow in order to proceed - {0}",v.Local.iWF,V.Local.sStatus)
+		f.Intrinsic.UI.Msgbox(v.Local.sStatus)
+		Variable.Passed.777777.Set(1)
+	f.Intrinsic.Control.endif
+	f.Intrinsic.Control.callsub(unload)
+	
+'	f.Intrinsic.String.LPad(Variable.Passed.000002,"0",7,v.Local.sNCMR)
+'	f.Intrinsic.String.Build("{0}: NCMR {1}",V.Local.sTemplate,v.Local.sNCMR,v.local.sTitle)
+'	F.Global.WorkFlow.GetIDFromTitle(v.local.sTitle,v.Local.iWF)
+'	
+'	f.Global.WorkFlow.readcompletion(v.Local.iWF,V.Local.sStatus)
+'	f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+'	'WF Open
+'		f.Intrinsic.Control.If(v.Local.iWF,=,-1)
+'		f.Intrinsic.Control.andIf(v.Local.bSelectCase)
+'			'Create WF dont exist
+'			f.ODBC.Connection!con.opencompanyconnection
+'			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.Local.sNCMR,"SCRAPVALUE",v.Local.fScrapVal,"LOC",V.Local.sLoc,"Type","")
+'			v.Local.iWF.Set(v.Args.RETWFID)
+'		f.Intrinsic.Control.EndIf
+'		f.Intrinsic.Control.If(v.Local.bSelectCase)
+'				f.Intrinsic.UI.Msgbox("Workflow is Open, please complete the workflow in order to proceed.")
+'				Variable.Passed.777777.Set(1)
+'				f.Intrinsic.Control.callsub(unload)
+''			f.Intrinsic.Control.endif
+'		F.Intrinsic.Control.Else
+'			'(3)	If the disposal action is anything else, delete the open workflow associated with this NCMR.
+'			F.Global.WorkFlow.Delete(v.Local.iWF)
+'		F.Intrinsic.Control.EndIf
+'	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+
+f.Intrinsic.Control.Catch
+		F.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+Program.Sub.CreateWF.Start
+f.Intrinsic.Control.Try
+
+v.Local.iWF.Declare
+v.Local.dEndDate.Declare
+v.Local.sNCMR.Declare
+v.local.sTitle.Declare
+v.Local.sSQL.Declare
+v.Local.sTemplate.Declare
+v.Local.fVal.Declare
+v.Local.iRetLineID.Declare
+
+'Get template ID
+
+v.Local.sNCMR.Set(v.Args.SCRAPID)
+
+
+f.Intrinsic.Control.If(v.Args.Type,=,"POInventory")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	'PO Inventory - KT
+	f.Intrinsic.String.Build("PO Inventory - {0}",v.Args.LOC,v.Local.sTemplate)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"CreditMemoApprovalAR")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	v.Local.sTemplate.Set(v.Args.Template)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"RMA")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+'	f.Intrinsic.String.Build("{0}-LOC:{1}",v.Args.WF,v.Args.LOC,v.Local.sTemplate)
+	f.Intrinsic.String.Build("{0} - {1}",v.Args.WF,v.Args.LOC,v.Local.sTemplate)
+	f.Intrinsic.String.Build("{0}: RMA:{1}",v.Local.sTemplate,v.Local.sNCMR,v.local.sTitle)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"PricingApproval")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	v.Local.sTemplate.Set(v.Args.Template)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"PremiumFreightInbound")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	f.Intrinsic.String.Build("Premium Freight Inbound-LOC:{0}",v.Args.LOC,v.Local.sTemplate)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"PremiumFreightOutbound")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	f.Intrinsic.String.Build("Premium Freight Outbound-LOC:{0}",v.Args.LOC,v.Local.sTemplate)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"CUSTCANCEL")
+	v.local.sTitle.Set(v.Args.SCRAPID)
+	f.Intrinsic.String.Build("Customer Cancel&Reschedule-LOC:{0}",Variable.Passed.000054,v.Local.sTemplate)
+f.Intrinsic.Control.elseIf(v.Args.LOC,=,"CUST")
+	v.Local.sTemplate.Set("Customer Approval")
+	f.Intrinsic.String.Build("{0}: CUSTOMER {1}",v.Local.sTemplate,v.Local.sNCMR,v.local.sTitle)
+f.Intrinsic.Control.Else
+	f.Intrinsic.String.Build("Scrap Approval-{0}",V.Args.LOC,v.Local.sTemplate)
+'	f.Intrinsic.String.Build("{0}: NCMR {1}",v.Local.sTemplate,v.Local.sNCMR,v.local.sTitle)
+	f.Intrinsic.String.Build("{0}: NCMR {1} SEQ:{2}",v.Local.sTemplate,v.Local.sNCMR,v.Args.SEQ,v.local.sTitle)
+f.Intrinsic.Control.EndIf
+
+f.Global.WorkFlow.GetTemplateIDFromTitle(v.Local.sTemplate,v.Local.iWF)
+f.Intrinsic.Control.If(v.Local.iWF,<>,-1)
+
+	'Set start and end dates and the title
+	f.Intrinsic.Date.DateAdd("d",7,v.Ambient.Date,v.Local.dEndDate)
+			
+	'Create the workflow
+	f.Global.WorkFlow.CreateFromTemplate(v.Local.iWF,v.Local.sTitle,v.Ambient.Date,v.Local.dEndDate,v.Caller.User,0,v.Local.iWF)
+	F.Global.WorkFlow.GetIDFromTitle(v.Local.sTitle,v.Local.iWF)
+
+
+'	f.Intrinsic.Control.If(v.Args.Type,=,"")
+'	f.Intrinsic.Control.andIf(v.Args.LOC,<>,"CUST")
+'		f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE","SCRAPAPPROVAL","WFID",v.Local.iWF)
+'	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Variable.AddRV("RETWFID",v.Local.iWF)
+	
+	f.Intrinsic.Control.If(v.Args.Type,=,"POInventory")
+		f.Global.WorkFlow.SetReferenceData(v.Local.iWF,0,v.Args.TRANNO)
+		f.Global.WorkFlow.SetReferenceData(v.Local.iWF,1,v.Args.LOC)
+	f.Intrinsic.Control.endif
+	
+'	F.Intrinsic.Control.If(V.ODBC.con.State,=,0)
+'		f.ODBC.Connection!con.opencompanyconnection
+''	F.Intrinsic.Control.EndIf
+'	f.Intrinsic.String.Build("Select line,Meta_0 from ATG_WF_LINES where wf_id = {0} and CAST(Meta_0 AS DOUBLE) > {1} order by Meta_0 ",v.Local.iWF,v.Args.SCRAPVALUE,v.Local.sSQL)
+'	f.Intrinsic.String.Build("Select line,Meta_0 from ATG_WF_LINES where wf_id = {0} and CAST(Meta_0 AS DOUBLE) >= {1} order by Meta_0 ",v.Local.iWF,v.Args.SCRAPVALUE,v.Local.sSQL)
+'	f.Intrinsic.String.Build("Select line,convert(Meta_0,SQL_float) as METACONV from ATG_WF_LINES where wf_id = {0} and METACONV >= {1}",v.Local.iWF,v.Args.SCRAPVALUE,v.Local.sSQL)
+
+	f.Intrinsic.String.Build("Select line,CAST(Meta_0 AS currency) as METACONV from ATG_WF_LINES where wf_id = {0} and METACONV >= {1}",v.Local.iWF,v.Args.SCRAPVALUE,v.Local.sSQL)
+	f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+
+	F.Data.DataView.Create("DTWFLINE","DVWFLINE",22,"","METACONV ASC")
+	
+	f.Intrinsic.Control.If(v.DataView.DTWFLINE!DVWFLINE.RowCount,>,0)
+		v.Local.fVal.Set(V.DataView.DTWFLINE!DVWFLINE(0).METACONV!FieldVal)
+		f.Intrinsic.Control.If(v.Args.SCRAPVALUE.Float,<=,v.Local.fVal)
+			v.Local.fVal.set(V.DataView.DTWFLINE!DVWFLINE(0).METACONV!FieldVal)
+		f.Intrinsic.Control.Else
+			v.Local.fVal.set(V.DataView.DTWFLINE!DVWFLINE(1).METACONV!FieldVal)
+		f.Intrinsic.Control.EndIf
+	
+		
+		f.Intrinsic.String.Build("delete from ATG_WF_DEPENDENCY where  dependency in (select line_ID from ATG_WF_lines where   line_ID =dependency and WF_ID ={0} and CAST(Meta_0 AS DOUBLE) > {1})",v.Local.iWF,v.Local.fVal,v.Local.sSQL)
+		F.ODBC.connection!con.Execute(V.Local.sSQL)
+
+		'reset dependency for line 1
+		F.Global.WorkFlow.GetLineID(v.Local.iWF,1,v.Local.iRetLineID)
+		f.Intrinsic.String.Build("delete from ATG_WF_DEPENDENCY where  assoc_id = {0}",v.Local.iRetLineID,v.Local.sSQL)
+		F.ODBC.connection!con.Execute(V.Local.sSQL)
+	
+		f.Intrinsic.String.Build("delete from ATG_WF_LINES where  wf_id = {0} and CAST(Meta_0 AS DOUBLE) > {1}",v.Local.iWF,v.Local.fVal,v.Local.sSQL)
+		F.ODBC.connection!con.Execute(V.Local.sSQL)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.Close("DTWFLINE","DVWFLINE")
+	f.Data.Datatable.Close("DTWFLINE")
+f.Intrinsic.Control.Else
+	f.Intrinsic.UI.Msgbox("Template not Found")
+	f.Intrinsic.Control.If(v.global.bMultiWF)
+		f.Intrinsic.Variable.AddRV("RETWFID",v.Local.iWF)
+	f.Intrinsic.Control.else
+		f.Intrinsic.Control.CallSub(unload)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.CreateWF.End
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+v.Local.sFileName.Declare
+v.Local.sDate.Declare
+v.Local.sTime.Declare
+
+v.local.sFolderPath.Declare
+v.Local.bExists.Declare
+
+
+
+'Generic Error message.
+f.Intrinsic.String.Build("{0}{1}{2} with Description: {3}", v.Ambient.NewLine,v.Args.CurrentSub,v.Ambient.ErrorNumber,v.Ambient.ErrorDescription, v.Local.sError)
+
+f.Intrinsic.Control.If(Variable.Ambient.IsInTaskScheduler,=,True)
+	'Get date and time
+	f.Intrinsic.String.DateString(v.Ambient.Now,v.Local.sDate)
+	f.Intrinsic.String.TimeStringSec(v.Ambient.Now,v.Local.sTime)
+	
+	'Home dir for this project
+	f.Intrinsic.String.Build("{0}\CUSTOM\6074_Workflows\",v.Caller.GlobalDir,v.local.sFolderPath)
+	
+	f.Intrinsic.File.DirExists(v.local.sFolderPath,v.Local.bExists)
+	f.Intrinsic.Control.If(v.Local.bExists,=,False)
+		f.Intrinsic.File.CreateDir(v.local.sFolderPath)
+	f.Intrinsic.Control.EndIf
+	
+	'Generate file name
+	f.Intrinsic.String.Build("{0}Error_ScrapApproval-{1}-{2}.txt",v.local.sFolderPath,v.Local.sDate,v.Local.sTime,v.Local.sFileName)
+
+	'Create error file
+	f.Intrinsic.File.String2File(v.Local.sFileName,v.Local.sError)
+f.Intrinsic.Control.Else
+	'Generic Error message.
+	f.Intrinsic.String.Build("Project GCG_6074_WF.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+	f.Intrinsic.UI.Msgbox(v.Local.sError)
+f.Intrinsic.Control.EndIf
+
+Program.Sub.ErrorMsg.End
+
+Program.Sub.Unload.Start
+f.Intrinsic.Control.Try
+F.Intrinsic.UI.CloseWaitDialog
+
+variable.local.returnvalue.Declare(String)
+
+
+
+F.Intrinsic.Control.If(V.Global.bSave,=,True)
+	Function.Intrinsic.UI.MsgBox("Changes not saved, Do you want to save the changes ?", "Confirm", 4, variable.local.returnvalue)
+	F.Intrinsic.Control.If(variable.local.returnvalue,=,6)
+		f.Intrinsic.Control.CallSub(cmdSave_Click)
+	f.Intrinsic.Control.EndIf 
+f.Intrinsic.Control.EndIf 
+
+'f.Intrinsic.Control.If(v.ODBC!conx.State, =,1)
+F.Intrinsic.Control.If(V.ODBC.con.State,=,1)
+	F.ODBC.Connection!con.close
+F.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.End
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.End
+	f.Intrinsic.Control.EndTry
+Program.Sub.Unload.End
+
+Program.Sub.Schedule_CreateWF.Start
+f.Intrinsic.Control.Try
+
+v.Local.sStartime.Declare
+V.local.sFilname.Declare
+v.Local.iM.Declare
+V.Local.iFile.Declare
+v.local.bRet.Declare
+v.Local.sSQL.Declare
+v.Local.sRET.Declare
+
+
+F.Intrinsic.UI.InvokeWaitDialog("Please wait...","Creating WF Task...")
+
+'log datetime last processed
+F.Intrinsic.String.Build("{0}\{1}_6074.trn",V.Caller.FilesDir,v.Caller.CompanyCode,V.local.sFilname)
+Function.Intrinsic.File.Exists(V.Local.sFilname,v.local.bRet)
+
+f.Intrinsic.Control.If(v.local.bRet,=,True)
+	F.Intrinsic.File.GetHandle(V.Local.iFile)
+	F.Intrinsic.File.OpenForRead(V.Local.sFilname,V.Local.iFile)
+	F.Intrinsic.File.ReadFile(V.Local.iFile,V.Local.sStartime)
+	f.Intrinsic.File.CloseFile(V.Local.iFile)
+	
+	f.Intrinsic.String.Build("select control_number,concat(concat(date_Entered, ' '), Time_Entered) as DateENT,Orig_Scrap_value,Location from v_QUALITY where DateENT > '{0}'",v.local.sStartime,v.Local.sSQL)
+	f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+		f.Intrinsic.String.Format(v.Ambient.Now,"yyyy-mm-dd HH:mm:ss",v.Local.sStartime)
+		f.Intrinsic.Control.For(v.Local.iM,0,v.DataTable.DTWF.RowCount--,1)
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",V.DataTable.DTWF(v.Local.iM).control_number!FieldVal,"SCRAPVALUE",V.DataTable.DTWF(v.Local.iM).Orig_Scrap_value!FieldVal,"LOC",V.DataTable.DTWF(v.Local.iM).Location!FieldVal,"Type","")
+		f.Intrinsic.Control.Next(v.Local.iM)
+		F.Intrinsic.File.String2File(V.local.sFilname,v.local.sStartime)
+	f.Intrinsic.Control.EndIf
+	f.Data.Datatable.Close("DTWF")
+f.Intrinsic.Control.Else
+	f.Intrinsic.String.Format(v.Ambient.Now,"yyyy-mm-dd HH:mm:ss",v.Local.sStartime)
+	F.Intrinsic.File.String2File(V.local.sFilname,v.local.sStartime)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.CallSub(unload)
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Schedule_CreateWF.End
+
+Program.Sub.Find_Terms.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+
+	f.Intrinsic.Control.If(v.Args.Type,=,"C")
+		f.Intrinsic.String.Build("select Terms_code,terms_due_days from v_AR_TERMS_DESCR where terms_message = '{0}'",Variable.Passed.000041,v.Local.ssql)
+	f.Intrinsic.Control.ElseIf(v.Args.Type,=,"P")
+		'Prospect
+		f.Intrinsic.String.Build("select Terms_code,terms_due_days from v_AR_TERMS_DESCR join PROSPECT_AUX on terms = terms_code where prospect = '{0}'",Variable.Passed.000002,v.Local.ssql)
+	f.Intrinsic.Control.endif
+	
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+		f.Intrinsic.Variable.AddRV("RETDUEDAYS",V.ODBC.Con!rst.FieldValTrim!terms_due_days)
+		f.Intrinsic.Variable.AddRV("RETDUEDAYTXT",Variable.Passed.000041)
+		f.Intrinsic.Variable.AddRV("RETTcode",V.ODBC.Con!rst.FieldValTrim!Terms_code)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Variable.AddRV("RETDUEDAYS","0")
+		f.Intrinsic.Variable.AddRV("RETDUEDAYTXT",Variable.Passed.000041)
+		f.Intrinsic.Variable.AddRV("RETTcode","")
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close	
+	
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Find_Terms.End
+
+Program.Sub.WF_Status.Start
+f.Intrinsic.Control.Try
+v.local.sTitle.Declare
+v.Local.sTemplate.Declare
+v.Local.iWF.Declare
+V.Local.sStatus.Declare
+
+V.Local.sQte.Declare
+V.Local.sLine.Declare
+V.Local.sID.Declare
+v.Local.sSQL.Declare
+v.Local.i.Declare
+
+Function.Intrinsic.Debug.Stop
+
+f.Intrinsic.Control.If(v.Args.Type,=,"PricingApproval")
+	v.Local.sTemplate.Set(v.Args.Template)
+	'QTENO
+	F.Intrinsic.String.Format(Variable.Passed.000060,"0000000",V.Local.sQte)
+	'Qte Line
+	F.Intrinsic.String.LPad(Variable.args.Line,"0",3,V.Local.sLine)
+	F.Intrinsic.String.RPad(V.Local.sLine,"0",4,V.Local.sLine)	
+	f.Intrinsic.String.Build("{0}-{1}",V.Local.sQte,V.Local.sLine,V.Local.sID)
+	f.Intrinsic.String.Build("{0}:{1}",V.Local.sTemplate,V.Local.sID,v.local.sTitle)
+	f.Intrinsic.Variable.AddRV("Title",v.local.sTitle)
+f.Intrinsic.Control.elseIf(v.Args.Type,=,"CUST")
+	v.Local.sTemplate.Set("Customer Approval")
+	f.Intrinsic.String.Build("{0}: CUSTOMER {1}",V.Local.sTemplate,v.Args.ID,v.local.sTitle)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"CUSTCANCEL")
+	v.local.sTitle.Set(v.Args.ID)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"PremiumFreightInbound")	
+'Premium Freight Inbound 
+	v.local.sTitle.Set(v.Args.ID)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"PremiumFreightOutbound")	
+'Premium Freight Outbound 
+	v.local.sTitle.Set(v.Args.ID)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"POInventory")	
+	v.local.sTitle.Set(v.Args.ID)
+f.Intrinsic.Control.EndIf
+
+F.Global.WorkFlow.GetIDFromTitle(v.local.sTitle,v.Local.iWF)
+f.Intrinsic.Control.If(v.Local.iWF,<>,-1)
+	f.Global.WorkFlow.readcompletion(v.Local.iWF,V.Local.sStatus)
+
+	f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+	'WF Open
+		f.Intrinsic.Control.If(v.Args.Type,=,"CUST")
+			'credit HOLD
+			Variable.Passed.000037.Set("Y")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000037,"LOCK","1")
+'		f.Intrinsic.Control.ElseIf(v.Args.Type,=,"PremiumFreightInbound")
+'			
+'		f.Intrinsic.Control.ElseIf(v.Args.Type,=,"PremiumFreightOutbound")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Else
+		'WF Closed
+		f.Intrinsic.Control.If(v.Args.Type,=,"CUSTCANCEL")
+			'if the WF is already completed and there customer schedule change
+			'shud WF be reopened
+'			f.Intrinsic.UI.Msgbox("CUSTCANCEL WF is Closed")
+			
+			f.Intrinsic.String.Build("update ATG_WF_HEADER set COMPLETION_DATE = NULL where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+			f.ODBC.Connection!con.execute(v.Local.sSQL)
+			f.Intrinsic.String.Build("update ATG_WF_LINES set PERC_COMPLETION = 0 ,COMPLETED_BY='',COMPLETION_DATE = NULL where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+			f.ODBC.Connection!con.execute(v.Local.sSQL)
+			
+			
+			f.Intrinsic.String.Split(v.local.sTitle,"ORNO:",v.Local.sRet)	
+			f.Intrinsic.String.Split(v.Local.sRet(1),"-",v.Local.sRet)	
+			f.Intrinsic.String.Build("Update SO_LINE_APPROVAL set approval_flag = 0 where order_no = '{0}' and line = '{1}' ",v.Local.sRet(0),v.Local.sRet(1),v.Local.sSQL)
+			F.ODBC.connection!con.Execute(V.Local.sSQL)
+		f.Intrinsic.Control.elseIf(v.Args.Type,=,"CUST")
+			f.ODBC.Connection!conx.opencompanyconnection
+''			f.Intrinsic.String.Build("update ATG_WF_HEADER set COMPLETION_DATE = NULL where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+''			f.ODBC.Connection!conx.execute(v.Local.sSQL)
+''			f.Intrinsic.String.Build("update ATG_WF_LINES set PERC_COMPLETION = 0 ,COMPLETED_BY='',COMPLETION_DATE = NULL where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+''			f.ODBC.Connection!conx.execute(v.Local.sSQL)
+
+'			f.Intrinsic.String.Build("delete ATG_WF_HEADER where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+'			f.ODBC.Connection!conx.execute(v.Local.sSQL)
+'			f.Intrinsic.String.Build("delete ATG_WF_LINES where WF_ID = {0}",v.Local.iWF,v.Local.sSQL)
+'			f.ODBC.Connection!conx.execute(v.Local.sSQL)
+'			f.ODBC.Connection!conx.Close
+			f.Intrinsic.Variable.AddRV("WFExist",v.Local.iWF)
+			v.Local.iWF.Set(-1)
+		f.Intrinsic.Control.ElseIf(v.Args.Type,=,"POInventory")
+			f.Intrinsic.Variable.AddRV("WFExist",v.Local.iWF)
+			v.Local.iWF.Set(-1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.else
+	f.Intrinsic.Variable.AddRV("WFExist",v.Local.iWF)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Variable.AddRV("WF",v.Local.iWF)
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry		
+Program.Sub.WF_Status.End
+
+Program.Sub.Customer_DataChanged.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSql.Declare
+v.Local.sCreditLMT.Declare
+v.Local.lCreditLMT.Declare
+v.Local.sRet.Declare
+v.Local.bRet.Declare
+v.Local.sTerms.Declare
+v.Local.sType.Declare
+v.Local.sName.Declare
+v.Local.sTermmsg.Declare
+
+
+F.Intrinsic.String.Format(Variable.Passed.000035,"########",v.Local.sRet)
+v.Local.lCreditLMT.Set(v.Local.sRet.Long)
+
+f.Intrinsic.String.Build("select credit_code from v_AR_CREDIT_LIMIT where credit_amount = {0}",v.Local.lCreditLMT,v.Local.sSql)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	v.Local.sCreditLMT.set(V.ODBC.Con!rst.FieldVal!credit_code)
+f.Intrinsic.Control.Else
+	v.Local.sCreditLMT.set("")
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close	
+
+
+f.Intrinsic.Control.If(v.Caller.Hook,=,14384)
+	v.Local.sTerms.Set("C")
+	v.Local.sType.Set("C")
+	v.Local.sName.Set(Variable.Passed.000005)
+	f.Intrinsic.Control.If(v.Caller.Switches,=,"N")
+		Variable.Passed.000037.Set("Y")
+		f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000037,"LOCK","1")
+	f.Intrinsic.Control.endif
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,14385)	
+'new customer
+	v.Local.sTerms.Set("C")
+	v.Local.sType.Set("P")
+	v.Local.sName.Set(Variable.Passed.000005)
+	f.Intrinsic.Control.If(v.Caller.Switches,=,"N")
+		v.Local.bRet.Set(True)
+		Variable.Passed.000037.Set("Y")
+		f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000037,"LOCK","1")
+	f.Intrinsic.Control.endif
+f.Intrinsic.Control.elseIf(v.Caller.Hook,=,45260)
+'Prospect
+	v.Local.bRet.Set(True)
+	v.Local.sTerms.Set("P")
+	v.Local.sType.Set("P")
+	v.Local.sName.Set(Variable.Passed.000003)
+F.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.CallSub(Find_Terms,"Type",v.Local.sTerms)
+
+'	f.Intrinsic.String.Build("select name_Customer, address1, address2,city,state,zip,country,attention,Credit from v_customer_master where customer ='{0}'",Variable.Passed.000002,v.Local.sSql)
+'f.Intrinsic.String.Build("select name_Customer, address1, address2,city,state,zip,country,attention,credit_amount,credit from v_customer_master left join v_AR_CREDIT_LIMIT on Credit = credit_code where customer ='{0}'",Variable.Passed.000002,v.Local.sSql)
+'f.Intrinsic.String.Build("select name_Customer, address1, address2,city,state,zip,country,attention,credit_amount,credit,payment_Terms from v_customer_master MAS Join v_CUSTOMER_SALES SAL on MAS.Customer= SAL.Customer left join v_AR_CREDIT_LIMIT on Credit = credit_code where MAS.customer ='{0}'",Variable.Passed.000002,v.Local.sSql)
+f.Intrinsic.String.Build("select name_Customer, address1, address2,city,state,zip,country,attention,credit_amount,credit,payment_Terms,terms_message from v_customer_master MAS Join v_CUSTOMER_SALES SAL on MAS.Customer= SAL.Customer left join v_AR_CREDIT_LIMIT on Credit = credit_code Left Join v_AR_TERMS_DESCR on payment_Terms = terms_code where MAS.customer ='{0}'",Variable.Passed.000002,v.Local.sSql)
+
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.Intrinsic.Control.If(V.ODBC.Con!rst.FieldVal!credit,<>,v.Local.sCreditLMT)
+		v.Local.bRet.Set(True)
+		v.Local.lCreditLMT.set(V.ODBC.Con!rst.FieldVal!credit_amount)
+		v.Local.sTermmsg.Set(V.ODBC.Con!rst.FieldVal!terms_message)
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!name_Customer,<>,Variable.Passed.000005.Trim)
+'			'BillTo name
+'			v.Local.bRet.Set(True)
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!address1,<>,Variable.Passed.000007.Trim)
+'			'address1
+'			v.Local.bRet.Set(True)	
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!address2,<>,Variable.Passed.000009.Trim)
+'			'address2
+'			v.Local.bRet.Set(True)	
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!city,<>,Variable.Passed.000011.Trim)
+'			v.Local.bRet.Set(True)	
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!state,<>,Variable.Passed.000012.Trim)
+'			v.Local.bRet.Set(True)	
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!zip,<>,Variable.Passed.000013.Trim)
+'			v.Local.bRet.Set(True)	
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!country,<>,Variable.Passed.000017.Trim)
+'			v.Local.bRet.Set(True)
+'		F.Intrinsic.Control.elseIf(V.ODBC.Con!rst.FieldValtrim!attention,<>,Variable.Passed.000021.Trim)
+'			v.Local.bRet.Set(True)
+	F.Intrinsic.Control.elseIf(v.Args.RETTcode,<>,V.ODBC.Con!rst.FieldVal!payment_Terms)
+		v.Local.bRet.Set(True)
+		v.Local.sTermmsg.Set(V.ODBC.Con!rst.FieldVal!terms_message)
+	F.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Else
+	v.Local.lCreditLMT.set(0)
+	v.Local.sTermmsg.Set("")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(v.Local.bRet)
+'Data Changed
+'Create WF
+	Variable.Passed.000037.Set("Y")
+	f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000037,"LOCK","1")
+	f.Intrinsic.Control.If(v.Args.WFExist.trim,<>,"")
+		'delete WF to create
+		f.Intrinsic.String.Build("delete ATG_WF_HEADER where WF_ID = {0}",v.Args.WFExist,v.Local.sSQL)
+		f.ODBC.Connection!con.execute(v.Local.sSQL)
+		f.Intrinsic.String.Build("delete ATG_WF_LINES where WF_ID = {0}",v.Args.WFExist,v.Local.sSQL)
+		f.ODBC.Connection!con.execute(v.Local.sSQL)
+	f.Intrinsic.Control.EndIf
+'	f.Intrinsic.Control.CallSub(Find_Terms,"Type",v.Local.sTerms)
+	f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",Variable.Passed.000002,"SCRAPVALUE",v.Args.RETDUEDAYS,"LOC","CUST","c","")
+	f.Intrinsic.Control.If(v.Args.RETWFID,<>,-1)
+		'V.ODBC.Con!rst.FieldVal!credit old
+		'v.Local.sCreditLMT new
+		f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE","CUSTAPPROVAL","CUST",Variable.Passed.000002,"Name",v.Local.sName.Trim,"COLimit",v.Local.lCreditLMT,"CLimit",v.Local.sRet.Long,"WFID",v.Args.RETWFID,"Terms",v.Args.RETDUEDAYTXT,"Type",v.Local.sType,"TermMsg",v.Local.sTermmsg)
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+f.Intrinsic.Control.callsub(unload)
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Customer_DataChanged.End
+
+Program.Sub.FindWF_ID.Start
+
+f.Intrinsic.Control.Try
+
+V.Local.sSQL.Declare
+v.Local.sRet.Declare
+V.Local.sStatus.Declare
+v.Local.sOrder.Declare
+v.Local.slineNo.Declare
+v.local.sType.Declare
+v.local.bRet.Declare
+
+v.Local.sRefData.Declare
+v.Local.sRefData1.Declare
+v.Local.sRefData2.Declare
+
+	f.Global.WorkFlow.readcompletion(Variable.Passed.WFID,V.Local.sStatus)
+	f.Intrinsic.Control.If(V.Local.sStatus.Long,>=,100)
+		f.Intrinsic.String.Build("select Title from ATG_WF_HEADER where wf_id = {0}",Variable.Passed.WFID,V.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+		f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+			
+			Function.Intrinsic.String.IsInString(V.DataTable.DTWF(0).Title!FieldVal,"Customer Approval: CUSTOMER",True,v.local.bRet)
+			f.Intrinsic.Control.If(v.local.bRet)
+				v.local.sType.Set("CUST")
+			f.Intrinsic.Control.Else
+				Function.Intrinsic.String.IsInString(V.DataTable.DTWF(0).Title!FieldVal,"Customer Cancel&Reschedule",True,v.local.bRet)
+				f.Intrinsic.Control.If(v.local.bRet)
+					v.local.sType.Set("CUSTCANCEL")
+				f.Intrinsic.Control.Else
+					Function.Intrinsic.String.IsInString(V.DataTable.DTWF(0).Title!FieldVal,"Part Approval",True,v.local.bRet)
+					f.Intrinsic.Control.If(v.local.bRet)
+						v.local.sType.Set("PARTAPPROVAL")
+					f.Intrinsic.Control.Else
+						Function.Intrinsic.String.IsInString(V.DataTable.DTWF(0).Title!FieldVal,"Credit Memo Approval",True,v.local.bRet)
+						f.Intrinsic.Control.If(v.local.bRet)
+							v.local.sType.Set("CREDITMEMO")
+						f.Intrinsic.Control.Else
+							Function.Intrinsic.String.IsInString(V.DataTable.DTWF(0).Title!FieldVal,"Scrap Approval",True,v.local.bRet)
+							f.Intrinsic.Control.If(v.local.bRet)
+								v.local.sType.Set("SCRAPAPPROVAL")
+							f.Intrinsic.Control.EndIf	
+						f.Intrinsic.Control.EndIf	
+					f.Intrinsic.Control.EndIf
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+		
+			F.Intrinsic.Control.SelectCase(v.local.sType)
+				'Find CustomerNO
+				F.Intrinsic.Control.Case("SCRAPAPPROVAL")
+					F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,0,v.Local.sRefData)  'NCMR
+					F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,1,v.Local.sRefData1) 'SEQ
+					f.Intrinsic.String.Build("update QUALITY_DISP set filler = '' where control_Number = '{0}' and  Disposition_Seq = '{1}'",v.Local.sRefData.Trim,v.Local.sRefData1.Trim,V.Local.sSQL)
+					F.ODBC.connection!con.Execute(V.Local.sSQL)
+'					f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE",v.local.sType)
+				F.Intrinsic.Control.Case("CUST")
+					f.Intrinsic.String.Split(V.DataTable.DTWF(0).Title!FieldVal,"Customer Approval: CUSTOMER ",v.Local.sRet)
+					f.Intrinsic.Control.If(v.Local.sRet.UBound,>,0)
+						f.Intrinsic.String.Build("update customer_master set flag_credit_hold = 'N' where customer = '{0}' and  REC = 1",v.Local.sRet(1).Trim,V.Local.sSQL)
+						F.ODBC.connection!con.Execute(V.Local.sSQL)
+					f.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Case("CUSTCANCEL")
+				'Find OrderNO LINE
+					f.Intrinsic.String.Split(V.DataTable.DTWF(0).Title!FieldVal,"ORNO:",v.Local.sRet)
+					f.Intrinsic.Control.If(v.Local.sRet.UBound,>,0)
+						f.Intrinsic.String.Split(v.Local.sRet(1),"-",v.Local.sRet)
+						v.Local.sOrder.Set(v.Local.sRet(0))
+						v.Local.slineNo.Set(v.Local.sRet(1))
+						f.Intrinsic.String.Build("Update SO_LINE_APPROVAL set approval_flag = 1 where order_no = '{0}' and line = '{1}' ",v.Local.sOrder,v.Local.slineNo,v.Local.sSQL)
+						F.ODBC.connection!con.Execute(V.Local.sSQL)
+					f.Intrinsic.Control.endif
+				F.Intrinsic.Control.Case("PARTAPPROVAL")
+'				F.Global.WorkFlow.ReadReferenceData(Variable.Passed.WFID,0,v.Local.sRefData)
+'				F.Global.WorkFlow.ReadReferenceData(Variable.Passed.WFID,1,v.Local.sRefData1)
+'				F.Global.WorkFlow.ReadReferenceData(Variable.Passed.WFID,2,v.Local.sRefData2)
+'				
+'				'Get the short part from the long part
+'				f.Global.Inventory.GetGSSPart(v.Local.sRefData.Trim,v.Local.sRefData1.Trim,v.Local.sRefData)
+'				'Update the part as Active
+'				f.Intrinsic.String.Build("update inventory_mstr set flag_inactive='N' where part='{0}' and location='{1}';",v.Local.sRefData,v.Local.sRefData2.Trim,v.Local.sSQL)
+'				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+				F.Intrinsic.Control.Case("CREDITMEMO")
+				f.Intrinsic.String.Split(V.DataTable.DTWF(0).Title!FieldVal,"-",v.Local.sRet)
+					f.Intrinsic.Control.If(v.Local.sRet.UBound,>,0)
+						v.Local.sOrder.Set(v.Local.sRet(1).trim)
+						f.Intrinsic.String.Build("update AR_BATCH_TRANS set BATCH_REJECT_FLAG = 'P' where Batch = '{0}'",v.Local.sOrder,v.Local.sSQL)
+						F.ODBC.connection!con.Execute(V.Local.sSQL)
+					f.Intrinsic.Control.endif
+			F.Intrinsic.Control.EndSelect
+		f.Intrinsic.Control.EndIf
+		f.Data.Datatable.Close("DTWF")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.callsub(unload)
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+
+Program.Sub.FindWF_ID.End
+
+Program.Sub.Get_ORDERNO-LINE.Start
+f.Intrinsic.Control.Try
+
+V.Local.sID.Declare
+V.Local.sOrder.Declare
+V.Local.sLine.Declare
+V.Local.sLOC.Declare
+
+'Variable.Passed.000054 loc
+'Orderno
+F.Intrinsic.String.Format(V.Passed.000060,"0000000",V.Local.sOrder)
+'order Line
+F.Intrinsic.String.LPad(V.Passed.000051,"0",3,V.Local.sLine)
+F.Intrinsic.String.RPad(V.Local.sLine,"0",4,V.Local.sLine)	
+F.Intrinsic.String.RPad(Variable.Passed.000054," ",2,V.Local.sLOC)	
+'Customer Cancellations and Reschedules-KT ORDERNO-LINE
+f.Intrinsic.String.Build("Customer Cancel&Reschedule-LOC:{0}ORNO:{1}-{2}",V.Local.sLOC,V.Local.sOrder,V.Local.sLine,V.Local.sID)
+
+f.Intrinsic.Variable.AddRV("OrderNo",V.Local.sOrder)
+f.Intrinsic.Variable.AddRV("OrdLine",V.Local.sLine)
+f.Intrinsic.Variable.AddRV("ID",V.Local.sID)
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Get_ORDERNO-LINE.End
+
+Program.Sub.ItemPromise_Status.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSql.Declare
+v.Local.sRet.Declare
+v.Local.sRet1.Declare
+
+f.Intrinsic.Variable.AddRV("ItemPromise_Status",False)
+'itm promised date Variable.Passed.000011  20201226    2/5/2009
+	f.Intrinsic.String.Build("select Item_Promise_DT from v_order_lines where order_no = '{0}' and record_no = '{1}' ",v.Args.Order,v.Args.Line,v.Local.sSQL)
+	f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.DTWFLINE.RowCount,>,0)
+		f.Intrinsic.String.Format(V.DataTable.DTWFLINE(0).Item_Promise_DT!FieldVal,"YYYYMMDD",v.Local.sRet)
+		f.Intrinsic.String.Mid(v.Local.sRet,5,2,v.Local.sRet)
+		f.Intrinsic.String.Mid(Variable.Passed.000011,5,2,v.Local.sRet1) 'Item Promise date
+		f.Intrinsic.Control.If(v.Local.sRet,<>,v.Local.sRet1)
+		'Item Promise date - month changed
+			f.Intrinsic.String.Build("Update SO_LINE_APPROVAL set approval_flag = 0 where order_no = '{0}' and line = '{1}' ",v.Args.Order,v.Args.Line,v.Local.sSQL)
+			F.ODBC.connection!con.Execute(V.Local.sSQL)
+			f.Intrinsic.Variable.AddRV("ItemPromise_Status",True)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	f.Data.Datatable.Close("DTWFLINE")	
+	
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.ItemPromise_Status.End
+
+Program.Sub.Find_INOUTBOUND_LOC.Start
+f.Intrinsic.Control.Try
+v.Local.sPO.Declare
+V.Local.sID.Declare
+v.Local.sSQL.Declare
+V.Local.sFrtType.Declare
+
+'PART = 'FREIGHT'
+f.Intrinsic.String.LPad(v.Args.TRANNO,"0",7,v.Local.sPO)
+
+f.Intrinsic.Control.If(v.Args.Type,=,"PremiumFreightInbound")
+	V.Local.sFrtType.Set("Premium Freight Inbound-LOC")
+'	f.Intrinsic.String.Build("select Location from v_po_lines where Purchase_Order = '{0}' and PART = '0020-40327       A01' ",v.Local.sPO,v.Local.sSQL)
+	f.Intrinsic.String.Build("select Location from v_po_lines where Purchase_Order = '{0}' and PART = 'FREIGHT' ",v.Local.sPO,v.Local.sSQL)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"PremiumFreightOutbound")
+	V.Local.sFrtType.Set("Premium Freight Outbound-LOC")
+	f.Intrinsic.String.Build("select Location from v_Order_lines where Order_no = '{0}' and Line_Type = 'F'",v.Local.sPO,v.Local.sSQL)
+f.Intrinsic.Control.ElseIf(v.Args.Type,=,"POInventory")
+	V.Local.sFrtType.Set("PO Inventory")
+	f.Intrinsic.String.Build("select top 1 Location from v_PO_lines where purchase_order = '{0}' and location <> ''",v.Local.sPO,v.Local.sSQL)
+f.Intrinsic.Control.Endif
+
+f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWFLINE.RowCount,>,0)
+'	f.Intrinsic.Variable.AddRV("LOCATION",V.DataTable.DTWFLINE(0).Location!FieldVal)
+	f.Intrinsic.Variable.AddRV("STATUS",True)
+	
+'	f.Intrinsic.Control.If(v.Args.Type,=,"PremiumFreightInbound")
+'		f.Data.Datatable.Close("DTWFLINE")	
+'		f.Intrinsic.String.Build("select Location from v_po_lines where Purchase_Order = '{0}' and Record_NO = '0010' ",v.Local.sPO,v.Local.sSQL)
+'		f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+'	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}:{1} ORDNO:{2}",V.Local.sFrtType,V.DataTable.DTWFLINE(0).Location!FieldVal,v.Local.sPO,V.Local.sID)
+
+	f.Intrinsic.Variable.AddRV("LOCATION",V.DataTable.DTWFLINE(0).Location!FieldVal)
+	f.Intrinsic.Variable.AddRV("TRANNO",v.Local.sPO)
+	f.Intrinsic.Variable.AddRV("ID",V.Local.sID)
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("STATUS",False)
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("DTWFLINE")	
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Find_INOUTBOUND_LOC.End
+
+Program.Sub.Print_Validation.Start
+f.Intrinsic.Control.Try
+
+V.local.sSQL.Declare
+
+f.ODBC.Connection!con.opencompanyconnection
+f.Intrinsic.Control.If(v.Args.Type,=,"PremiumFreightInbound")
+	F.Intrinsic.String.Build("Select distinct PO_NO From PRT_LASER_PO WHERE  TERMINAL_NO='{0}'",V.Caller.Terminal,V.local.sSQL)
+'f.Intrinsic.Control.elseIf(v.Args.Type,=,"PremiumFreightOutbound")
+
+f.Intrinsic.Control.endif
+
+
+f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+	f.Intrinsic.Control.CallSub(Find_INOUTBOUND_LOC,"Type",v.Args.Type,"TRANNO",V.DataTable.DTWF(0).PO_NO!FieldVal)
+	f.Intrinsic.Control.If(v.Args.STATUS,True)
+		'Freight line Exist
+		f.Intrinsic.Control.CallSub(WF_Status,v.Args.Type,"ID",v.Args.ID)
+		f.Intrinsic.Control.If(v.Args.WF,<>,-1)
+			V.Passed.CANCEL.Set(1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+f.Data.Datatable.Close("DTWFLINE")	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Print_Validation.End
+
+Program.Sub.FreightOutBound.Start
+f.Intrinsic.Control.Try
+
+V.Local.sID.Declare
+V.Local.sOrder.Declare
+v.Local.sSQL.Declare
+
+F.Intrinsic.String.Format(V.Passed.000003,"0000000",V.Local.sOrder)
+f.Intrinsic.String.Build("Premium Freight Outbound-LOC:{0} ORDNO:{1}",Variable.Passed.000065,V.Local.sOrder,V.Local.sID)
+f.Intrinsic.String.Build("select Price from v_Order_lines where Order_no = '{0}' and Line_TYpe = 'F'",v.Local.sOrder,v.Local.sSQL)
+
+f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWFLINE.RowCount,>,0)
+	'	f.Intrinsic.Control.If(Variable.Passed.000052,=,"0020-40327       A01")
+	f.Intrinsic.Control.CallSub(WF_Status,"Type","PremiumFreightOutbound","ID",V.Local.sID)
+	f.Intrinsic.Control.If(v.Args.WF,=,-1)
+	f.Intrinsic.Control.AndIf(v.Args.INCALL,=,"SAVE")
+	'WF exist 
+		f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",V.Local.sID,"SCRAPVALUE",V.DataTable.DTWFLINE(0).Price!FieldVal,"LOC",Variable.Passed.000065,"Type","PremiumFreightOutbound")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Variable.AddRV("WF",v.Args.WF)
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("WF",-1)
+f.Intrinsic.Control.endif
+
+
+f.Data.Datatable.Close("DTWFLINE")	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.FreightOutBound.End
+
+Program.Sub.Find_WFGrpCode_PricingApproval.Start
+f.Intrinsic.Control.Try
+'Variable.Passed.000052  part
+'Variable.Passed.000054  part loc
+'Variable.Passed.000053 rev
+	v.Local.ssql.Declare
+	v.Local.sPart.Declare
+	v.Local.sRev.Declare
+	v.Local.sWF.Declare
+
+'	v.Local.sPart.Set(Variable.Passed.000052.left17)
+'	f.Intrinsic.String.Mid(Variable.Passed.000054,18,3,v.Local.sRev)
+
+'	v.Local.sPart.Set("210900")
+'	v.Local.sPart.Set(v.Local.sPart.left17)
+'	f.Intrinsic.String.Mid(v.Local.sPart,18,3,v.Local.sRev)
+
+
+	f.Intrinsic.String.Build("select part,location,Product_CDE,'Pricing ' + Product_WHO as 'WF' from GCG_6074_ProductCDE join INV_EXTRA on Product_CDE = rtrim(user50) WHERE PART ='{0}' AND REV = '{1}' AND LOCATION = '{2}'",Variable.Passed.000052,Variable.Passed.000053,Variable.Passed.000054,v.Local.ssql)
+
+	f.Data.Datatable.CreateFromSQL("DTWFLINE","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.DTWFLINE.RowCount,>,0)
+'		f.Intrinsic.UI.Msgbox(V.DataTable.DTWFLINE(0).WF!FieldVal)
+
+		f.Intrinsic.Control.If(v.Args.Line,=,"Y")
+			f.Intrinsic.Control.CallSub(Get_InvListPrice)
+			f.Intrinsic.Control.If(V.DataTable.DTWFLINE(0).WF!FieldVal,=,"Pricing Wire & Cable")
+				'Price
+				f.Intrinsic.Control.If(Variable.Passed.000128.Long,=,0)
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.ElseIf(v.Args.INVPrice,>,Variable.Passed.000128)
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.Else
+					f.Intrinsic.Variable.AddRV("PApprovalWF","")
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.elseIf(V.DataTable.DTWFLINE(0).WF!FieldVal,=,"Pricing MilSpec","OR",V.DataTable.DTWFLINE(0).WF!FieldVal,=,"Pricing Connectors")
+				'Price
+				f.Intrinsic.Control.If(Variable.Passed.000128.Long,=,0)
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.ElseIf(Variable.Passed.000008.long,<,30)
+				'Margin
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.ElseIf(v.Args.INVPrice,>,Variable.Passed.000128)
+				'Inventory List
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.Else
+					f.Intrinsic.Variable.AddRV("PApprovalWF","")
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.Control.if(V.DataTable.DTWFLINE(0).WF!FieldVal,=,"Pricing Connectors")
+				f.Intrinsic.Control.CallSub(Get_QTEProj)
+				f.Intrinsic.Control.if(v.Args.QTEPROJ.Trim,<>,"")
+					f.Intrinsic.String.Build("{0}-Projects",V.DataTable.DTWFLINE(0).WF!FieldVal,v.Local.sWF)
+					f.Intrinsic.Variable.AddRV("PApprovalWF",v.Local.sWF)
+				f.Intrinsic.Control.Else
+					f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.Else
+			f.Intrinsic.Variable.AddRV("PApprovalWF",V.DataTable.DTWFLINE(0).WF!FieldVal)
+		f.Intrinsic.Control.EndIf
+		
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Variable.AddRV("PApprovalWF","")
+	f.Intrinsic.Control.EndIf
+	f.Data.Datatable.Close("DTWFLINE")	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Find_WFGrpCode_PricingApproval.End
+
+Program.Sub.Get_InvListPrice.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+v.Local.sRet.Declare
+v.Local.fListPrice.Declare
+
+'The delimited return items are as follows:
+'Product line,Description,Inventory UM,Onhand quantity,Cost,Price,Sort code,Lead time
+'F.Intrinsic.String.GSSPartString(V.Local.sDisplayPart,V.Local.sDisplayRev,V.Local.sDisplayPart)
+
+Function.Global.Inventory.GetPartInfo(Variable.Passed.000052,Variable.Passed.000053,Variable.Passed.000054,v.Local.sret)
+f.Intrinsic.Control.If(v.Local.sRet,=,"***NOPARTFOUND***")
+	f.Intrinsic.UI.Msgbox("Inventory Part not Found, No List price")
+	f.Intrinsic.Variable.AddRV("INVPrice",0)
+f.Intrinsic.Control.Else
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	v.Local.fListPrice.Set(v.Local.sRet(5).float)
+	f.Intrinsic.Variable.AddRV("INVPrice",v.Local.fListPrice)
+f.Intrinsic.Control.EndIf
+
+
+'f.Intrinsic.String.Build("select AMT_PRICE from INVENTORY_MSTR where part = '{0}' and location = '{1}'",Variable.Passed.000052,Variable.Passed.000054,v.Local.ssql)
+'f.Data.Datatable.CreateFromSQL("DTWFPrice","con",v.Local.sSQL)
+'f.Intrinsic.Control.If(v.DataTable.DTWFPrice.RowCount,>,0)
+'	f.Intrinsic.Variable.AddRV("INVPrice",V.DataTable.DTWFPrice(0).AMT_PRICE!FieldVal)
+'f.Intrinsic.Control.Else
+'	f.Intrinsic.UI.Msgbox("Inventory Part not Found, No List price")
+'	f.Intrinsic.Variable.AddRV("INVPrice",0)
+'f.Intrinsic.Control.EndIf
+'f.Data.Datatable.Close("DTWFPrice")	
+
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Get_InvListPrice.End
+
+Program.Sub.Get_QTEProj.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+V.Local.sQTE.Declare
+
+F.Intrinsic.String.Format(V.Passed.000060,"0000000",V.Local.sQTE)
+
+f.Intrinsic.String.Build("select PROJECT from v_QUOTE_Header where Quote_no = '{0}'",V.Local.sQTE,v.Local.ssql)
+f.Data.Datatable.CreateFromSQL("DTWFQTE","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWFQTE.RowCount,>,0)
+	f.Intrinsic.Variable.AddRV("QTEPROJ",V.DataTable.DTWFQTE(0).PROJECT!FieldVal)
+f.Intrinsic.Control.Else
+	f.Intrinsic.UI.Msgbox("Quote not Found, No Project")
+	f.Intrinsic.Variable.AddRV("QTEPROJ","")
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("DTWFQTE")	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Get_QTEProj.End
+
+Program.Sub.cmdSave_Click.Start
+f.Intrinsic.Control.Try
+
+V.Local.sRet.Declare(string)
+V.Local.sFieldNames.Declare(string)
+V.Local.sTypes.Declare(string)
+variable.local.lreturnvalue.Declare
+v.Local.i.Declare
+v.Local.j.Declare(long)
+
+
+f.Intrinsic.Control.If(v.Caller.Switches,<>,"D")
+F.Intrinsic.Control.If(V.DataView.DTLines!DVSave.Exists,=,True)
+		Function.Data.DataView.Close("DTLines","DVSave")
+	f.Intrinsic.Control.EndIf 
+	
+	
+	f.Data.DataView.Create("DTLines","DVSave",22,"Product_CDE <>'' and Product_DESC <>'' and Product_WHO <>''","")
+	
+	f.Data.DataView.ToDataTable("DTLines","DVSave","DTSave")
+	F.Data.DataTable.SaveToDB("DTSave","con","GCG_6074_ProductCDE","Product_CDE",256,"Product_CDE@!@Product_CDE*!*Product_DESC@!@Product_DESC*!*Product_WHO@!@Product_WHO")
+	
+	V.Global.bSave.Set(False)
+f.Intrinsic.Control.Else
+
+'	Function.Intrinsic.UI.MsgBox("Changes not saved, Do you want to save the changes ?","Confirm ?")
+	'and [WF Exist] = 0
+	F.Data.DataView.SetFilter("DTREV","DVREV","Select=1 and Flag_INACTIVE=1 and CURREV = 'C' and WFExist = 0")
+	f.Intrinsic.Control.If(v.DataView.DTREV!DVREV.RowCount,=,0)
+		F.Data.DataView.SetFilter("DTREV","DVREV","Flag_INACTIVE=1 and CURREV = 'C' and WFExist = 0")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	Function.Intrinsic.UI.MsgBox("Create Workflow, Do you want to continue ?", "Confirm", 4, variable.local.lreturnvalue)
+	F.Intrinsic.Control.If(variable.local.lreturnvalue,=,6)
+		
+'		f.Data.DataView.ToDataTable("DTREV","DVREV","DTNEWPART")
+'		f.Intrinsic.Control.For(v.Local.i,0,v.DataView.DTREV!DVREV.RowCount--,1)
+		F.Intrinsic.UI.InvokeWaitDialog("Loading...","Please Wait...")
+		f.Intrinsic.Control.For(v.Local.i,v.DataView.DTREV!DVREV.RowCount--,0,-1)
+'			f.Intrinsic.UI.Msgbox(v.DataView.DTREV!DVREV(v.Local.i).GSSPart!FieldVal)
+'			f.Intrinsic.Control.If(v.DataView.DTREV!DVREV(v.Local.i).WFExist!FieldVal,=,0)
+				f.Intrinsic.Math.Add(v.Local.j,1,v.Local.j)
+				
+				F.Intrinsic.UI.ChangeWaitStatus("Creating WorkFlow...Please Wait...",v.Local.j,1,v.DataView.DTREV!DVREV.RowCount)
+				f.Intrinsic.Control.CallSub(Find_PartWFID,"GSSPart",v.DataView.DTREV!DVREV(v.Local.i).Part!FieldVal,"PARTID",v.DataView.DTREV!DVREV(v.Local.i).WFPARTRV!FieldVal,"CurRow",v.Local.i,"REV",v.DataView.DTREV!DVREV(v.Local.i).REV!FieldValtrim,"DisplayPart",v.DataView.DTREV!DVREV(v.Local.i).DisplayPart!FieldVal)
+	Function.Intrinsic.Debug.Stop
+	
+				f.Intrinsic.Control.If(v.Args.RETVAL,=,0)
+					f.Intrinsic.Control.CallSub(Check_PartReleaseWFTrans,"PARTID",v.DataView.DTREV!DVREV(v.Local.i).GSSPart!FieldVal,"CurRow",v.Local.i,"PART",v.DataView.DTREV!DVREV(v.Local.i).Part!FieldVal)
+				f.Intrinsic.Control.EndIf
+				f.Data.DataView.SetValue("DTREV","DVREV",v.Local.i,"WFExist",1)
+'				f.Data.DataView.SetValue("displayDT", "displayDV", v.Args.RowIndex, "Check_Box", False)
+'			f.Intrinsic.Control.EndIf 
+		f.Intrinsic.Control.Next(v.Local.i)
+'	f.Intrinsic.Control.Else
+'		F.Data.DataView.SetFilter("DTREV","DVREV","")
+	f.Intrinsic.Control.EndIf 
+	F.Data.DataView.SetFilter("DTREV","DVREV","Flag_INACTIVE=1 and CURREV = 'C' and WFExist = 0")
+	F.Data.DataView.SetSort("DTREV","DVREV","PartCreateDate desc")
+	f.Data.DataView.SetValue("DTREV","DVREV",-1,"Select",0)
+	f.Data.Datatable.AcceptChanges("DTREV")
+	F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.Load_Grid.Start
+f.Intrinsic.Control.Try
+
+
+V.Local.sSQL.Declare(String)
+V.Local.sType.Declare(String)
+v.Local.iTotClmn.Declare 
+v.Local.i.Declare
+v.Local.stitle.Declare
+'v.Local.sOrderNo.Declare
+'v.Local.sOrderLn.Declare
+v.local.iret.Declare 
+
+F.ODBC.Connection!con.OpenCompanyConnection(300)
+
+f.Intrinsic.Control.CallSub(Check_Table)
+
+V.Local.sSQL.Set("select Product_CDE,Product_DESC,Product_WHO  from GCG_6074_ProductCDE")
+F.Intrinsic.Control.If(v.DataTable.DTLines.Exists,=,True)
+	F.Data.DataTable.Close("DTLines")
+f.Intrinsic.Control.EndIf 
+F.Data.DataTable.CreateFromSQL("DTLines","con",v.Local.sSQL,True)
+	f.Intrinsic.Control.If(Variable.DataTable.DTLines.rowcount,>,0)
+		v.Local.iret.Set(Variable.DataTable.DTLines.rowcount)
+f.Intrinsic.Control.EndIf
+	F.Data.DataView.Create("DTLines","DVLines")
+
+	gui.frmAddLines.GsGridLines.SuspendLayout 
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+	F.Data.DataTable.AddColumn("DTLines","Action","string","Delete")
+'	Product_CDE,Product_DESC,Product_WHO
+
+	'Add Blank row for data entry	
+'	f.Data.DataTable.AddRow("DTLines","Action","Add")
+
+	gui.frmAddLines.GsGridLines.AddGridViewFromDataView("GridView","DTLines","DVLines")
+
+	gui.frmAddLines.GsGridLines.GetColumnCount("GridView",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmAddLines.GsGridLines.GetColumnNamebyIndex("GridView",v.Local.i,v.Local.stitle)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"AllowEdit",False)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"ReadOnly",True)
+
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderBackColor","#7FFF00")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderHAlignment","Center")
+	f.Intrinsic.Control.Next(v.Local.i)
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "ColumnPanelRowHeight", "40")
+	Gui.frmAddLines.GsGridLines.SetGridviewProperty("GridView","OptionsViewRowAutoHeight",True)
+
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","AllowEdit",True)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","ReadOnly",False)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_DESC","AllowEdit",True)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_DESC","ReadOnly",False)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","AllowEdit",True)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","ReadOnly",False)
+	
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","MinWidth",120)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","MaxWidth",120)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","MinWidth",150)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","MaxWidth",150)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","Caption","Product Code")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_DESC","Caption","Product DESC")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","Caption","Product WHO")
+
+
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellHAlignment","center")
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "False") 
+
+	gui.frmAddLines.GsGridLines.ResumeLayout 
+
+	gui.frmAddLines.GsGridLines.MainView("GridView")
+
+	'Create Context Menus
+	f.Intrinsic.Control.CallSub(create_menus)
+
+	gui.frmAddLines.GsGridLines.Anchor(15)
+	gui.frmAddLines.cmdSave.Anchor(10)
+	gui.frmAddLines..Show 
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Load_Grid.End
+
+Program.Sub.create_menus.Start
+f.Intrinsic.Control.Try
+
+	gui.frmAddLines..ContextMenuCreate("MNUGRID")
+	Gui.frmAddLines.GsGridLines.ContextMenuAttach("MNUGRID")
+	Gui.frmAddLines..ContextMenuAddItem("MNUGRID","ClearGrid",0,"Clear Grid")
+	Gui.frmAddLines..ContextMenuAddItem("MNUGRID","CopyfromExcel",0,"Copy from Excel")
+	Gui.frmAddLines..ContextMenuAddItem("MNUGRID","ExporttoExcel",0,"Copy to Excel")
+	
+	Gui.frmAddLines..ContextMenuSetItemEventHandler("MNUGRID","ClearGrid","MenuClearGrid")
+	Gui.frmAddLines..ContextMenuSetItemEventHandler("MNUGRID","CopyfromExcel","MenuCopyfromExcel")
+	Gui.frmAddLines..ContextMenuSetItemEventHandler("MNUGRID","ExporttoExcel","MenuCopyToExcel")
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.create_menus.End
+
+Program.Sub.ClearGrid.Start
+f.Intrinsic.Control.Try
+
+Function.Data.DataTable.DeleteRow("DTLines") 
+
+F.Data.DataTable.SaveToDB("DTLines","con","GCG_6074_ProductCDE","Product_CDE",4,"Product_CDE@!@Product_CDE*!*Product_DESC@!@Product_DESC*!*Product_WHO@!@Product_WHO")
+
+F.Data.DataTable.AcceptChanges("DTLines")
+
+'f.Data.DataTable.AddRow("DTLines","Action","Add")
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.ClearGrid.End
+
+Program.Sub.MenuClearGrid.Start
+f.Intrinsic.Control.Try
+
+variable.local.returnvalue.Declare(long)
+
+Function.Intrinsic.UI.MsgBox("Do you want to clear the grid ?", "Confirm", 4, variable.local.returnvalue)
+F.Intrinsic.Control.If(variable.local.returnvalue,=,6)
+	f.Intrinsic.Control.CallSub(ClearGrid)
+f.Intrinsic.Control.EndIf 
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.MenuClearGrid.End
+
+Program.Sub.MenuCopyfromExcel.Start
+f.Intrinsic.Control.Try
+
+V.Local.iLoop.Declare(long)
+v.Local.iret.Declare(long)
+
+V.Local.sText.Declare 
+V.Local.sFieldNames.Declare 
+V.Local.sRow.Declare 
+V.Local.sRow1.Declare 
+V.Local.sTypes.Declare 
+V.Local.sFldFilter.Declare 
+
+
+f.Intrinsic.UI.GetClipboardText(V.Local.sText)
+
+'validate for grid format
+f.Intrinsic.String.Split(v.Local.sText,v.Ambient.Tab,V.Local.sRow)
+f.Intrinsic.String.Split(v.Local.sRow,v.Ambient.NewLine,V.Local.sRow)
+f.Intrinsic.Control.If(v.Local.sRow(0),=,"OOB")
+	f.Intrinsic.UI.Msgbox("Invalid Grid format")
+	f.Intrinsic.Control.ExitSub 
+'F.Intrinsic.Control.ElseIf(V.Local.sRow(0).IsNumeric,=,False)
+F.Intrinsic.Control.ElseIf(V.Local.sRow(0).trim,=,"")
+	f.Intrinsic.UI.Msgbox("Invalid Grid format")
+	f.Intrinsic.Control.ExitSub 
+f.Intrinsic.Control.endif
+
+
+'Clear Grid & Load Data
+f.Intrinsic.Control.CallSub(ClearGrid)
+Function.Data.DataTable.DeleteRow("DTLines") 
+
+V.Local.sFieldNames.Set("Product_CDE*!*Product_DESC*!*Product_WHO")
+V.Local.sTypes.Set("String*!*String*!*String")
+
+f.Intrinsic.String.Split(v.Local.sText,v.Ambient.NewLine,v.Local.sText)
+f.Intrinsic.variable.RemoveArrayElementByOrdinal(v.Local.sText,v.Local.sText.UBound,v.Local.sText)
+f.Intrinsic.String.Join(v.Local.sText,v.Local.sText)
+
+F.Intrinsic.Control.If(v.DataTable.DTImport.Exists,=,True)
+	F.Data.DataTable.Close("DTImport")
+f.Intrinsic.Control.EndIf 
+
+F.Data.DataTable.CreateFromString("DTImport",V.Local.sText,V.Local.sFieldNames,V.Local.sTypes,v.Ambient.Tab,"!*!",True)
+
+
+F.Data.DataTable.Merge("DTImport","DTLines",False,1)
+
+	f.Intrinsic.Control.If(Variable.DataTable.DTLines.rowcount,>,0)
+		v.Local.iret.Set(Variable.DataTable.DTLines.rowcount)
+	f.Intrinsic.Control.EndIf
+
+'	f.Data.DataTable.AddRow("DTLines","Action","Add")
+	
+	V.Global.bSave.Set(True)
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.MenuCopyfromExcel.End
+
+
+Program.Sub.GsGridlines_RowCellClick.Start
+f.Intrinsic.Control.Try
+
+Variable.local.sRet.Declare
+
+f.Intrinsic.Control.BlockEvents 
+f.Intrinsic.Control.If(V.Args.column,=,"Action")
+'	gui.frmAddLines.GsGridLines.GetCellValue("GridView",8,V.Args.RowIndex,Variable.local.sRet)
+	gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView",V.Args.column,V.Args.RowIndex,Variable.local.sRet)
+	'check key for Delete
+	f.Intrinsic.Control.If(Variable.local.sRet,=,"Delete")
+		f.Data.DataTable.DeleteRow("DTLines",V.Args.RowIndex)
+		F.Data.DataTable.SaveToDB("DTLines","con","GCG_6074_ProductCDE","Product_CDE",4,"Product_CDE@!@Product_CDE*!*Product_DESC@!@Product_DESC*!*Product_WHO@!@Product_WHO")
+		V.Global.bSave.Set(True)
+	f.Intrinsic.Control.elseIf(Variable.local.sRet,=,"Create WorkFlow")
+		gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","WFExist",V.Args.RowIndex,Variable.local.sRet)
+		f.Intrinsic.Control.If(Variable.local.sRet,=,True)
+			f.Intrinsic.UI.Msgbox("Work Flow already exist")
+		f.Intrinsic.Control.Else
+			gui.frmAddLines.GsGridLines.SetCellValueByColumnName("GridView","SELECT",V.Args.RowIndex,1)
+			f.Intrinsic.Control.CallSub(cmdSave_Click)
+
+'			gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","WFPARTRV",V.Args.RowIndex,Variable.local.sRet)
+'			f.Intrinsic.Control.CallSub(Find_PartWFID,"PARTID",Variable.local.sRet,"CurRow",V.Args.RowIndex)
+'			
+'			gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","GSSPart",V.Args.RowIndex,Variable.local.sRet)
+'			f.Intrinsic.Control.CallSub("Check_PartReleaseWFTrans","PARTID",Variable.local.sRet,"CurRow",V.Args.RowIndex)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.endif
+f.Intrinsic.Control.endif
+f.Intrinsic.Control.UnBlockEvents 
+f.Intrinsic.Control.Catch
+f.Intrinsic.Control.UnBlockEvents 
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.GsGridlines_RowCellClick.End
+
+Program.Sub.MenuCopyToExcel.Start
+f.Intrinsic.Control.Try
+
+V.Local.sFileExport.Declare
+v.Local.bCheck.Declare
+
+
+v.Local.sDate.Declare
+v.Local.sTime.Declare
+
+	
+	f.Intrinsic.String.DateString(v.Ambient.Now,v.Local.sDate)
+	f.Intrinsic.String.TimeStringSec(v.Ambient.Now,v.Local.sTime)
+	
+	f.Intrinsic.String.Build("{0}{1}",v.Local.sDate,v.Local.sTime,v.Local.sTime)
+	
+	F.Intrinsic.String.Build("{0}Group_Codes_{1}.xlsx",V.Caller.LocalGssTempDir,v.Local.sTime,V.Local.sFileExport)
+	f.Intrinsic.File.Exists(v.Local.sFileExport,v.Local.bCheck)
+	F.Intrinsic.Control.If(v.Local.bCheck,=,true)
+		f.Intrinsic.File.DeleteFile(v.Local.sFileExport)
+	F.Intrinsic.Control.EndIf
+	gui.frmAddLines.GsGridLines.Export(V.Local.sFileExport,"xlsx")
+	F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.MenuCopyToExcel.End
+
+Program.Sub.ddlRmaType_Click.Start
+Program.Sub.ddlRmaType_Click.End
+
+Program.Sub.Check_RMAWF.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+V.Local.sStatus.Declare
+
+f.Intrinsic.String.Build("select WF_ID from ATG_WF_HEADER where Title like 'RMA%{0}%'",v.Args.RMANO,v.Local.ssql)
+f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+	f.Global.WorkFlow.readcompletion(V.DataTable.DTWF(0).WF_ID!FieldVal,V.Local.sStatus)
+	f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+		V.Passed.777777.Set(1)
+		f.Intrinsic.Variable.AddRV("WFExist",True)
+		f.Intrinsic.Variable.AddRV("WFExistClosed",True)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.Control.If(v.Caller.Hook,=,30840)
+			f.Intrinsic.Variable.AddRV("WFExist",False)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.Variable.AddRV("WFExist",True)
+			f.Intrinsic.Variable.AddRV("WFExistClosed",True)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("WFExist",False)
+	f.Intrinsic.Variable.AddRV("WFExistClosed",False)
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("DTWF")
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Check_RMAWF.End
+
+Program.Sub.GET_RMAData.Start
+f.Intrinsic.Control.Try
+
+v.Local.ssql.Declare
+
+f.Intrinsic.Control.If(v.Passed.Global,=,"STANDALONE")
+	f.Intrinsic.String.Build("select RMA.location as LOC, Qty_returned*Price as AMT from v_RMA_LINES RMA join v_SA_RMA_LINES Hist on RMA.order_no = Hist.order_no and RMA.order_suffix = Hist.order_suffix and RMA.order_line = Hist.order_line where  RMA_ID = '{0}'",v.Args.RMANO,v.Local.ssql)
+f.Intrinsic.Control.Else
+	f.Intrinsic.String.Build("select RMA.location as LOC, Qty_returned*Price as AMT from v_RMA_LINES RMA join v_ORDER_HIST_LINE Hist on RMA.order_no = Hist.order_no and RMA.order_suffix = Hist.order_suffix and RMA.order_line = Hist.order_line where  RMA_ID = '{0}'",v.Args.RMANO,v.Local.ssql)
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+	f.Intrinsic.Variable.AddRV("LOC",V.DataTable.DTWF(0).LOC!FieldVal)
+	f.Intrinsic.Variable.AddRV("AMT",V.DataTable.DTWF(0).AMT!FieldVal)
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("LOC","")
+	f.Intrinsic.Variable.AddRV("AMT",0)
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("DTWF")
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.GET_RMAData.End
+
+Program.Sub.Check_Table.Start
+f.Intrinsic.Control.Try
+
+V.Local.bExists.Declare
+V.Local.sSQL.Declare
+
+F.ODBC.Connection!con.TableExists("GCG_6074_ProductCDE",V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	V.Local.sSQL.Set("CREATE TABLE GCG_6074_ProductCDE(Product_CDE VARCHAR(10) NOT NULL,Product_DESC VARCHAR(50),Product_WHO VARCHAR(25)  );")
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Check_Table.End
+Program.Sub.Load_GridReject.Start
+f.Intrinsic.Control.Try
+
+
+V.Local.sSQL.Declare(String)
+V.Local.sType.Declare(String)
+v.Local.iTotClmn.Declare 
+v.Local.i.Declare
+v.Local.stitle.Declare
+'v.Local.sOrderNo.Declare
+'v.Local.sOrderLn.Declare
+v.local.iret.Declare 
+
+F.ODBC.Connection!con.OpenCompanyConnection(300)
+
+
+V.Local.sSQL.Set("select REJ.WF_ID as WF_ID,WF_RejectUser,WF_RejectDate,Title,WF_RejectReason from GCG_6074_WFReject REJ JOIN ATG_WF_HEADER HDR on REJ.WF_ID = HDR.WF_ID order by WF_ID")
+F.Intrinsic.Control.If(v.DataTable.DTLines.Exists,=,True)
+	F.Data.DataTable.Close("DTLines")
+f.Intrinsic.Control.EndIf 
+F.Data.DataTable.CreateFromSQL("DTLines","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(Variable.DataTable.DTLines.rowcount,>,0)
+		v.Local.iret.Set(Variable.DataTable.DTLines.rowcount)
+f.Intrinsic.Control.EndIf
+	F.Data.DataView.Create("DTLines","DVLines")
+
+	gui.frmAddLines.GsGridLines.SuspendLayout 
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+'	Product_CDE,Product_DESC,Product_WHO
+
+	'Add Blank row for data entry	
+'	f.Data.DataTable.AddRow("DTLines","Action","Add")
+
+	gui.frmAddLines.GsGridLines.AddGridViewFromDataView("GridView","DTLines","DVLines")
+
+	gui.frmAddLines.GsGridLines.GetColumnCount("GridView",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmAddLines.GsGridLines.GetColumnNamebyIndex("GridView",v.Local.i,v.Local.stitle)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"AllowEdit",False)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"ReadOnly",True)
+
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderBackColor","#7FFF00")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderHAlignment","Center")
+	f.Intrinsic.Control.Next(v.Local.i)
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "ColumnPanelRowHeight", "40")
+	Gui.frmAddLines.GsGridLines.SetGridviewProperty("GridView","OptionsViewRowAutoHeight",True)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_ID","MinWidth",50)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_ID","MaxWidth",50)
+	
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectUser","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectUser","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectDate","MinWidth",130)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectDate","MaxWidth",130)
+	
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectReason","MinWidth",220)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectReason","MaxWidth",220)
+	
+'	
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Title","MinWidth",150)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Title","MaxWidth",150)
+
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectReason","CellWordWrap", "Wrap")
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_ID","Caption","WF ID")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectReason","Caption","Reject Reason")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Title","Caption","Title")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectUser","Caption","WF RejectUser")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_RejectDate","Caption","WF Reject Date")
+	
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF_ID","CellHAlignment","Center")
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "False") 
+
+	gui.frmAddLines.GsGridLines.ResumeLayout 
+
+	gui.frmAddLines.GsGridLines.MainView("GridView")
+
+
+	gui.frmAddLines.GsGridLines.Anchor(15)
+	gui.frmAddLines.cmdSave.Visible(false)
+	gui.frmAddLines..Show 
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+
+Program.Sub.Load_GridReject.End
+
+Program.Sub.LoadGrid_PartApproval.Start
+f.Intrinsic.Control.Try
+
+v.Local.ssql.Declare
+v.Local.iTotClmn.Declare
+v.Local.stitle.Declare
+v.Local.i.Declare
+
+' where Flag_INACTIVE = 'N'
+'f.Intrinsic.String.Build("select GSS_Part,Display_Part,Display_Rev from v_Inventory_Mstr Mstr join INV_LXR on GSS_Part = part where Mstr.Flag_INACTIVE = 'Y' and Location = '{0}'  order by substring(Mstr.part,1,17) desc ",v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+
+'f.Intrinsic.String.Build("select rtrim(Mstr.part) as 'Part',ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN' from v_Inventory_Mstr Mstr left join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where Mstr.Flag_INACTIVE = 'Y' and Location = 'KT'  order by substring(Mstr.part,1,17) desc ",v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+f.Intrinsic.String.Build("select rtrim(GSS_Part) as GSS_Part,ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN' from v_Inventory_Mstr Mstr join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where Mstr.Flag_INACTIVE = 'Y' and Location = '{0}'  order by substring(Mstr.part,1,17) desc ",v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+
+f.Data.Datatable.CreateFromSQL("DTPART","con",v.Local.ssql,true)
+
+f.Intrinsic.Control.If(V.DataTable.DTPART.RowCount,>,0)
+
+	F.Data.DataView.Create("DTPART","DVPart")
+	
+	gui.frmAddLines.GsGridLines.SuspendLayout 
+'Part Approval: MIN-S044-0014 2  Loc: KT
+'f.Intrinsic.String.Build("Part Approval: {0}  Loc: {1}",v.Local.sLongPartRev,v.Global.sLoc,v.local.sTitle)
+	
+'	f.Data.Datatable.AddExpressionColumn("DTPART","DTLongPartREV","string","Part Approval: + [Display_Part]+[Display_Rev] +  Loc: + [location]")
+
+	f.Data.Datatable.AddExpressionColumn("DTPART","DTLongPartREV","string","'PART APPROVAL: ' + [Display_Part]+[Display_Rev] + '  LOC: ' + [location]")
+	
+	f.Data.Datatable.AddColumn("DTPART","c1","string","'")
+	'for dictionary key
+	'With quotes for query+  Loc: + [location]+  Loc: + [location]
+	
+'	f.Intrinsic.String.Build("Part Approval: {0} Loc: {1}",v.Local.sLongPartRev,v.Global.sLoc,v.local.sTitle)
+	
+	f.Data.Datatable.AddExpressionColumn("DTPART","WFTitle","string","[c1]+DTLongPartREV+[c1]")
+	
+	F.Data.DataTable.AddColumn("DTPART","WF Exist","boolean",0)
+'	F.Data.DataTable.AddColumn("DTPART","Flag ECN","boolean",0)
+	
+	F.Data.DataTable.AddColumn("DTPART","Action","string","Create WorkFlow")
+
+	f.Intrinsic.Control.CallSub(Find_PartWFExist)
+
+	gui.frmAddLines.GsGridLines.AddGridViewFromDataView("GridView","DTPART","DVPart")
+
+	gui.frmAddLines.GsGridLines.GetColumnCount("GridView",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmAddLines.GsGridLines.GetColumnNamebyIndex("GridView",v.Local.i,v.Local.stitle)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"AllowEdit",False)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"ReadOnly",True)
+
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderBackColor","#7FFF00")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderHAlignment","Center")
+	f.Intrinsic.Control.Next(v.Local.i)
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "ColumnPanelRowHeight", "40")
+	Gui.frmAddLines.GsGridLines.SetGridviewProperty("GridView","OptionsViewRowAutoHeight",True)
+
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","AllowEdit",True)
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_CDE","ReadOnly",False)
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_DESC","AllowEdit",True)
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_DESC","ReadOnly",False)
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","AllowEdit",True)
+''	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","ReadOnly",False)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","location","visible",False)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DTLongPartREV","visible",False)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","c1","visible",False)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WFTitle","visible",False)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF Exist","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WF Exist","MaxWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Rev","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Rev","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","MinWidth",200)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","MaxWidth",200)
+'	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MinWidth",150)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MaxWidth",150)
+'	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Rev","Caption","LongRev")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","Caption","LongPart")
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Product_WHO","Caption","Product WHO")
+
+
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellHAlignment","center")
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellBackColor",V.Color.Grey)
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellForeColor",V.Color.white)
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "False") 
+	
+	
+	
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellImage","C:\Temp\Current\reference\Image in dashboad 6059\GAB_6059_NoImage.png")
+
+	gui.frmAddLines.GsGridLines.ResumeLayout 
+
+	gui.frmAddLines.GsGridLines.MainView("GridView")
+
+	'Create Context Menus
+'	f.Intrinsic.Control.CallSub(create_menus)
+
+
+	f.Data.DataView.Close("DTPART","DVPart")
+f.Intrinsic.Control.endif
+f.Data.Datatable.Close("DTPART")
+
+F.Intrinsic.UI.CloseWaitDialog
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid_PartApproaval.End
+
+
+Program.Sub.cmdRefreshData_Click.Start
+f.Intrinsic.Control.Try
+	f.Intrinsic.Control.If(v.Screen.frmAddLines!txtLocation.Text,<>,"")
+		f.Intrinsic.Control.CallSub(LoadGrid_PartApproval)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.cmdRefreshData_Click.End
+
+Program.Sub.cmdLocBrow_Click.Start
+f.Intrinsic.Control.Try
+
+
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Split("Location*!*Description","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("1300*!*2300","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.MiniBrowser("Select a Location",con,"Select Location,Location_desc FROM V_LOCATIONS ORDER BY Location",V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Location was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.frmAddLines.txtLocation.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.cmdLocBrow_Click.End
+
+Program.Sub.Find_PartWFID.Start
+f.Intrinsic.Control.Try
+v.local.sTitle.Declare
+v.Local.sSQL.Declare
+Variable.local.sRet.Declare
+V.Local.sStatus.Declare
+v.Local.i.Declare
+V.Local.sWFTitle.Declare
+v.Local.bWFNotExist.Declare
+v.Local.iWF.Declare
+v.Local.sErrorMsg.Declare
+v.Local.dEndDate.Declare
+v.Local.iWFNew.Declare
+
+f.Intrinsic.String.Build("select WF_ID from atg_wf_header where  ucase(Title) like 'PART APPROVAL%' AND rtrim(REF_0) + rtrim(REF_1) = '{0}' and rtrim(REF_2) = '{1}'",v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+
+f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+	'WF already Exist for Latest REV
+'	gui.frmAddLines.GsGridLines.SetCellValueByColumnName("GridView","WF Exist",v.Args.CurRow,1)
+	f.Intrinsic.Variable.AddRV("RETVAL",1)
+f.Intrinsic.Control.Else
+	f.Intrinsic.Variable.AddRV("RETVAL",0)
+	'Find WF exist for any existing REV for this Parts
+'	gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","DisplayPart",v.Args.CurRow,Variable.local.sRet)
+
+	'create view GSSPART=GSSPART order by part_create_Date desc
+'	forloop
+	v.Local.sfilter.Declare
+	
+	v.Local.bWFNotExist.Set(True)
+	f.Intrinsic.String.Build("Part='{0}'",v.Args.GSSPart,v.Local.sfilter)
+	f.Data.DataView.Create("DTREV","DVTMP",22,v.Local.sfilter,"part_create_Date desc")
+	f.Intrinsic.Control.If(v.DataView.DTREV!DVTMP.RowCount,>,0)
+		f.Intrinsic.Control.For(v.Local.i,0,v.DataView.DTREV!DVTMP.RowCount--,1)
+			f.Intrinsic.String.Build("select WF_ID from atg_wf_header where  ucase(Title) like 'PART APPROVAL%' AND rtrim(REF_0) = '{0}' and rtrim(REF_1) = '{1}' and rtrim(REF_2) = '{2}' order by WF_ID desc",V.DataView.DTREV!DVTMP(v.Local.i).DisplayPart!FieldValtrim,V.DataView.DTREV!DVTMP(v.Local.i).REV!FieldValtrim,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+			f.Data.Datatable.CreateFromSQL("DTWFT","con",v.Local.sSQL)
+			f.Intrinsic.Control.If(v.DataTable.DTWFT.RowCount,>,0)
+				f.Global.WorkFlow.readcompletion(V.DataTable.DTWFT(0).WF_ID!FieldVal,V.Local.sStatus)
+				f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+	'				f.Intrinsic.UI.Msgbox(V.DataTable.DTWF(v.Local.i).WF_ID!FieldVal)
+					
+	'				gui.frmAddLines.GsGridLines.SetCellValueByColumnName("GridView","WF Exist",v.Args.CurRow,1)
+	'				gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","REV",v.Args.CurRow,Variable.local.sRet)
+			
+					f.Intrinsic.String.Build("Part Approval: {0} {1}  Loc: {2}",v.Args.DisplayPart.trim,v.Args.REV.Trim,v.Screen.frmAddLines!txtLocation.Text,v.local.sWFTitle)
+					
+					'Rename existing WF Title
+					f.Intrinsic.String.Build("update atg_wf_header set Title='{0}',REF_0 = '{1}',REF_1 = '{2}',COMPLETION_DATE = NULL where  WF_ID = {3}",v.local.sWFTitle,v.Args.DisplayPart.Trim,v.Args.REV.Trim,V.DataTable.DTWFT(0).WF_ID!FieldVal,v.Local.sSQL)
+					f.ODBC.Connection!con.Execute(v.Local.sSQL)
+
+					'Reset WF
+					f.Intrinsic.String.Build("update ATG_WF_LINES set PERC_COMPLETION = 0 ,COMPLETED_BY='',COMPLETION_DATE = NULL where WF_ID = {0}",V.DataTable.DTWFT(0).WF_ID!FieldVal,v.Local.sSQL)
+					f.ODBC.Connection!con.execute(v.Local.sSQL)
+
+					v.Local.bWFNotExist.Set(False)
+					f.Intrinsic.Control.ExitFor(v.Local.i)
+				f.Intrinsic.Control.EndIf	
+			f.Intrinsic.Control.EndIf
+			f.Data.Datatable.Close("DTWFT")
+		f.Intrinsic.Control.Next(v.Local.i)
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.Close("DTREV","DVTMP")
+f.Intrinsic.Control.EndIf
+f.Data.Datatable.Close("DTWF")
+	'next loop
+	
+'	
+'	'==================
+'	f.Intrinsic.String.Build("select WF_ID from atg_wf_header where  ucase(Title) like 'PART APPROVAL%' AND rtrim(REF_0) = '{0}' and rtrim(REF_2) = '{1}' order by WF_ID desc",v.Args.DisplayPart.trim,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+'	v.Local.bWFNotExist.Set(True)
+'	f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+'		f.Intrinsic.Control.For(v.Local.i,0,V.DataTable.DTWF.RowCount--,1)
+'			f.Global.WorkFlow.readcompletion(V.DataTable.DTWF(0).WF_ID!FieldVal,V.Local.sStatus)
+'			f.Intrinsic.Control.If(V.Local.sStatus.Long,<,100)
+''				f.Intrinsic.UI.Msgbox(V.DataTable.DTWF(v.Local.i).WF_ID!FieldVal)
+'				
+''				gui.frmAddLines.GsGridLines.SetCellValueByColumnName("GridView","WF Exist",v.Args.CurRow,1)
+''				gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","REV",v.Args.CurRow,Variable.local.sRet)
+'		
+'				f.Intrinsic.String.Build("Part Approval: {0}  Loc: {1}",v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.local.sWFTitle)
+'				
+'				'Rename existing WF Title
+'				f.Intrinsic.String.Build("update atg_wf_header set Title='{0}',REF_1 = '{1}' where  WF_ID = {2}",v.local.sWFTitle,v.Args.REV,V.DataTable.DTWF(v.Local.i).WF_ID!FieldVal,v.Local.sSQL)
+'				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+'				v.Local.bWFNotExist.Set(False)
+'				f.Intrinsic.Control.ExitFor(v.Local.i)
+'			f.Intrinsic.Control.EndIf
+'		f.Intrinsic.Control.Next(v.Local.i)
+'	f.Intrinsic.Control.EndIf
+'f.Intrinsic.Control.EndIf
+'f.Data.Datatable.Close("DTWF")
+
+f.Intrinsic.Control.If(v.Local.bWFNotExist)
+'Create NEWWF
+	
+	'Get template ID
+	f.Intrinsic.String.Build("Part Approval - {0}",v.Screen.frmAddLines!txtLocation.Text,v.Local.sWFTitle)
+	f.Global.WorkFlow.GetTemplateIDFromTitle(v.Local.sWFTitle,v.Local.iWF)
+	
+	'End if template not found
+	f.Intrinsic.Control.If(v.Local.iWF,=,-1)
+		f.Intrinsic.String.Build("Part Release WF Template Not Found For Loc {0}",v.Screen.frmAddLines!txtLocation.Text,v.Local.sErrorMsg)
+		f.Intrinsic.UI.Msgbox(v.Local.sErrorMsg)
+		f.Intrinsic.Control.CallSub(Unload)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("Part Approval: {0} {1}  Loc: {2}",v.Args.DisplayPart.trim,v.Args.REV.Trim,v.Screen.frmAddLines!txtLocation.Text,v.local.sWFTitle)
+		
+		F.Global.WorkFlow.GetIDFromTitle(v.local.sWFTitle,v.Local.iWFNew)
+		f.Intrinsic.Control.If(v.Local.iWFNew,<>,-1)
+			f.Intrinsic.Control.ExitSub		
+		f.Intrinsic.Control.EndIf
+		
+		'Set start and end dates and the title
+		f.Intrinsic.Date.DateAdd("d",7,v.Ambient.Date,v.Local.dEndDate)
+		
+		'Create the workflow
+		f.Global.WorkFlow.CreateFromTemplate(v.Local.iWF,v.Local.sWFTitle,v.Ambient.Date,v.Local.dEndDate,v.Caller.User,0,v.Local.iWF)
+		
+'		gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","Part",v.Args.CurRow,Variable.local.sRet)
+		'Set reference data
+		f.Global.WorkFlow.SetReferenceData(v.Local.iWF,0,v.Args.DisplayPart.trim)
+'		gui.frmAddLines.GsGridLines.GetCellValueByColumnName("GridView","REV",v.Args.CurRow,Variable.local.sRet)
+		f.Global.WorkFlow.SetReferenceData(v.Local.iWF,1,v.Args.REV.Trim)
+		f.Global.WorkFlow.SetReferenceData(v.Local.iWF,2,v.Screen.frmAddLines!txtLocation.Text)
+		gui.frmAddLines.GsGridLines.SetCellValueByColumnName("GridView","WFExist",v.Args.CurRow,1)
+'		f.Intrinsic.UI.Msgbox("New Part Approval WorkFlow created")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Find_PartWFID.End
+
+Program.Sub.Find_PartWFExist.Start
+f.Intrinsic.Control.Try
+'PART APPROVAL
+
+V.Local.sRet.Declare
+v.Local.ssql.Declare
+
+'f.Intrinsic.String.Build("{0} {1}",v.Global.sLongPart(0).trim,v.Global.sLongPart(1).trim,v.Local.sLongPartRev)
+'f.Intrinsic.String.Build("Part Approval: {0}  Loc: {1}",v.Local.sLongPartRev,v.Global.sLoc,v.local.sTitle)
+
+'PART APPROVAL
+F.Data.DataView.SetFilter("DTREV","DVREV","CURREV='C' and Flag_INACTIVE=1")
+
+Function.Data.DataView.ToString("DTREV","DVREV","WFTitle","*!*",",",V.Local.sRet)	
+f.Intrinsic.String.Split(V.Local.sRet,",",V.Local.sRet)
+Function.Intrinsic.String.RemoveArrayDuplicates(V.Local.sRet,V.Local.sRet)
+
+f.Intrinsic.String.Join(V.Local.sRet,",",V.Local.sRet)
+
+
+'f.Intrinsic.String.Build("select ucase(Title),1 from ATG_WF_Header where WF_ID IN (select WF_ID from ATG_WF_Lines  where ATG_WF_Header.WF_ID = ATG_WF_Lines.WF_ID and ucase(Title) IN ({0}) and  (Perc_Completion < 100 or Perc_Completion IS null)) ",V.Local.sRet,v.Local.ssql)
+
+f.Intrinsic.String.Build("select rtrim(REF_0) + rtrim(REF_1),1 from atg_wf_header where  ucase(Title) like 'PART APPROVAL%' AND rtrim(REF_0) + rtrim(REF_1) IN ({0}) and rtrim(REF_2) = '{1}'",V.Local.sRet,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+
+F.Data.Dictionary.CreateFromSql("dtXdic","con",v.Local.SSQL)
+f.Data.Dictionary.SetDefaultReturn("dtXdic",0)
+f.Data.DataTable.FillFromDictionary("DTREV","dtXdic","WFPARTRV","WFExist")
+f.Data.Dictionary.Close("dtXdic")
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Find_PartWFExist.End
+
+Program.Sub.LoadGrid_NEWPartApproval.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+V.Local.sRet.Declare
+V.Local.iLen.Declare
+v.Local.i.Declare
+v.Local.j.Declare(long)
+v.Local.iRetAscii.Declare
+V.Local.bRet.Declare
+v.Local.sRetAscii.Declare
+v.Local.sREV.Declare
+
+f.Intrinsic.Control.BlockEvents
+
+
+F.Intrinsic.Control.If(V.DataTable.DTREV.Exists,=,True)
+	f.Data.Dataview.Close("DTREV","DVREV")
+	f.Data.Datatable.Close("DTREV")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.InvokeWaitDialog("Loading...","Please Wait...")
+Gui.frmAddLines.cmdSave.Enabled(true)
+'Get ALL Inactive Parts
+f.Intrinsic.String.Build("select distinct substring(part,1,17) as PART from v_Inventory_Mstr  where Flag_INACTIVE = 'Y' and Location = '{0}' ",v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+
+f.Data.Datatable.CreateFromSQL("DTNEWPART","con",v.Local.ssql,true)
+
+f.Intrinsic.Control.If(V.DataTable.DTNEWPART.RowCount,>,0)
+	F.Data.DataView.Create("DTNEWPART","DVPart")
+	f.Data.Datatable.AddColumn("DTNEWPART","c1","string","'")
+	f.Data.Datatable.AddExpressionColumn("DTNEWPART","DTPART","string","[c1]+PART+[c1]")
+	Function.Data.DataView.ToString("DTNEWPART","DVPart","DTPART","*!*",",",V.Local.sRet)	
+	f.Intrinsic.String.Split(V.Local.sRet,",",V.Local.sRet)
+	Function.Intrinsic.String.RemoveArrayDuplicates(V.Local.sRet,V.Local.sRet)
+	f.Intrinsic.String.Join(V.Local.sRet,",",V.Local.sRet)
+	
+	'Load ALL Rev for Inactive Parts
+	
+	
+'	f.Intrinsic.String.Build("select top 5 substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,rtrim(GSS_Part) as GSS_Part,ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr left join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  Location = '{0}' and substring(MSTR.part,1,17) IN ({1})",v.Screen.frmAddLines!txtLocation.Text,V.Local.sRet,v.Local.ssql)
+'	f.Intrinsic.String.Build("select substring(part,1,17) as PART,substring(part,18,3) as REV from v_Inventory_Mstr  where substring(part,1,17) IN ({0}) and Location = 'KT' order by PART ",V.Local.sRet,v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+
+'	f.Intrinsic.String.Build("select substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,substring(MSTR.part,1,17) as 'Display_Part',description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  Location = '{0}'",v.Screen.frmAddLines!txtLocation.Text,v.Local.ssql)
+
+	f.Intrinsic.String.Build("select substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,part_Create_date,rtrim(GSS_Part) as GSS_Part,ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr Join INVENTORY_MST3  Mstr3 on  Mstr3.part = Mstr.part and  Mstr3.location = Mstr.location left join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  MSTR.Location = '{0}' and substring(MSTR.part,1,17) IN ({1})",v.Screen.frmAddLines!txtLocation.Text,V.Local.sRet,v.Local.ssql)
+
+
+''	f.Intrinsic.String.Build("select substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,part_Create_date,substring(MSTR.part,1,17) as 'GSS_Part',substring(MSTR.part,1,17) as 'Display_Part',substring(MSTR.part,18,3) as 'Display_Rev',description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr Join INVENTORY_MST3  Mstr3 on  Mstr3.part = Mstr.part and  Mstr3.location = Mstr.location left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  MSTR.part not like '%||%' and MSTR.Location = '{0}' and substring(MSTR.part,1,17) IN ({1})",v.Screen.frmAddLines!txtLocation.Text,V.Local.sRet,v.Local.ssql)
+
+''	f.Intrinsic.String.Build(" {0} UNION select substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,part_Create_date,rtrim(GSS_Part) as GSS_Part,ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr Join INVENTORY_MST3  Mstr3 on  Mstr3.part = Mstr.part and  Mstr3.location = Mstr.location join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  MSTR.Location = '{1}' and substring(MSTR.part,1,17) IN ({2})",v.Local.ssql,v.Screen.frmAddLines!txtLocation.Text,V.Local.sRet,v.Local.ssql)
+''	
+'	f.Intrinsic.String.Build("select substring(MSTR.part,1,17) as PART,substring(MSTR.part,18,3) as REV,part_Create_date,rtrim(GSS_Part) as GSS_Part,ucase(rtrim(Display_Part)) as Display_Part,ucase(rtrim(Display_Rev)) as Display_Rev,description,MSTR.location,' ' as 'INV.Extra.userfld13',Case When part_17 Is Null Then Convert(0,SQL_BIT) else Convert(1,SQL_BIT) End as 'Flag ECN',Case When Mstr.Flag_INACTIVE = 'Y' Then Convert(1,SQL_BIT) else  Convert(0,SQL_BIT)   End as Flag_INACTIVE  from v_Inventory_Mstr Mstr Join INVENTORY_MST3  Mstr3 on  Mstr3.part = Mstr.part and  Mstr3.location = Mstr.location join INV_LXR on GSS_Part = Mstr.part left Join v_ENG_CHG_PART ENG on ENG.Part = Mstr.part and ENG.Locn = MSTR.location where  MSTR.Location = '{1}' and substring(MSTR.part,1,17) IN ({2})",v.Local.ssql,v.Screen.frmAddLines!txtLocation.Text,V.Local.sRet,v.Local.ssql)
+'	
+	f.Data.Datatable.CreateFromSQL("DTREV","con",v.Local.ssql,True)
+'	
+
+'	f.Intrinsic.Control.If(V.DataTable.DTREV.RowCount,>,0)
+'		f.Data.Datatable.AddColumn("DTREV","REVASCII","long")
+'		f.Intrinsic.Control.For(v.Local.i,0,V.DataTable.DTREV.RowCount--,1)
+'			F.Intrinsic.UI.ChangeWaitStatus("Loading Parts...Please Wait...",v.Local.i,0,V.DataTable.DTREV.RowCount--)
+'			f.Intrinsic.Control.If(V.DataTable.DTREV(V.Local.i).REV!FieldValtrim,<>,"")
+''				f.Intrinsic.String.Len(V.DataTable.DTREV(V.Local.i).REV!FieldValtrim,V.Local.iLen)
+'				v.Local.j.Set(1)
+'	
+'				f.Intrinsic.Math.IsNumeric(V.DataTable.DTREV(V.Local.i).REV!FieldValtrim,V.Local.bRet)
+'				f.Intrinsic.Control.If(V.Local.bRet)
+'					v.Local.sRetAscii.Set("")
+'					v.Local.sREV.Set(V.DataTable.DTREV(V.Local.i).REV!FieldValtrim)
+'				f.Intrinsic.Control.Else
+'					v.Local.sRetAscii.Set("1")
+'					f.Intrinsic.String.RPad(V.DataTable.DTREV(V.Local.i).REV!FieldValtrim,"0",3,v.Local.sREV)
+'				f.Intrinsic.Control.EndIf
+'				Function.Intrinsic.Control.DoUntil(v.Local.j,>,3)
+'					f.Intrinsic.String.Mid(v.Local.sREV,v.Local.j,1,V.Local.sRet)
+'					Function.Intrinsic.String.Asc(V.Local.sRet,v.Local.iRetAscii)
+'					
+''					f.Intrinsic.Math.IsNumeric(V.Local.sRet,V.Local.bRet)
+'					f.Intrinsic.Control.If(v.Local.iRetAscii,<,65)
+'						f.Intrinsic.String.Mid(v.Local.sREV,v.Local.j,3,V.Local.sRet)
+'						f.Intrinsic.String.Build("{0}{1}",v.Local.sRetAscii,V.Local.sRet,v.Local.sRetAscii)
+'						f.Intrinsic.Control.ExitDo(v.Local.j)
+'					f.Intrinsic.Control.Else
+'						f.Intrinsic.String.Build("{0}{1}",v.Local.sRetAscii,v.Local.iRetAscii,v.Local.sRetAscii)
+'					f.Intrinsic.Control.EndIf
+'					f.Intrinsic.Math.Add(v.Local.j,1,v.Local.j)
+'				Function.Intrinsic.Control.Loop
+'				f.Data.Datatable.SetValue("DTREV",V.Local.i,"REVASCII",v.Local.sRetAscii.Long)
+'			f.Intrinsic.Control.Else
+'			'Blank
+'				f.Data.Datatable.SetValue("DTREV",V.Local.i,"REVASCII",32)
+'			f.Intrinsic.Control.EndIf
+'		f.Intrinsic.Control.Next(v.Local.i)
+'	f.Intrinsic.Control.EndIf
+
+
+	F.Data.DataTable.AddExpressionColumn("DTREV", "DisplayPart", "String", "ISNull(Display_Part,[Part])")
+	F.Data.DataTable.AddExpressionColumn("DTREV", "DisplayRev", "String", "ISNull(Display_Rev,[REV])")
+	F.Data.DataTable.AddExpressionColumn("DTREV", "GSSPart", "String", "ISNull(GSS_Part,[Part] + [REV])")
+	F.Data.DataTable.AddExpressionColumn("DTREV", "WFPARTRV", "String", "trim([DisplayPart])+trim([DisplayRev])")
+	
+	f.Data.DataTable.Create("DtDummy")
+	f.Data.DataTable.AddColumn("DtDummy","Part","string"," ")
+	
+'	F.Data.linq.Join("leftjoin","DataTable","DTREV*!*A", "DataTable","DtDummy*!*B","A.Part=B.Part", "A.Part*!*MAX(A.part_Create_date) as HH","","A.Part","","dtResult1",false)
+
+	F.Data.linq.Join("leftjoin","DataTable","DTREV*!*A", "DataTable","DtDummy*!*B","A.Part=B.Part", "A.DisplayPart*!*MAX(A.part_Create_date) as HH","","A.DisplayPart","","dtResult1",false)
+	
+'	f.Data.Datatable.AddColumn("dtResult1","NEWREV","long")
+'	f.Data.Datatable.SetValueFormat("dtResult1",-1,"HH","NEWREV","")
+	
+	f.Data.Datatable.AddColumn("dtResult1","CURREV","string","C")
+	
+	'20201008
+	f.Data.Datatable.AddExpressionColumn("DTREV","PartCreateDate","String","substring([part_Create_date],5,2) + '/' +  substring([part_Create_date],7,2) + '/' + substring([part_Create_date],1,4)")
+	
+'	f.Data.Datatable.AddExpressionColumn("DTREV","PARTREV","String","[Part] + [part_Create_date]")
+	f.Data.Datatable.AddExpressionColumn("DTREV","PARTREV","String","[DisplayPart] + [part_Create_date]")
+	
+'	f.Data.Datatable.AddExpressionColumn("dtResult1","PARTREV","String","[Part] + [HH]")
+	f.Data.Datatable.AddExpressionColumn("dtResult1","PARTREV","String","[DisplayPart] + [HH]")
+	
+	
+	f.Data.Datatable.AddColumn("DTREV","CURREV","string")
+	F.Data.DataTable.AddColumn("DTREV","TranExist","string")
+	
+	F.Data.Dictionary.CreateFromDataTable("dtXdic","dtResult1","PARTREV","CURREV")
+	f.Data.Dictionary.SetDefaultReturn("dtXdic","N")
+	f.Data.DataTable.FillFromDictionary("DTREV","dtXdic","PARTREV","CURREV")
+	f.Data.Dictionary.Close("dtXdic")
+	
+	f.Data.Datatable.AddExpressionColumn("DTREV","DTLongPartREV","string","[DisplayPart]+[DisplayRev]")
+	
+	f.Data.Datatable.AddColumn("DTREV","c1","string","'")
+	'for dictionary key
+	'With quotes for query+  Loc: + [location]+  Loc: + [location]
+	
+'	f.Intrinsic.String.Build("Part Approval: {0} Loc: {1}",v.Local.sLongPartRev,v.Global.sLoc,v.local.sTitle)
+	
+	f.Data.Datatable.AddExpressionColumn("DTREV","WFTitle","string","[c1]+WFPARTRV+[c1]")
+	
+	F.Data.DataTable.AddExpressionColumn("DTREV", "WFPARTRVLOC", "String", "[PART]+[location]")
+	F.Data.DataTable.AddExpressionColumn("DTREV", "GSSPARTREV", "String", "[C1]+[GSSPART]+[C1]")
+	
+	F.Data.DataTable.AddColumn("DTREV","WFExist","boolean",0)
+'	F.Data.DataTable.AddColumn("DTPART","Flag ECN","boolean",0)
+	
+	F.Data.DataTable.AddColumn("DTREV","Action","string","Create WorkFlow")
+	f.Data.DataTable.AddColumn("DTREV","Select","Bit",0)
+	
+'	f.Data.DataView.Create("DTREV","DVREV",22,"","Display_Part ASC")
+
+	f.Data.DataView.Create("DTREV","DVREV",22,"Flag_INACTIVE=1 and CURREV = 'C' ","Display_Part ASC")
+
+	
+	f.Intrinsic.Control.CallSub(Find_PartWFExist)
+
+	f.Intrinsic.Control.CallSub(Load_GVWF)
+	F.Data.DataView.SetFilter("DTREV","DVREV","Flag_INACTIVE=1 and CURREV = 'C' and WFExist = 0")
+	F.Data.DataView.SetSort("DTREV","DVREV","PartCreateDate desc")
+
+
+f.Intrinsic.Control.EndIf
+f.Data.DataView.Close("DTNEWPART","DVPart")
+f.Data.Datatable.Close("DTNEWPART")
+
+
+f.Intrinsic.Control.UNBlockEvents
+f.Intrinsic.Control.Catch
+f.Intrinsic.Control.UNBlockEvents
+	F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid_NEWPartApproval.End
+
+Program.Sub.Load_GVWF.Start
+f.Intrinsic.Control.Try
+
+v.Local.iTotClmn.Declare
+v.Local.stitle.Declare
+v.Local.i.Declare
+
+gui.frmAddLines.GsGridLines.AddGridViewFromDataView("GridView","DTREV","DVREV")
+
+	gui.frmAddLines.GsGridLines.GetColumnCount("GridView",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmAddLines.GsGridLines.GetColumnNamebyIndex("GridView",v.Local.i,v.Local.stitle)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"AllowEdit",False)
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"ReadOnly",True)
+
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderBackColor","#7FFF00")
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"HeaderHAlignment","Center")
+		
+		gui.frmAddLines.GsGridLines.SetColumnProperty("GridView",v.Local.stitle,"visible",False)
+	f.Intrinsic.Control.Next(v.Local.i)
+
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "ColumnPanelRowHeight", "40")
+	Gui.frmAddLines.GsGridLines.SetGridviewProperty("GridView","OptionsViewRowAutoHeight",True)
+
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Select","AllowEdit",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Select","ReadOnly",False)
+	
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WFExist","visible",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","visible",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","visible",True)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","visible",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","description","visible",True)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","visible",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DisplayRev","visible",True)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PART","visible",True)
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag_INACTIVE","visible",True)
+	
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PART","VisibleIndex","0")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","VisibleIndex","1")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DisplayRev","VisibleIndex","2")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PartCreateDate","VisibleIndex","3")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","description","VisibleIndex","4")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","VisibleIndex","5")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","VisibleIndex","6")
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WFExist","VisibleIndex","6")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Select","VisibleIndex","7")
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","VisibleIndex","8")
+
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WFExist","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","WFExist","MaxWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Flag ECN","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PART","MinWidth",160)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PART","MaxWidth",160)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","MinWidth",150)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","MaxWidth",150)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DisplayRev","MinWidth",70)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DisplayRev","MaxWidth",70)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","MinWidth",120)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","INV.Extra.userfld13","MaxWidth",120)
+'	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MinWidth",120)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","MaxWidth",120)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PartCreateDate","MinWidth",150)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PartCreateDate","MaxWidth",150)
+	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Select","MinWidth",80)
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Select","MaxWidth",80)
+'	
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","DisplayRev","Caption","Rev")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Display_Part","Caption","LongPart")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","description","Caption","Description")
+	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","PartCreateDate","Caption","Part CreatedDate")
+
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellHAlignment","center")
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellBackColor",V.Color.Grey)
+	Gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellForeColor",V.Color.white)
+
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView", "part_Create_date", "DisplayCustomDatetime", "d")
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "False") 
+	gui.frmAddLines.GsGridLines.SetGridViewProperty("GridView","OptionsViewShowAutoFilterRow",True)
+	
+	
+'	gui.frmAddLines.GsGridLines.SetColumnProperty("GridView","Action","CellImage","C:\Temp\Current\reference\Image in dashboad 6059\GAB_6059_NoImage.png")
+
+	gui.frmAddLines.GsGridLines.ResumeLayout 
+
+	gui.frmAddLines.GsGridLines.MainView("GridView")
+	F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.Catch
+f.Intrinsic.Control.UNBlockEvents
+	F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry	
+Program.Sub.Load_GVWF.End
+
+Program.Sub.Check_PartReleaseWFTrans.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSQL.Declare
+Variable.local.sRet.Declare
+Variable.local.sPart.Declare
+v.Local.i.Declare
+v.Local.sPartold.Declare
+v.Local.bType.Declare
+
+'salesorder
+'PO
+'Inventory
+
+Variable.local.sPart.Set(v.Args.PART)
+
+f.Intrinsic.String.IsInString(Variable.local.sPart,"||",true,v.Local.bType)
+f.Intrinsic.Control.If(v.Local.bType)
+	f.Intrinsic.String.Build("Update inventory_mstr set Obsolete_Flag = 'Y' from INV_LXR where  part = GSS_Part and Display_Part =  '{0}' and part  <> '{1}' and location = '{2}' ",v.Args.DisplayPART,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+f.Intrinsic.Control.else
+	f.Intrinsic.String.Build("Update inventory_mstr set Obsolete_Flag = 'Y' where  PART like '{0}%' and  part <> '{1}' and  location = '{2}'",Variable.local.sPart.trim,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+		
+'	f.Intrinsic.String.Build("select substring(part,1,17)+location,'Y' from v_PO_H_lines  where part like '{0}%' and  part <> '{1}' and  location = '{2}' union ",Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} select substring(part,1,17)+location,'Y' from v_PO_lines where part like '{1}%' and  part <> '{2}' and  location = '{3}' union ",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0}select substring(part,1,17)+location,'Y' from INVENTORY_HIST where part like '{1}%' and  part <> '{2}' and  location = '{3}' union ",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} select substring(part,1,17)+location,'Y' from ITEM_HISTORY where part like '{1}%' and part  <> '{2}' and  location = '{3}' union ",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} select substring(part,1,17)+location,'Y' from Order_lines where part like '{1}%' and part  <> '{2}' and  location = '{3}' union ",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} select substring(part,1,17)+location,'Y' from Order_Hist_line where part like '{1}%' and part  <> '{2}' and  location = '{3}' union ",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} select substring(part,1,17)+location,'Y' from Inventory_mstr where part like '{1}%' and part  <> '{2}' and  location = '{3}' and QTY_ONHand > 0",v.Local.sSQL,Variable.local.sPart,v.Args.PARTID,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+f.Intrinsic.Control.EndIf
+
+f.Data.DataView.Create("DTREV","DVTMP")
+
+'f.Data.Datatable.CreateFromSQL("DTWF","con",v.Local.sSQL)
+'f.Intrinsic.Control.If(v.DataTable.DTWF.RowCount,>,0)
+''Transaction EXIST
+
+'	F.Data.Dictionary.CreateFromSQL("dtXdic","con",v.Local.ssql)
+'	f.Data.Dictionary.SetDefaultReturn("dtXdic","N")
+'	f.Data.DataTable.FillFromDictionary("DTREV","dtXdic","WFPARTRVLOC","TranExist")
+'	f.Data.Dictionary.Close("dtXdic")
+
+'	F.Data.DataView.SetFilter("DTREV","DVTMP","TranExist = 'Y' and CURREV <> 'C' ")
+'	f.Intrinsic.Control.If(v.DataView.DTREV!DVTMP.RowCount,>,0)
+'		Function.Data.DataView.ToString("DTREV","DVTMP","GSSPARTREV","*!*",",",V.Local.sRet)	
+'		f.Intrinsic.String.Split(V.Local.sRet,",",V.Local.sRet)
+'		Function.Intrinsic.String.RemoveArrayDuplicates(V.Local.sRet,V.Local.sRet)
+'		
+'		f.Intrinsic.String.Join(V.Local.sRet,",",V.Local.sRet)
+'		f.Intrinsic.String.Build("Update inventory_mstr set Obsolete_Flag = 'Y' where  PART  IN ({0}) and location = '{1}'",V.Local.sRet,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+'		f.ODBC.Connection!con.Execute(v.Local.sSQL)
+'	f.Intrinsic.Control.EndIf
+'f.Intrinsic.Control.EndIf
+
+'f.Data.Datatable.Close("DTWF")
+
+f.Intrinsic.String.Build("CURREV <> 'C' and Part = '{0}'",Variable.local.sPart,V.Local.sRet)
+F.Data.DataView.SetFilter("DTREV","DVTMP",V.Local.sRet)
+'part revascii
+F.Data.DataView.SetSort("DTREV","DVTMP","Part,part_Create_date desc")
+f.Intrinsic.Control.If(v.DataView.DTREV!DVTMP.RowCount,>,0)
+	'copy data to new part -  INV_EXTRA Copy sales description (INV_XTR_TXT_LANG) 
+	f.Intrinsic.Control.For(v.Local.i,0,v.DataView.DTREV!DVTMP.RowCount--,1)
+		f.Intrinsic.Control.If(v.Local.sPartold,<>,v.DataView.DTREV!DVTMP(v.Local.i).Part!FieldVal)
+			'update INV_EXTRA to new part & REv
+			' update INV_XTR_TXT_LANG to new part & REv
+			
+			Function.Intrinsic.Debug.Stop
+			f.Intrinsic.String.Build("delete from INV_EXTRA where  PART = '{0}' and Rev = '{1}' and location = '{2}'",v.Args.PARTID.left17,v.Args.PARTID.Right3,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+			f.ODBC.Connection!con.Execute(v.Local.sSQL)
+'			f.Intrinsic.String.Build("delete from INV_XTR_TXT_LANG where  PART = '{0}'",v.Args.PARTID,v.Local.sSQL)
+'			f.ODBC.Connection!con.Execute(v.Local.sSQL)
+
+			f.Intrinsic.String.Build("Update INV_EXTRA set part = '{0}', Rev = '{1}' where  PART = '{2}' and Rev = '{3}' and location = '{4}'",v.Args.PARTID.left17,v.Args.PARTID.Right3,v.DataView.DTREV!DVTMP(v.Local.i).Part!FieldVal,v.DataView.DTREV!DVTMP(v.Local.i).REV!FieldVal,v.Screen.frmAddLines!txtLocation.Text,v.Local.sSQL)
+			f.ODBC.Connection!con.Execute(v.Local.sSQL)
+'			f.Intrinsic.String.Build("Update INV_XTR_TXT_LANG set part = '{0}' where  PART = '{1}'",v.Args.PARTID,v.DataView.DTREV!DVTMP(v.Local.i).GSSPart!FieldVal,v.Local.sSQL)
+'			f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			v.Local.sPartold.Set(v.DataView.DTREV!DVTMP(v.Local.i).Part!FieldVal)
+		f.Intrinsic.Control.EndIf
+		' call delete part callwrapper
+		'if tranexist <>' Y'
+'		f.Intrinsic.Control.If(v.DataView.DTREV!DVTMP(v.Local.i).TranExist!FieldVal,<>,"Y")
+'			F.Data.DataTable.AddRow("3500", "CompanyCode", V.Caller.CompanyCode, "Mode", "D", "Switch2", "N", "Part",v.DataView.DTREV!DVTMP(v.Local.i).GSSPart!FieldVal, "Loc",v.Screen.frmAddLines!txtLocation.Text)
+'			F.Intrinsic.Control.CallSub(3500Sync)
+'		f.Intrinsic.Control.endif
+	f.Intrinsic.Control.Next(v.Local.i)
+f.Intrinsic.Control.EndIf
+
+f.Data.DataView.Close("DTREV","DVTMP")
+
+f.Intrinsic.Control.Catch
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Check_PartReleaseWFTrans.End
+
+Program.Sub.CreditApprovalAR.Start
+f.Intrinsic.Control.Try
+
+
+v.Local.sSQL.Declare
+v.Local.i.Declare
+v.local.sTitle.Declare
+v.local.sTemplate.Declare
+
+    f.ODBC.Connection!con.opencompanyconnection
+'	v.Local.sSQL.Set("select distinct Batch,INVTOT,Inv_Date_SQL,REFN from AR_BATCH_TRANS where BATCH_REJECT_FLAG not in('P','R') and code = 12")
+	v.Local.sSQL.Set("select distinct AR.Batch,ABS(INVTOT) as INVTOT,Post_Date_SQL,REFN,location from AR_BATCH_TRANS AR join ORDER_HIST_HEAD HIST on AR.order_num = HIST.order_no where BATCH_REJECT_FLAG not in('P','R') and code = 12 ")
+	f.Data.Datatable.CreateFromSQL("DTBatch","con",v.Local.ssql)
+	
+	f.Intrinsic.Control.If(v.DataTable.DTBatch.RowCount,>,0)
+		f.Intrinsic.Control.For(v.Local.i,0,v.DataTable.DTBatch.RowCount--,1)
+			v.global.bMultiWF.Set(True)
+			f.Intrinsic.String.Build("Credit Memo Approval-{0} - {1}",V.DataTable.DTBatch(v.Local.i).Batch!FieldVal,V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,v.local.sTitle)
+			f.Intrinsic.String.Build("Credit Memo Approval - {0}",V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,v.local.sTemplate)
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.local.sTitle,"SCRAPVALUE",V.DataTable.DTBatch(v.Local.i).INVTOT!FieldVal,"Type","CreditMemoApprovalAR","Template",v.local.sTemplate)
+			f.Intrinsic.Control.If(v.Args.RETWFID,<>,-1)
+				f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE","CREDITMEMOAR","lOC",V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,"REFN",V.DataTable.DTBatch(v.Local.i).REFN!FieldVal,"WFID",v.Args.RETWFID,"BATCH",V.DataTable.DTBatch(v.Local.i).Batch!FieldVal,"INVTOT",V.DataTable.DTBatch(v.Local.i).INVTOT!FieldVal,"InvDateSQL",V.DataTable.DTBatch(v.Local.i).Post_Date_SQL!FieldVal)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.Next(v.Local.i)
+		
+		f.Data.Datatable.Close("DTBatch")
+'		
+		v.Local.sSQL.Set("select distinct AR.Batch,ABS(INVTOT) as INVTOT,Post_Date_SQL,REFN,LN.location from AR_BATCH_TRANS AR join ORDER_HIST_HEAD HIST on AR.invc = HIST.invoice join ORDER_HIST_Line LN on HIST.Invoice = LN.Invoice where BATCH_REJECT_FLAG not in('P','R') and code = 12 and HIST.order_no = '0000000'  ")
+		f.Data.Datatable.CreateFromSQL("DTBatch","con",v.Local.ssql)
+		f.Intrinsic.Control.For(v.Local.i,0,v.DataTable.DTBatch.RowCount--,1)
+			v.global.bMultiWF.Set(True)
+			f.Intrinsic.String.Build("Credit Memo Approval-{0} - {1}",V.DataTable.DTBatch(v.Local.i).Batch!FieldVal,V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,v.local.sTitle)
+			f.Intrinsic.String.Build("Credit Memo Approval - {0}",V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,v.local.sTemplate)
+			f.Intrinsic.Control.CallSub(CreateWF,"SCRAPID",v.local.sTitle,"SCRAPVALUE",V.DataTable.DTBatch(v.Local.i).INVTOT!FieldVal,"Type","CreditMemoApprovalAR","Template",v.local.sTemplate)
+			f.Intrinsic.Control.If(v.Args.RETWFID,<>,-1)
+				f.Intrinsic.Control.CallSub(Notify,"NOTIFYTYPE","CREDITMEMOAR","lOC",V.DataTable.DTBatch(v.Local.i).location!FieldValtrim,"REFN",V.DataTable.DTBatch(v.Local.i).REFN!FieldVal,"WFID",v.Args.RETWFID,"BATCH",V.DataTable.DTBatch(v.Local.i).Batch!FieldVal,"INVTOT",V.DataTable.DTBatch(v.Local.i).INVTOT!FieldVal,"InvDateSQL",V.DataTable.DTBatch(v.Local.i).Post_Date_SQL!FieldVal)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.Next(v.Local.i)
+		
+		'12 - CreditMemo
+		v.Local.sSQL.Set("update AR_BATCH_TRANS set BATCH_REJECT_FLAG = 'R' where BATCH_REJECT_FLAG not in('P','R') and code = 12")
+		F.ODBC.Connection!Con.Execute(v.Local.sSql)
+	f.Intrinsic.Control.EndIf
+	f.Data.Datatable.Close("DTBatch")
+
+f.Intrinsic.Control.Catch
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.CreditApprovalAR.End
+
+Program.Sub.Notify.Start
+f.Intrinsic.Control.Try
+v.Local.sTemp.Declare
+v.Local.iUsrId.Declare
+v.Local.sTemp1.Declare
+v.Local.sSender.Declare
+v.Local.sRecipient.Declare
+v.Local.sSubj.Declare
+v.Local.sBody.Declare
+v.Local.sRefData.Declare
+v.Local.sRefData1.Declare
+v.Local.sRefData2.Declare
+v.Local.sEmailGrp.Declare
+V.Local.sRet.Declare
+v.Local.sRep.Declare
+
+
+
+
+f.Global.Security.GetUserId(v.Caller.User,v.Caller.CompanyCode,v.Local.iUsrId)
+f.Global.Security.GetFullName(v.Caller.User,v.Local.sTemp)
+f.Global.Security.GetUserEmail(v.Caller.User,v.Local.sTemp1)
+f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sTemp1,v.Local.sTemp,v.Local.sSender)
+
+f.Intrinsic.Control.If(v.Args.NOTIFYTYPE,=,"PARTAPPROVAL")
+	f.Global.Security.GetGroupEmails(v.Local.sEmailGrp,v.Local.sTemp1)
+	
+	f.Intrinsic.String.Split(v.Local.sTemp1,"*!*",v.Local.sTemp)
+	f.Intrinsic.Control.If(v.Local.sTemp.Trim,=,"")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	'put the emails back together
+	f.Intrinsic.String.Join(v.Local.sTemp,"@!@*!*",v.Local.sTemp)
+	'put *!* in the front of the string
+	f.Intrinsic.String.Build("*!*{0}",v.Local.sTemp,v.Local.sRecipient)
+
+	F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,0,v.Local.sRefData)  'PART
+	F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,1,v.Local.sRefData1) 'REV
+	F.Global.WorkFlow.ReadReferenceData(v.Passed.DATA-WFID,2,v.Local.sRefData2) ' LOC
+	
+	f.Intrinsic.String.Build("PTREL-{0}",v.Local.sRefData2.trim,v.Local.sEmailGrp)
+	f.Intrinsic.String.Build("{0} - Part Approval: {1} {2} Loc: {3} Completed",v.Caller.CompanyCode,v.Local.sRefData.trim,v.Local.sRefData1.trim,v.Local.sRefData2.trim,v.Local.sSubj)
+	
+	v.Local.sBody.Set(v.Local.sSubj)
+f.Intrinsic.Control.else
+
+'If(v.Args.NOTIFYTYPE,=,"SCRAPAPPROVAL")
+	F.Global.WorkFlow.ReadLineByNum(v.Args.WFID,1,V.Local.sRet)
+	f.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	f.Intrinsic.Control.If(V.Local.sRet(1),=,1)
+		f.Global.Security.GetUserId(v.Caller.User,v.Caller.CompanyCode,v.Local.iUsrId)
+		f.Global.Security.GetFullName(v.Caller.User,v.Local.sTemp)
+		f.Global.Security.GetUserEmail(v.Caller.User,v.Local.sTemp1)
+		f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sTemp1,v.Local.sTemp,v.Local.sSender)
+				
+		f.Intrinsic.Control.If(V.Local.sRet(7),=,False)'This is if a group was specified
+			f.Global.Security.GetGroupEmails(V.Local.sRet(6),v.Local.sRep)
+''			f.Intrinsic.String.Split(v.Local.sRep,"*!*",v.Local.sRep)
+			f.Intrinsic.Control.If(v.Local.sRep.Trim,=,"")
+				f.Intrinsic.Control.ExitSub
+			f.Intrinsic.Control.EndIf
+			'put the emails back together
+			f.Intrinsic.String.Join(v.Local.sRep,"@!@*!*",v.Local.sRep)
+			'put *!* in the front of the string
+			f.Intrinsic.String.Build("*!*{0}",v.Local.sRep,v.Local.sRecipient)
+		f.Intrinsic.Control.Else	'This is if a user was specified
+			f.Global.Security.GetUserEmail(V.Local.sRet(6),v.Local.sRecipient)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Args.NOTIFYTYPE,=,"SCRAPAPPROVAL")
+		f.Intrinsic.Control.CallSub(EmailCompose,"EType","SCRAPAPPROVAL","WFID",v.Args.WFID,"LNO",1)
+	f.Intrinsic.Control.ElseIf(v.Args.NOTIFYTYPE,=,"CREDITMEMOAR")
+		f.Intrinsic.Control.CallSub(EmailCompose,"EType","CREDITMEMOAR","WFID",v.Args.WFID,"LNO",1,"BATCH",v.Args.BATCH,"INVTOT",v.Args.INVTOT,"InvDateSQL",v.Args.InvDateSQL,"REFN",v.Args.REFN,"lOC",v.Args.lOC)
+	f.Intrinsic.Control.ElseIf(v.Args.NOTIFYTYPE,=,"CUSTAPPROVAL")
+		f.Intrinsic.Control.CallSub(EmailCompose,"EType","CUSTAPPROVAL","WFID",v.Args.WFID,"LNO",1,"CUST",v.Args.CUST,"Name",v.Args.Name,"Terms",v.Args.Terms,"CLimit",v.Args.CLimit,"COLimit",v.Args.COLimit,"Type",v.Args.Type,"TermMsg",v.Args.TermMsg)
+	f.Intrinsic.Control.EndIf
+	
+	v.Local.sSubj.Set(v.Args.EmailSubj)
+	v.Local.sBody.Set(v.Args.EmailBody)
+	
+f.Intrinsic.Control.endif
+
+f.Intrinsic.Control.If(v.Local.sSubj.trim,<>,"")
+	f.Global.Messaging.QueueMessage(v.Caller.CompanyCode,v.Local.iUsrID,"GCG_6074WF",v.Local.sSubj,v.Local.sSender,v.Local.sRecipient,v.Local.sBody)
+f.Intrinsic.Control.endif
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Notify.End
+
+Program.Sub.EmailCompose.Start
+
+f.Intrinsic.Control.Try
+
+v.Local.sSubject.Declare
+v.Local.sBody.Declare
+v.Local.sTemp.Declare
+v.Local.sBody1.Declare
+v.Local.sRefData.Declare
+v.Local.sRefData1.Declare
+v.Local.sSQL.Declare
+v.Local.stitle.Declare
+V.Local.sDate.Declare
+
+
+
+
+
+f.Intrinsic.Control.If(v.Args.EType,=,"SCRAPAPPROVAL")
+
+	v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the Scrap Approval DOA Workflow.")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-6 will use the Workflow Queue in GS to approver/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 7-10 will forward this email to Casey Brooks with their decision to approve or reject.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+
+	F.Global.WorkFlow.ReadReferenceData(v.Args.WFID,0,v.Local.sRefData)  'NCMR
+	F.Global.WorkFlow.ReadReferenceData(v.Args.WFID,1,v.Local.sRefData1) 'SEQ
+	F.Intrinsic.String.LPad(v.Local.sRefData1,"0",3,v.Local.sRefData1)
+
+	v.Local.sSQL.set("select  Part,Location,User_Disposed_By,Disposed_Value,Qty_Disposed,Discrepancy,Date_Disposed,Text from   v_QUALITY_DISP A left Join QUAL_MSTR_NOTES on number = A.control_number and Seq = disposition_Seq")
+	f.Intrinsic.String.Build("{0} join v_QUALITY B on A.control_number = B.control_number where A.control_number = '{1}' and disposition_seq = '{2}'",v.Local.sSQL,v.Local.sRefData,v.Local.sRefData1,v.Local.sSQL)
+	
+	f.data.datatable.CreateFromSQL("dtEmailNotify","con",v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+		f.Intrinsic.String.Build("Company:  {0}",v.Caller.CompanyCode,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Location:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Location!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}NCMR#/Seq#:  {2} {3}",v.Local.sBody1,v.Ambient.NewLine,v.Local.sRefData,v.Local.sRefData1,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Part #/Rev:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Part!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Date:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Date_Disposed!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Qty:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Qty_Disposed!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed Value($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Disposed_Value!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposed By:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).User_Disposed_By!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Discrepancy:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Discrepancy!FieldVal,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Disposal Action:  Scrap",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Discrepancy Notes:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.DataTable.dtEmailNotify(0).Text!FieldVal,v.Local.sBody1)
+	
+		f.Intrinsic.String.Build("Scrap Approval NCMR#/Seq#:{0} {1} LOC:{2}",v.Local.sRefData,v.Local.sRefData1,v.DataTable.dtEmailNotify(0).Location!FieldVal,v.Local.sSubject)
+	f.Intrinsic.Control.EndIf
+	
+	f.data.datatable.close("dtEmailNotify")
+	
+f.Intrinsic.Control.elseIf(v.Args.EType,=,"CREDITMEMOAR")
+	v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the AR Credit Memo DOA Workflow.")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-5 will use the Workflow Queue - 6074 in GS to approver/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 6-9 will forward this email to Casey Brooks with their decision to approve or reject.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	f.Intrinsic.String.Build("Company:  {0}",v.Caller.CompanyCode,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Location:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.lOC,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Batch:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.BATCH,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Type:  AR",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Transaction:  CMEMO",v.Local.sBody1,v.Ambient.NewLine,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Reference:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.REFN,v.Local.sBody1)
+
+	F.Intrinsic.String.Format(v.Args.InvDateSQL,"MM/DD/YYYY",V.Local.sDate)
+	f.Intrinsic.String.Build("{0}{1}Date:  {2}",v.Local.sBody1,v.Ambient.NewLine,V.Local.sDate,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Amount($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.INVTOT,v.Local.sBody1)
+
+	f.Intrinsic.String.Build("Credit Memo Approval CMEMO:{0} LOC:{1}",v.Args.REFN,v.Args.lOC,v.Local.sSubject)
+f.Intrinsic.Control.elseIf(v.Args.EType,=,"CUSTAPPROVAL")
+
+	v.Local.sTemp.Set("You are a designated DOA Workflow Approver for the Customer Approval (Credit Hold) DOA Workflow.  ")
+	f.Intrinsic.String.Build("{0}{1}{1}",v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+	v.Local.sTemp.Set("Please approve or reject the following these instructions:")  
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	v.Local.sTemp.Set("DOA Approvers for Levels 1-2 will use the Workflow Queue - 6074 in GS to approve/reject the workflow.")
+	f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sBody,v.Local.sTemp,v.Ambient.NewLine,v.Local.sBody)
+	
+'	f.Intrinsic.String.Build("select Title,Start_Date,INVTOT  from   from ATG_WF_Header where Wf_ID = '{0}'",v.Args.WFID,,v.Local.sSQL)
+'	
+'	f.data.datatable.CreateFromSQL("dtEmailNotify","con",v.Local.sSQL)
+'		f.Intrinsic.Control.If(v.DataTable.dtEmailNotify.RowCount,>,0)
+	f.Intrinsic.String.Build("Customer#:  {0}",v.Args.CUST,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}Customer Name:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.Name,v.Local.sBody1)
+	f.Intrinsic.Control.If(v.Args.Type,=,"P")
+		f.Intrinsic.String.Build("{0}{1}Credit Limit($):  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.CLimit,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Terms:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.Terms,v.Local.sBody1)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("{0}{1}Credit Limit($):  Changed from {2} to {3}",v.Local.sBody1,v.Ambient.NewLine,v.Args.COLimit,v.Args.CLimit,v.Local.sBody1)
+		f.Intrinsic.String.Build("{0}{1}Terms:  Changed from {2} to {3}",v.Local.sBody1,v.Ambient.NewLine,v.Args.TermMsg,v.Args.Terms,v.Local.sBody1)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}{1}WF#:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.WFID,v.Local.sBody1)
+	f.Intrinsic.String.Build("{0}{1}WF Approval Level:  {2}",v.Local.sBody1,v.Ambient.NewLine,v.Args.LNO,v.Local.sBody1)
+
+	f.Intrinsic.String.Build("Customer Approval (Credit Hold) DOA Workflow:{0} - {1}",v.Args.CUST,v.Args.Name,v.Local.sSubject)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Build("{0}{1}{1}{2}",v.Local.sBody,v.Ambient.NewLine,v.Local.sBody1,v.Local.sBody)
+
+f.Intrinsic.Variable.AddRV("EmailSubj",v.Local.sSubject)
+f.Intrinsic.Variable.AddRV("EmailBody",v.Local.sBody)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+
+Program.Sub.EmailCompose.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$rnair$}$20210416152027743$}$JUGEdtlNdgRUPvge2DQ26bz/1piQWHOnRy2VwJXAS8qCIH25DsCdrHqykDAvNL6GPXDVIv2GcH4=
+Program.Sub.Comments.End
